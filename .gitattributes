@@ -1,0 +1,2 @@
+status/assets/** filter=lfs diff=lfs merge=lfs -text
+static/assets/** filter=lfs diff=lfs merge=lfs -text
