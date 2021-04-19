@@ -8,47 +8,52 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "sections"
-    label: "Sections"
-    folder: "src/pages/sections"
+  - name: sections
+    label: Sections
+    folder: src/sections
     create: true
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - {
-          label: "Image",
-          name: "image",
-          widget: "image",
-          allow_multiple: false,
-        }
-      - { label: "Content", name: "body", widget: "markdown" }
-      - {
-          label: "Add sermon manager",
-          name: "sermon-manager",
-          widget: "boolean",
-          default: false,
-        }
-  - name: "landing"
-    label: "Landing"
+      - label: Title
+        name: title
+        widget: string
+      - label: Image
+        name: image
+        widget: image
+        allow_multiple: false
+      - label: Content
+        name: body
+        widget: markdown
+      - label: Add sermon manager
+        name: sermon-manager
+        widget: boolean
+        default: false
+  - name: landing
+    label: Landing
     files:
       - label: Photo Gallery
         name: photo-gallery
-        file: "src/landing/photo-gallery.yml"
+        file: src/landing/photo-gallery.yml
         fields:
           - label: Time between photos
             name: time-between-photos
             widget: select
             options:
-              - { label: "5 Seconds", value: 5 }
-              - { label: "10 Seconds", value: 10 }
-              - { label: "15 Seconds", value: 15 }
+              - label: 5 Seconds
+                value: 5
+              - label: 10 Seconds
+                value: 10
+              - label: 15 Seconds
+                value: 15
           - label: Photos
             name: photos
             widget: list
             fields:
-              - { label: Image, name: image, widget: image }
+              - label: Image
+                name: image
+                widget: image
       - label: Notice sheet
         name: notice-sheet
-        file: "src/landing/notice-sheet.yml"
+        file: src/landing/notice-sheet.yml
         fields:
           - label: Text
             name: text
@@ -57,3 +62,14 @@ collections:
           - label: File
             name: file
             widget: file
+  - name: sermons
+    label: Sermons
+    folder: src/sermons
+    create: true
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: File
+        name: file
+        widget: file
