@@ -1,6 +1,7 @@
 ---
-title: '@Thechapel- Covid 19 response'
+title: "@Thechapel- Covid 19 response"
 ---
+
 Here at Priors Park Community Church, we are meeting the Covid-19 pandemic head on. We have started to combat lockdown in various ways. We are aware that there are many vulnerable and isolating members of our community that need to be remembered and cared for during this unprecedented period.
 
 We have opened a food hub that is working with the Tewkesbury Community Response, local council and various other local authorities. We have been delivering food parcels, doing shopping trips, picking up prescriptions, giving out Foodbank vouchers, supplying Christmas hampers and essentials and we have opened a socially distanced support café in the chapel on a Friday morning.

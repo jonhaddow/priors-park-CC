@@ -1,6 +1,7 @@
 ---
 title: Midweek
 ---
+
 ## Prayer meeting
 
 **7:30pm – Every other Monday**
@@ -11,13 +12,13 @@ Please contact Nigel if you would like to join in with prayer at the chapel.
 
 **9:00am – Every Wednesday (during term time) TBC**
 
-Parent and Toddler Group – An opportunity to chat with other mums over a cup of tea (or Boost) while your toddler plays with the toys and games available. This is the followed by food together, and a craft activity in the afternoon. ***Please be aware that due to COVID-19 this is not running at the moment, we will inform you when it has restarted.***
+Parent and Toddler Group – An opportunity to chat with other mums over a cup of tea (or Boost) while your toddler plays with the toys and games available. This is the followed by food together, and a craft activity in the afternoon. **_Please be aware that due to COVID-19 this is not running at the moment, we will inform you when it has restarted._**
 
 ## Lighthouse Club
 
 **5:00pm – Every Wednesday (during term time)**
 
-Children’s club from Reception to Year 5- Crazy Games, Craft, Song and Bible stories. ***Please be aware that due to COVID-19 this is not running at the moment, we will inform you when it has restarted.***
+Children’s club from Reception to Year 5- Crazy Games, Craft, Song and Bible stories. **_Please be aware that due to COVID-19 this is not running at the moment, we will inform you when it has restarted._**
 
 ## Lockdown Fellowship and Support Group
 
@@ -35,4 +36,4 @@ We are providing a Safe Support Group for those struggling with spiritual and me
 
 **7:00pm – Every other Friday**
 
-We aim to learn more of how we can follow Jesus through bible teaching and sharing our life stories together. ***Please be aware that due to COVID-19 this is not running at the moment, we will inform you when it has restarted.***
+We aim to learn more of how we can follow Jesus through bible teaching and sharing our life stories together. **_Please be aware that due to COVID-19 this is not running at the moment, we will inform you when it has restarted._**

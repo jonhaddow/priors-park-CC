@@ -4,6 +4,8 @@ module.exports = {
 		description: "The heart of the community",
 	},
 	plugins: [
+		"gatsby-plugin-typescript",
+		`gatsby-plugin-eslint`,
 		"gatsby-plugin-react-helmet",
 		"gatsby-plugin-sass",
 		{

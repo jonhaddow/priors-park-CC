@@ -1,6 +1,7 @@
 ---
 title: Sundays
 ---
+
 We meet on Sundays at 3.30 to worship our Lord and Saviour Jesus Christ and to listen to God’s word. If you would like to join us please contact Nigel on 07970013426 so that we can prepare a safe space for you.
 
 On arrival, you will have your temperature taken. There is a NHS Covid-19 track and Trace QR code to scan. If you have children, and would like them to dig for treasure at the Pirate Kids Church, please let Nigel know so he can pass this on to the Pirate leaders.
