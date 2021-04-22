@@ -27,12 +27,12 @@ collections:
         name: sermon-manager
         widget: boolean
         default: false
-  - name: landing
-    label: Landing
+  - name: settings
+    label: Settings
     files:
-      - label: Photo Gallery
+      - label: Photo gallery
         name: photo-gallery
-        file: src/landing/photo-gallery.yml
+        file: src/config/photo-gallery.yml
         fields:
           - label: Time between photos
             name: time-between-photos
@@ -53,7 +53,7 @@ collections:
                 widget: image
       - label: Notice sheet
         name: notice-sheet
-        file: src/landing/notice-sheet.yml
+        file: src/config/notice-sheet.yml
         fields:
           - label: Text
             name: text
@@ -62,6 +62,20 @@ collections:
           - label: File
             name: file
             widget: file
+      - name: sectionOrder
+        label: Section order
+        file: src/config/section-order.yml
+        fields:
+          - label: Order
+            name: order
+            widget: list
+            fields:
+              - label: Section
+                name: section
+                widget: relation
+                collection: sections
+                searchFields: [title]
+                valueField: title
   - name: sermons
     label: Sermons
     folder: src/sermons

@@ -8,11 +8,33 @@ module.exports = {
 		`gatsby-plugin-eslint`,
 		"gatsby-plugin-react-helmet",
 		"gatsby-plugin-sass",
+		`gatsby-transformer-yaml`,
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				path: `./src/config`,
+				name: "config",
+			},
+		},
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
 				path: `${__dirname}/src/pages`,
 				name: "pages",
+			},
+		},
+		{
+			resolve: "gatsby-source-filesystem",
+			options: {
+				path: `${__dirname}/src/sections`,
+				name: "sections",
+			},
+		},
+		{
+			resolve: "gatsby-source-filesystem",
+			options: {
+				path: `${__dirname}/src/sermons`,
+				name: "sermons",
 			},
 		},
 		"gatsby-plugin-sharp",
