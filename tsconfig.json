@@ -68,5 +68,12 @@
 		"skipLibCheck": true /* Skip type checking of declaration files. */,
 		"forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
 	},
-	"include": [".eslintrc.js", "src", "gatsby-config.js", "gatsby-node.js"]
+	"include": [
+		".eslintrc.js",
+		"src",
+		"gatsby-config.js",
+		"gatsby-node.js",
+		"gatsby-browser.js",
+		"tailwind.config.js"
+	]
 }

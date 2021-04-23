@@ -7,7 +7,7 @@ module.exports = {
 		"gatsby-plugin-typescript",
 		`gatsby-plugin-eslint`,
 		"gatsby-plugin-react-helmet",
-		"gatsby-plugin-sass",
+		"gatsby-plugin-postcss",
 		`gatsby-transformer-yaml`,
 		{
 			resolve: `gatsby-source-filesystem`,
