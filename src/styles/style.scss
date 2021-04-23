@@ -1,0 +1,28 @@
+:root {
+	--primary-color: #103E50;
+	--secondary-color: #27586B;
+	--accent-color: #297B48;
+	--accent-color-darken: rgb(27, 87, 50);
+	--background-light: rgba(39, 88, 107, 0.7);
+	--text-lighten: rgba(0, 0, 0, 0.6);
+}
+
+@import "./partials/navbar.scss";
+@import "./partials/landing_page.scss";
+@import "./partials/nav_button.scss";
+@import "./partials/content_page.scss";
+@import "./partials/sermon_list.scss";
+@import "./partials/photo-background.scss";
+@import "./partials/scroll_to_top.scss";
+
+// General style of content
+html,
+body {
+	font-family: 'Work Sans', sans-serif;
+	h1,	h2,	h3,	h4,	h5,	h6 {
+		font-family: 'Roboto';
+	}
+}
+.no-padding {
+	padding: 0;
+}

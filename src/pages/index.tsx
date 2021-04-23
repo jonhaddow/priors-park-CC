@@ -1,6 +1,7 @@
 import { graphql } from "gatsby";
 import React from "react";
 import { useSections } from "../hooks";
+import "../styles/style.scss";
 
 interface Query {
 	site: {
