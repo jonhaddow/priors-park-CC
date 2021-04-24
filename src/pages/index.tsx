@@ -24,9 +24,9 @@ const Home: React.FC<{ data: Query }> = ({
 		<>
 			<Navigation />
 			<div
-				className="w-screen h-screen bg-no-repeat bg-cover grid grid-cols-3 bg-gradient-to-r from-yellow-400 to-transparent"
+				className="h-screen bg-no-repeat bg-cover grid grid-cols-3"
 				style={{
-					background:
+					backgroundImage:
 						"linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/img/front_church_header.jpg)",
 				}}
 			>
