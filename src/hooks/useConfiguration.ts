@@ -1,21 +1,24 @@
 import { graphql, useStaticQuery } from "gatsby";
 
 interface Query {
-	allConfigYaml: {
-		edges: {
-			node: {
-				parent: {
-					name: string;
-				};
-				order?: {
-					section: string;
-				}[];
-				text?: string;
-				file?: string;
-				time_between_photos?: number;
-				photos?: { image: string }[];
-			};
-		}[];
+	noticeSheet: {
+		frontmatter: {
+			text?: string;
+			file?: string;
+		};
+	};
+	sectionOrder: {
+		frontmatter: {
+			order?: {
+				section: string;
+			}[];
+		};
+	};
+	photoGallery: {
+		frontmatter: {
+			time_between_photos?: number;
+			photos?: { image: string }[];
+		};
 	};
 }
 
@@ -34,48 +37,44 @@ interface Configuration {
 export const useConfiguration = (): Configuration => {
 	const query = useStaticQuery<Query>(graphql`
 		query Config {
-			allConfigYaml {
-				edges {
-					node {
-						order {
-							section
-						}
-						text
-						file
-						photos {
-							image
-						}
-						time_between_photos
-						parent {
-							... on File {
-								name
-							}
-						}
+			noticeSheet: markdownRemark(
+				fileAbsolutePath: { regex: "/config/notice-sheet/" }
+			) {
+				frontmatter {
+					text
+					file
+				}
+			}
+			sectionOrder: markdownRemark(
+				fileAbsolutePath: { regex: "/config/section-order/" }
+			) {
+				frontmatter {
+					order {
+						section
+					}
+				}
+			}
+			photoGallery: markdownRemark(
+				fileAbsolutePath: { regex: "/config/photo-gallery/" }
+			) {
+				frontmatter {
+					photos {
+						image
 					}
 				}
 			}
 		}
 	`);
 
-	const sectionOrderConfig = query.allConfigYaml.edges.find(
-		(x) => x.node.parent.name === "section-order"
-	);
-	const noticeSheetConfig = query.allConfigYaml.edges.find(
-		(x) => x.node.parent.name === "notice-sheet"
-	);
-	const photoGalleryConfig = query.allConfigYaml.edges.find(
-		(x) => x.node.parent.name === "photo-gallery"
-	);
-
 	return {
-		sectionOrder: sectionOrderConfig?.node.order?.map((x) => x.section),
+		sectionOrder: query.sectionOrder.frontmatter.order?.map((x) => x.section),
 		noticeSheet: {
-			file: noticeSheetConfig?.node.file,
-			text: noticeSheetConfig?.node.text,
+			file: query.noticeSheet.frontmatter.file,
+			text: query.noticeSheet.frontmatter.text,
 		},
 		photoGallery: {
-			photos: photoGalleryConfig?.node.photos?.map((x) => x.image),
-			timeBetweenPhotos: photoGalleryConfig?.node.time_between_photos,
+			photos: query.photoGallery.frontmatter.photos?.map((x) => x.image),
+			timeBetweenPhotos: query.photoGallery.frontmatter.time_between_photos,
 		},
 	};
 };

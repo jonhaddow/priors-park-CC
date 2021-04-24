@@ -8,7 +8,6 @@ module.exports = {
 		`gatsby-plugin-eslint`,
 		"gatsby-plugin-react-helmet",
 		"gatsby-plugin-postcss",
-		`gatsby-transformer-yaml`,
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {

@@ -32,7 +32,7 @@ collections:
     files:
       - label: Photo gallery
         name: photo-gallery
-        file: src/config/photo-gallery.yml
+        file: src/config/photo-gallery.md
         fields:
           - label: Time between photos
             name: time-between-photos
@@ -53,7 +53,7 @@ collections:
                 widget: image
       - label: Notice sheet
         name: notice-sheet
-        file: src/config/notice-sheet.yml
+        file: src/config/notice-sheet.md
         fields:
           - label: Text
             name: text
@@ -64,7 +64,7 @@ collections:
             widget: file
       - name: sectionOrder
         label: Section order
-        file: src/config/section-order.yml
+        file: src/config/section-order.md
         fields:
           - label: Order
             name: order

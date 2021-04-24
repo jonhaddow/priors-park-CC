@@ -1,3 +1,4 @@
+---
 order:
   - section: About
   - section: "@Thechapel- Covid 19 response"
@@ -6,3 +7,4 @@ order:
   - section: The Team
   - section: Latest News
   - section: Contact
+---
