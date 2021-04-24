@@ -12,11 +12,7 @@ interface Query {
 	};
 }
 
-const Home: React.FC<{ data: Query }> = ({
-	data: {
-		site: { siteMetadata },
-	},
-}) => {
+const Home: React.FC<{ data: Query }> = () => {
 	const sections = useSections();
 	const { noticeSheet } = useConfiguration();
 
@@ -42,13 +38,31 @@ const Home: React.FC<{ data: Query }> = ({
 				</div>
 				<div className="col-span-2"></div>
 			</div>
-			<h1>{siteMetadata.title}</h1>
-			<p>{siteMetadata.description}</p>
-			<ul>
-				{sections.map((x) => (
-					<li key={x.id}>{x.title}</li>
-				))}
-			</ul>
+			{sections.map((x) => (
+				<>
+					<section key={x.id} className="m-auto max-w-xl p-4">
+						<h2 className="text-3xl border-b-1 mb-2">{x.title}</h2>
+						<hr className="mb-2"></hr>
+						<div
+							className="typography font-light text-base"
+							dangerouslySetInnerHTML={{ __html: x.body }}
+						/>
+						{x.sermonManager && (
+							<ul>
+								<li></li>
+							</ul>
+						)}
+					</section>
+					{x.image && (
+						<div
+							className="h-64 bg-no-repeat bg-cover bg-fixed"
+							style={{
+								backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${x.image})`,
+							}}
+						></div>
+					)}
+				</>
+			))}
 		</>
 	);
 };

@@ -2,3 +2,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Typography */
+.typography em {
+	font-style: italic;
+}
+.typography p {
+	margin-bottom: 1rem;
+}
+.typography ul {
+	list-style-type: disc;
+	padding-inline-start: 40px;
+	margin-bottom: 1rem;
+}
