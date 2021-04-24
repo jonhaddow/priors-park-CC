@@ -30,6 +30,13 @@ export const useSections = (): Section[] => {
 			allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/sections/" } }) {
 				nodes {
 					id
+					frontmatter {
+						title
+						file
+						image
+						sermon_manager
+					}
+					html
 				}
 			}
 		}
