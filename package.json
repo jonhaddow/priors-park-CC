@@ -4,6 +4,7 @@
 	"version": "0.0.0",
 	"author": "Jon Haddow",
 	"dependencies": {
+		"@react-icons/all-files": "^4.1.0",
 		"autoprefixer": "^10.2.5",
 		"chalk": "^4.1.0",
 		"gatsby": "^3.3.0",

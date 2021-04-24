@@ -4,8 +4,24 @@
 @tailwind utilities;
 
 /* Typography */
-.typography em {
-	font-style: italic;
+.typography h2,
+.typography h3,
+.typography h4,
+.typography h5,
+.typography h6 {
+	margin-bottom: 8px;
+}
+.typography h2 {
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+.typography h3 {
+	font-size: 1.25rem;
+	line-height: 1.75rem;
+}
+.typography h4 {
+	font-size: 1.125rem;
+	line-height: 1.75rem;
 }
 .typography p {
 	margin-bottom: 1rem;
