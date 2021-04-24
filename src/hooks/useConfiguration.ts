@@ -37,20 +37,7 @@ export const useConfiguration = (): Configuration => {
 			allConfigYaml {
 				edges {
 					node {
-						order {
-							section
-						}
-						text
-						file
-						photos {
-							image
-						}
-						time_between_photos
-						parent {
-							... on File {
-								name
-							}
-						}
+						id
 					}
 				}
 			}
