@@ -1,5 +1,7 @@
 ---
 title: Latest News
+image: /assets/content-photo-1.jpg
+sermon-manager: false
 ---
 
 During COVID-19, we wanted to help people in the community, and have set up a community food hub. If you would like to know more about what help is available, please go to the @Thechapel section.

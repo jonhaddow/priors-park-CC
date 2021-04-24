@@ -1,6 +1,6 @@
 ---
 title: About
-image: /img/83297227_561064014483482_1063743067120467968_n.jpg
+image: /assets/content-photo-2.jpg
 sermon-manager: false
 ---
 

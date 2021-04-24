@@ -11,12 +11,6 @@ module.exports = {
 			options: {
 				plugins: [
 					{
-						resolve: "gatsby-remark-relative-images",
-						options: {
-							name: "uploads",
-						},
-					},
-					{
 						resolve: "gatsby-remark-images",
 						options: {
 							// It's important to specify the maxWidth (in pixels) of
@@ -37,8 +31,8 @@ module.exports = {
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
-				path: `${__dirname}/static/img`,
-				name: "images",
+				path: `${__dirname}/static/assets`,
+				name: "assets",
 			},
 		},
 		{

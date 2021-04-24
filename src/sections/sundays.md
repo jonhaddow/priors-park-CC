@@ -1,5 +1,7 @@
 ---
 title: Sundays
+image: /assets/content-photo-1.jpg
+sermon-manager: false
 ---
 
 We meet on Sundays at 3.30 to worship our Lord and Saviour Jesus Christ and to listen to God’s word. If you would like to join us please contact Nigel on 07970013426 so that we can prepare a safe space for you.

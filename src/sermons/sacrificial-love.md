@@ -1,4 +1,4 @@
 ---
 title: Sacrificial Love
-file: /img/24th-feb-audio.mp3
+file: /assets/24th-feb-audio.mp3
 ---

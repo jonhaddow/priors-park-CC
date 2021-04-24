@@ -1,5 +1,7 @@
 ---
 title: Contact
+image: null
+sermon-manager: false
 ---
 
 Priors Park Chapel is situated in Queens Road, Tewkesbury GL20 5EY

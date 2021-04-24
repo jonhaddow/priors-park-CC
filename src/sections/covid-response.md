@@ -1,5 +1,7 @@
 ---
 title: "@Thechapel- Covid 19 response"
+image: /assets/content-photo-1.jpg
+sermon-manager: false
 ---
 
 Here at Priors Park Community Church, we are meeting the Covid-19 pandemic head on. We have started to combat lockdown in various ways. We are aware that there are many vulnerable and isolating members of our community that need to be remembered and cared for during this unprecedented period.

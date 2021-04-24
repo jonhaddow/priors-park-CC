@@ -1,5 +1,7 @@
 ---
 title: Midweek
+image: /assets/content-photo-1.jpg
+sermon-manager: false
 ---
 
 ## Prayer meeting

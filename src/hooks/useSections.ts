@@ -32,7 +32,6 @@ export const useSections = (): Section[] => {
 					id
 					frontmatter {
 						title
-						file
 						image
 						sermon_manager
 					}

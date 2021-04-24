@@ -1,5 +1,7 @@
 ---
 title: The Team
+image: /assets/content-photo-1.jpg
+sermon-manager: false
 ---
 
 **Nigel** – our Pastor. He is married to Jackie and they have seven children most of whom are now adults.

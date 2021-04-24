@@ -1,4 +1,4 @@
 ---
 text: Click here to view the monthly diary
-file: /img/march-2021.pdf
+file: /assets/march-2021.pdf
 ---
