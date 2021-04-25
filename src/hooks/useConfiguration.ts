@@ -61,6 +61,7 @@ export const useConfiguration = (): Configuration => {
 					photos {
 						image
 					}
+					time_between_photos
 				}
 			}
 		}

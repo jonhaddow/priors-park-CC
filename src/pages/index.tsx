@@ -1,7 +1,7 @@
 import { graphql } from "gatsby";
 import React, { Fragment, useRef } from "react";
 import { useConfiguration, useSections } from "../hooks";
-import { Navigation, Section } from "../components";
+import { Navigation, PhotoSlideshow, Section } from "../components";
 
 interface Query {
 	site: {
@@ -50,7 +50,9 @@ const Home: React.FC<{ data: Query }> = () => {
 						</a>
 					</div>
 				</div>
-				<div className="col-span-2"></div>
+				<div className="col-span-2 flex justify-center items-center">
+					<PhotoSlideshow />
+				</div>
 			</div>
 			{sections.map((section) => (
 				<Fragment key={section.id}>
