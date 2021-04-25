@@ -7,6 +7,7 @@ interface Query {
 			frontmatter: {
 				title: string;
 				file: string;
+				published: string;
 			};
 		}[];
 	};
@@ -16,6 +17,7 @@ interface Sermon {
 	id: string;
 	title: string;
 	file: string;
+	published: string;
 }
 
 export const useSermons = (): Sermon[] => {
@@ -27,6 +29,7 @@ export const useSermons = (): Sermon[] => {
 					frontmatter {
 						title
 						file
+						published
 					}
 				}
 			}
@@ -37,6 +40,7 @@ export const useSermons = (): Sermon[] => {
 		id: x.id,
 		file: x.frontmatter.file,
 		title: x.frontmatter.title,
+		published: x.frontmatter.published,
 	}));
 
 	return sermons;

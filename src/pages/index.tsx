@@ -1,8 +1,7 @@
 import { graphql } from "gatsby";
 import React from "react";
-import { useConfiguration, useSections, useSermons } from "../hooks";
-import { Navigation } from "../components";
-import { HiDownload } from "@react-icons/all-files/hi/HiDownload";
+import { useConfiguration, useSections } from "../hooks";
+import { Navigation, SermonManager } from "../components";
 
 interface Query {
 	site: {
@@ -16,7 +15,6 @@ interface Query {
 const Home: React.FC<{ data: Query }> = () => {
 	const sections = useSections();
 	const { noticeSheet } = useConfiguration();
-	const sermons = useSermons();
 
 	return (
 		<>
@@ -49,24 +47,7 @@ const Home: React.FC<{ data: Query }> = () => {
 							className="typography font-light text-base"
 							dangerouslySetInnerHTML={{ __html: x.body }}
 						/>
-						{x.sermonManager && (
-							<div className="shadow-md p-4 bg-gray-50 my-6">
-								<h3 className="mb-2 font-bold">Sermons</h3>
-								<ul>
-									{sermons.map((x) => (
-										<li key={x.id} className="">
-											<a href={x.file} className="flex items-center">
-												<HiDownload size={32} className="mr-2" />
-												<div className="flex flex-col">
-													<time>29th January 2021</time>
-													<span>{x.title}</span>
-												</div>
-											</a>
-										</li>
-									))}
-								</ul>
-							</div>
-						)}
+						{x.sermonManager && <SermonManager />}
 					</section>
 					{x.image && (
 						<div

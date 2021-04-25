@@ -87,3 +87,7 @@ collections:
       - label: File
         name: file
         widget: file
+      - label: "Published date"
+        name: "published"
+        widget: "datetime"
+        required: false
