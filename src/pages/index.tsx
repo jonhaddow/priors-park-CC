@@ -1,7 +1,7 @@
 import { graphql } from "gatsby";
-import React from "react";
+import React, { Fragment, useRef } from "react";
 import { useConfiguration, useSections } from "../hooks";
-import { Navigation, SermonManager } from "../components";
+import { Navigation, Section } from "../components";
 
 interface Query {
 	site: {
@@ -15,11 +15,25 @@ interface Query {
 const Home: React.FC<{ data: Query }> = () => {
 	const sections = useSections();
 	const { noticeSheet } = useConfiguration();
+	const navRef = useRef<HTMLElement>(null);
+	const sectionRefs = useRef<{ id: string; elRef: HTMLElement | null }[]>([]);
+
+	const executeScroll = (sectionId: string): void => {
+		const sectionRef = sectionRefs.current.find((x) => x.id === sectionId);
+		if (sectionRef?.elRef && navRef.current) {
+			window.scrollTo({
+				behavior: "smooth",
+				left: 0,
+				top: sectionRef.elRef.offsetTop - navRef.current.offsetHeight,
+			});
+		}
+	};
 
 	return (
 		<>
-			<Navigation />
+			<Navigation navRef={navRef} onNavigate={executeScroll} />
 			<div
+				ref={(r) => sectionRefs.current.push({ id: "home", elRef: r })}
 				className="h-screen bg-no-repeat bg-cover grid grid-cols-3"
 				style={{
 					backgroundImage:
@@ -38,26 +52,18 @@ const Home: React.FC<{ data: Query }> = () => {
 				</div>
 				<div className="col-span-2"></div>
 			</div>
-			{sections.map((x) => (
-				<>
-					<section key={x.id} className="m-auto max-w-xl p-4">
-						<h2 className="text-3xl border-b-1 mb-2">{x.title}</h2>
-						<hr className="mb-2"></hr>
-						<div
-							className="typography font-light text-base"
-							dangerouslySetInnerHTML={{ __html: x.body }}
-						/>
-						{x.sermonManager && <SermonManager />}
-					</section>
-					{x.image && (
+			{sections.map((section) => (
+				<Fragment key={section.id}>
+					<Section section={section} sectionRefs={sectionRefs} />
+					{section.image && (
 						<div
 							className="h-64 bg-no-repeat bg-cover bg-fixed"
 							style={{
-								backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${x.image})`,
+								backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${section.image})`,
 							}}
 						></div>
 					)}
-				</>
+				</Fragment>
 			))}
 		</>
 	);
