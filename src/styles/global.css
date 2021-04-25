@@ -31,3 +31,9 @@
 	padding-inline-start: 40px;
 	margin-bottom: 1rem;
 }
+.typography a {
+	color: #1E3A8A;
+}
+.typography a:hover {
+	text-decoration: underline;
+}
