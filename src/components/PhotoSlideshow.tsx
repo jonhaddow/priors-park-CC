@@ -1,5 +1,4 @@
 import React from "react";
-import "react-slideshow-image/dist/styles.css";
 import { useConfiguration } from "../hooks";
 import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
 
