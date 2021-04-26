@@ -1,6 +1,6 @@
 ---
 title: "@Thechapel- Covid 19 response"
-image: /assets/content-photo-1.jpg
+image: /assets/content-photo-5.jpg
 sermon-manager: false
 ---
 

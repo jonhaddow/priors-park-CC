@@ -14,9 +14,9 @@ export const SermonManager: React.FC = () => {
 						<a href={x.file} className="flex items-end group">
 							<HiDownload
 								size={36}
-								className="mr-2 text-gray-900 group-hover:text-blue-800"
+								className="mr-2 text-gray-900 group-hover:text-primary"
 							/>
-							<div className="flex flex-col justify-center group-hover:text-blue-800">
+							<div className="flex flex-col justify-center group-hover:text-primary">
 								<time className="font-thin text-xs">
 									{new Date(x.published).toLocaleDateString(undefined, {
 										weekday: "long",

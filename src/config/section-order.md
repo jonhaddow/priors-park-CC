@@ -6,5 +6,4 @@ order:
   - section: Midweek
   - section: The Team
   - section: Latest News
-  - section: Contact
 ---

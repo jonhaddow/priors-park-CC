@@ -1,7 +1,13 @@
 import { graphql } from "gatsby";
 import React, { Fragment, useRef } from "react";
 import { useConfiguration, useSections } from "../hooks";
-import { Metadata, Navigation, PhotoSlideshow, Section } from "../components";
+import {
+	Footer,
+	Metadata,
+	Navigation,
+	PhotoSlideshow,
+	Section,
+} from "../components";
 
 interface Query {
 	site: {
@@ -51,7 +57,7 @@ const Home: React.FC<{ data: Query }> = ({
 						<img src="/assets/FinalLogo.png" alt="Church logo" />
 					</div>
 					<div className="bg-gray-50 p-4 mt-5 rounded-lg flex justify-center items-center">
-						<a className="" href={noticeSheet.file}>
+						<a className="hover:text-primary" href={noticeSheet.file}>
 							{noticeSheet.text}
 						</a>
 					</div>
@@ -73,6 +79,7 @@ const Home: React.FC<{ data: Query }> = ({
 					)}
 				</Fragment>
 			))}
+			<Footer />
 		</>
 	);
 };
