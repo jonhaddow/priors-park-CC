@@ -1,6 +1,6 @@
 ---
 title: About
-image: /assets/content-photo-2.jpg
+image: /assets/content-photo-1.jpg
 sermon-manager: false
 ---
 

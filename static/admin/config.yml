@@ -20,6 +20,7 @@ collections:
         name: image
         widget: image
         allow_multiple: false
+        required: false
       - label: Content
         name: body
         widget: markdown

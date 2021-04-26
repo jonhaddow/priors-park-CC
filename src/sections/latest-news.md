@@ -1,6 +1,6 @@
 ---
 title: Latest News
-image: /assets/content-photo-1.jpg
+image: /assets/82930892_263854331251940_8273318910133010432_n-scaled.jpg
 sermon-manager: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Contact
-image: null
+image: /assets/content-photo-5.jpg
 sermon-manager: false
 ---
 

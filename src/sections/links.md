@@ -1,6 +1,6 @@
 ---
 title: Links
-image: /assets/content-photo-1.jpg
+image: ""
 sermon-manager: false
 ---
 
