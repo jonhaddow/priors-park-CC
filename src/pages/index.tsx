@@ -1,18 +1,23 @@
 import { graphql } from "gatsby";
 import React, { Fragment, useRef } from "react";
 import { useConfiguration, useSections } from "../hooks";
-import { Navigation, PhotoSlideshow, Section } from "../components";
+import { Metadata, Navigation, PhotoSlideshow, Section } from "../components";
 
 interface Query {
 	site: {
 		siteMetadata: {
 			title: string;
 			description: string;
+			url: string;
 		};
 	};
 }
 
-const Home: React.FC<{ data: Query }> = () => {
+const Home: React.FC<{ data: Query }> = ({
+	data: {
+		site: { siteMetadata },
+	},
+}) => {
 	const sections = useSections();
 	const { noticeSheet } = useConfiguration();
 	const navRef = useRef<HTMLElement>(null);
@@ -31,6 +36,7 @@ const Home: React.FC<{ data: Query }> = () => {
 
 	return (
 		<>
+			<Metadata {...siteMetadata} />
 			<Navigation navRef={navRef} onNavigate={executeScroll} />
 			<div
 				ref={(r) => sectionRefs.current.push({ id: "home", elRef: r })}
@@ -79,6 +85,7 @@ export const query = graphql`
 			siteMetadata {
 				title
 				description
+				url
 			}
 		}
 	}

@@ -2,6 +2,7 @@ module.exports = {
 	siteMetadata: {
 		title: "Priors Park Community Church",
 		description: "The heart of the community",
+		url: "http://priorsparkcommunitychurch.co.uk",
 	},
 	plugins: [
 		"gatsby-plugin-sharp",

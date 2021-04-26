@@ -1,3 +1,4 @@
+export * from "./Metadata";
 export * from "./Navigation";
 export * from "./PhotoSlideshow";
 export * from "./Section";
