@@ -16,7 +16,6 @@ interface Query {
 	};
 	photoGallery: {
 		frontmatter: {
-			time_between_photos?: number;
 			photos?: { image: string }[];
 		};
 	};
@@ -29,7 +28,6 @@ interface Configuration {
 		text?: string;
 	};
 	photoGallery: {
-		timeBetweenPhotos?: number;
 		photos?: string[];
 	};
 }
@@ -61,7 +59,6 @@ export const useConfiguration = (): Configuration => {
 					photos {
 						image
 					}
-					time_between_photos
 				}
 			}
 		}
@@ -75,7 +72,6 @@ export const useConfiguration = (): Configuration => {
 		},
 		photoGallery: {
 			photos: query.photoGallery.frontmatter.photos?.map((x) => x.image),
-			timeBetweenPhotos: query.photoGallery.frontmatter.time_between_photos,
 		},
 	};
 };

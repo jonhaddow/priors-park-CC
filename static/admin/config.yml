@@ -34,16 +34,6 @@ collections:
         name: photo-gallery
         file: src/config/photo-gallery.md
         fields:
-          - label: Time between photos
-            name: time-between-photos
-            widget: select
-            options:
-              - label: 5 Seconds
-                value: 5
-              - label: 10 Seconds
-                value: 10
-              - label: 15 Seconds
-                value: 15
           - label: Photos
             name: photos
             widget: list
