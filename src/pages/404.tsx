@@ -1,10 +1,10 @@
-import React from "react";
+import { useEffect } from "react";
+import { navigate } from "@reach/router";
 
-const NotFoundPage: React.FC = () => (
-	<div>
-		<h1>NOT FOUND</h1>
-		<p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-	</div>
-);
-
-export default NotFoundPage;
+export default (): null => {
+	useEffect(() => {
+		// Redirect to home page
+		void navigate("/");
+	}, []);
+	return null;
+};
