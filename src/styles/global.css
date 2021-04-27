@@ -37,3 +37,20 @@
 .typography a:hover {
 	text-decoration: underline;
 }
+
+.footer-group p {
+	margin-top: 1rem;
+}
+
+.footer-group p:first-child {
+	margin-top: 0;
+}
+
+.footer-group ul, .footer-group li {
+	margin: 0; padding: 0;
+}
+
+.footer-group a:hover {
+	--tw-text-opacity: 1;
+	color: rgba(209, 213, 219, var(--tw-text-opacity));
+}

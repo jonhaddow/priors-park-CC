@@ -67,6 +67,7 @@ collections:
                 collection: sections
                 searchFields: [title]
                 valueField: title
+
   - name: sermons
     label: Sermons
     folder: src/sermons
@@ -82,3 +83,19 @@ collections:
         name: "published"
         widget: "datetime"
         required: false
+
+  - name: footer
+    label: Footer
+    folder: src/footer-links
+    create: true
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: body
+        label: Body
+        widget: markdown
+      - name: footer-order
+        label: Order
+        widget: number
+        default: 0
