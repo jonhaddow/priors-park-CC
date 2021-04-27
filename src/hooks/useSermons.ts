@@ -23,7 +23,11 @@ interface Sermon {
 export const useSermons = (): Sermon[] => {
 	const query = useStaticQuery<Query>(graphql`
 		query {
-			allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/sermons/" } }) {
+			allMarkdownRemark(
+				filter: { fileAbsolutePath: { regex: "/sermons/" } }
+				limit: 3
+				sort: { fields: frontmatter___published, order: DESC }
+			) {
 				nodes {
 					id
 					frontmatter {
