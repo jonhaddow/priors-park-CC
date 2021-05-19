@@ -1,6 +1,6 @@
 ---
 title: About
-image: /assets/christina-maiia-vaqkezmei2k-unsplash.jpg
+image: /assets/content-photo-1.jpg
 sermon-manager: false
 ---
 
