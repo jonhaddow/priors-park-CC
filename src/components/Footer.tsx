@@ -14,6 +14,15 @@ export const Footer: React.FC = () => {
 					</li>
 				))}
 			</ul>
+			<p className="mt-4 mr-4 text-xs text-gray-400 text-right">
+				🛠 Designed and built by{" "}
+				<a
+					className="underline hover:text-gray-300 hover:no-underline"
+					href="https://jon.haddow.me/"
+				>
+					Jon Haddow
+				</a>
+			</p>
 		</footer>
 	);
 };
