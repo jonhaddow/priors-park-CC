@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
 
 	return (
 		<footer className="bg-primary-darker py-6 px-4 text-white">
-			<ul className="flex sm:justify-evenly flex-wrap">
+			<ul className="flex md:justify-evenly flex-wrap">
 				{groups.map((x) => (
 					<li key={x.id} className="py-5 footer-group">
 						<h3 className="font-bold mb-4">{x.title}</h3>
