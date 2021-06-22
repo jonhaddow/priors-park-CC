@@ -16,7 +16,7 @@ export const Section: React.FC<SectionProps> = ({ section, sectionRefs }) => {
 	return (
 		<section
 			key={section.id}
-			className="m-auto max-w-xl py-8"
+			className="m-auto max-w-xl py-8 px-4"
 			ref={(r) => sectionRefs.current.push({ id: section.id, elRef: r })}
 		>
 			<h2 className="text-3xl border-b-1 mb-2">{section.title}</h2>
