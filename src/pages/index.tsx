@@ -8,6 +8,8 @@ import {
 	PhotoSlideshow,
 	Section,
 } from "../components";
+import { BgImage, IBgImageProps } from "gbimage-bridge";
+import { getImage, IGatsbyImageData } from "gatsby-plugin-image";
 
 interface Query {
 	site: {
@@ -17,11 +19,15 @@ interface Query {
 			url: string;
 		};
 	};
+	header: {
+		childImageSharp: IGatsbyImageData;
+	};
 }
 
 const Home: React.FC<{ data: Query }> = ({
 	data: {
 		site: { siteMetadata },
+		header,
 	},
 }) => {
 	const sections = useSections();
@@ -40,19 +46,28 @@ const Home: React.FC<{ data: Query }> = ({
 		}
 	};
 
+	const backgroundFluidImageStack = [
+		getImage(header.childImageSharp),
+		`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`,
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any -- BgImage types are wrong.
+	].reverse() as any;
+
+	const bgImageProps = {
+		image: backgroundFluidImageStack,
+		className: "h-screen bg-no-repeat bg-cover grid grid-cols-3",
+	} as IBgImageProps;
+
 	return (
 		<>
 			<Metadata {...siteMetadata} />
 			<Navigation navRef={navRef} onNavigate={executeScroll} />
-			<div
-				ref={(r) => sectionRefs.current.push({ id: "home", elRef: r })}
-				className="h-screen bg-no-repeat bg-cover grid grid-cols-3"
-				style={{
-					backgroundImage:
-						"linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/assets/front_church_header.jpg)",
-				}}
-			>
-				<div className="col-span-3 md:col-span-1 flex flex-col justify-center items-center p-6">
+			<BgImage {...bgImageProps}>
+				<div
+					ref={(r: HTMLDivElement) =>
+						sectionRefs.current.push({ id: "home", elRef: r })
+					}
+					className="col-span-3 md:col-span-1 flex flex-col justify-center items-center p-6"
+				>
 					<div className="bg-gray-50 p-4 rounded-lg flex justify-center items-center">
 						<img src="/assets/FinalLogo.png" alt="Church logo" />
 					</div>
@@ -65,7 +80,7 @@ const Home: React.FC<{ data: Query }> = ({
 				<div className="col-span-2 justify-center items-center hidden md:flex">
 					<PhotoSlideshow />
 				</div>
-			</div>
+			</BgImage>
 			{sections.map((section) => (
 				<Fragment key={section.id}>
 					<Section section={section} sectionRefs={sectionRefs} />
@@ -93,6 +108,11 @@ export const query = graphql`
 				title
 				description
 				url
+			}
+		}
+		header: file(relativePath: { regex: "/front_church_header/" }) {
+			childImageSharp {
+				gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
 			}
 		}
 	}
