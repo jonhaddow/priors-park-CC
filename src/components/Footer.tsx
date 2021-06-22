@@ -10,7 +10,10 @@ export const Footer: React.FC = () => {
 				{groups.map((x) => (
 					<li key={x.id} className="py-5 footer-group">
 						<h3 className="font-bold mb-4">{x.title}</h3>
-						<div dangerouslySetInnerHTML={{ __html: x.html }} />
+						<div
+							className="prose text-white prose-sm prose-yellow"
+							dangerouslySetInnerHTML={{ __html: x.html }}
+						/>
 					</li>
 				))}
 			</ul>
