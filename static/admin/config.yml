@@ -71,6 +71,8 @@ collections:
   - name: sermons
     label: Sermons
     folder: src/sermons
+    media_folder: "/static/assets/sermons"
+    public_folder: "/assets/sermons"
     create: true
     fields:
       - label: Title
