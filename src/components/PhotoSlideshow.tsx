@@ -3,6 +3,8 @@ import { useConfiguration } from "../hooks";
 import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
 
 import "pure-react-carousel/dist/react-carousel.es.css";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
+import { getImage } from "gatsby-plugin-image";
 
 export const PhotoSlideshow: React.FC = () => {
 	const {
@@ -20,15 +22,22 @@ export const PhotoSlideshow: React.FC = () => {
 					isPlaying
 				>
 					<Slider>
-						{photos?.map((x, idx) => (
-							<Slide
-								key={x}
-								index={idx}
-								className="flex justify-center items-center rounded-lg"
-							>
-								<img src={x} alt="" className="max-h-full rounded-lg m-auto" />
-							</Slide>
-						))}
+						{photos
+							?.map((x) => getImage(x.childImageSharp))
+							.filter((x) => x !== undefined)
+							.map((x, idx) => (
+								<Slide
+									key={idx}
+									index={idx}
+									className="flex justify-center items-center rounded-lg"
+								>
+									<GatsbyImage
+										image={x as IGatsbyImageData}
+										alt=""
+										className="max-h-full rounded-lg m-auto"
+									/>
+								</Slide>
+							))}
 					</Slider>
 				</CarouselProvider>
 			)}

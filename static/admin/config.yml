@@ -4,13 +4,16 @@ backend:
 
 local_backend: true
 
-media_folder: static/assets
-public_folder: /assets
+media_folder: content/images
+
+editor:
+  preview: false
 
 collections:
   - name: sections
     label: Sections
-    folder: src/sections
+    folder: content/sections
+    public_folder: "../images" # Ensures that images are stored with relative paths
     create: true
     fields:
       - label: Title
@@ -33,7 +36,8 @@ collections:
     files:
       - label: Photo gallery
         name: photo-gallery
-        file: src/config/photo-gallery.md
+        public_folder: "../images" # Ensures that images are stored with relative paths
+        file: content/config/photo-gallery.md
         fields:
           - label: Photos
             name: photos
@@ -44,7 +48,7 @@ collections:
                 widget: image
       - label: Notice sheet
         name: notice-sheet
-        file: src/config/notice-sheet.md
+        file: content/config/notice-sheet.md
         fields:
           - label: Text
             name: text
@@ -55,7 +59,7 @@ collections:
             widget: file
       - name: sectionOrder
         label: Section order
-        file: src/config/section-order.md
+        file: content/config/section-order.md
         fields:
           - label: Order
             name: order
@@ -70,7 +74,9 @@ collections:
 
   - name: sermons
     label: Sermons
-    folder: src/sermons
+    folder: content/sermons
+    media_folder: "/static/assets/sermons"
+    public_folder: "/assets/sermons"
     create: true
     fields:
       - label: Title
@@ -86,7 +92,7 @@ collections:
 
   - name: footer
     label: Footer
-    folder: src/footer-links
+    folder: content/footer-links
     create: true
     fields:
       - name: title

@@ -5,8 +5,9 @@ module.exports = {
 		url: "https://priorsparkcommunitychurch.co.uk",
 	},
 	plugins: [
-		"gatsby-plugin-sharp",
-		"gatsby-transformer-sharp",
+		`gatsby-plugin-image`,
+		`gatsby-plugin-sharp`,
+		`gatsby-transformer-sharp`,
 		{
 			resolve: "gatsby-transformer-remark",
 			options: {
@@ -32,42 +33,42 @@ module.exports = {
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
-				path: `${__dirname}/static/assets`,
+				path: `${__dirname}/src/assets`,
 				name: "assets",
+			},
+		},
+		{
+			resolve: "gatsby-source-filesystem",
+			options: {
+				path: `${__dirname}/content/images`,
+				name: "images",
 			},
 		},
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
-				path: `${__dirname}/src/config`,
+				path: `${__dirname}/content/config`,
 				name: "config",
 			},
 		},
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
-				path: `${__dirname}/src/pages`,
-				name: "pages",
-			},
-		},
-		{
-			resolve: "gatsby-source-filesystem",
-			options: {
-				path: `${__dirname}/src/footer-links`,
+				path: `${__dirname}/content/footer-links`,
 				name: "footer-links",
 			},
 		},
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
-				path: `${__dirname}/src/sections`,
+				path: `${__dirname}/content/sections`,
 				name: "sections",
 			},
 		},
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
-				path: `${__dirname}/src/sermons`,
+				path: `${__dirname}/content/sermons`,
 				name: "sermons",
 			},
 		},

@@ -8,6 +8,8 @@ import {
 	PhotoSlideshow,
 	Section,
 } from "../components";
+import { BgImage, IBgImageProps } from "gbimage-bridge";
+import { getImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image";
 
 interface Query {
 	site: {
@@ -17,11 +19,15 @@ interface Query {
 			url: string;
 		};
 	};
+	header: {
+		childImageSharp: IGatsbyImageData;
+	};
 }
 
 const Home: React.FC<{ data: Query }> = ({
 	data: {
 		site: { siteMetadata },
+		header,
 	},
 }) => {
 	const sections = useSections();
@@ -40,21 +46,37 @@ const Home: React.FC<{ data: Query }> = ({
 		}
 	};
 
+	const backgroundFluidImageStack = [
+		getImage(header.childImageSharp),
+		`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`,
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any -- BgImage types are wrong.
+	].reverse() as any;
+
+	const bgImageProps = {
+		image: backgroundFluidImageStack,
+		className: "h-screen bg-no-repeat bg-cover grid grid-cols-5",
+	} as IBgImageProps;
+
 	return (
 		<>
 			<Metadata {...siteMetadata} />
 			<Navigation navRef={navRef} onNavigate={executeScroll} />
-			<div
-				ref={(r) => sectionRefs.current.push({ id: "home", elRef: r })}
-				className="h-screen bg-no-repeat bg-cover grid grid-cols-3"
-				style={{
-					backgroundImage:
-						"linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/assets/front_church_header.jpg)",
-				}}
-			>
-				<div className="col-span-3 md:col-span-1 flex flex-col justify-center items-center p-6">
-					<div className="bg-gray-50 p-4 rounded-lg flex justify-center items-center">
-						<img src="/assets/FinalLogo.png" alt="Church logo" />
+			<BgImage {...bgImageProps}>
+				<div
+					ref={(r: HTMLDivElement) =>
+						sectionRefs.current.push({ id: "home", elRef: r })
+					}
+					className="col-span-5 md:col-span-2 flex flex-col justify-center items-center p-6"
+				>
+					<div className="bg-gray-50 p-2 rounded-lg flex justify-center items-center">
+						<StaticImage
+							src="../assets/FinalLogo.png"
+							alt="Church logo"
+							placeholder="blurred"
+							layout="fixed"
+							width={250}
+							height={180}
+						/>
 					</div>
 					<div className="bg-gray-50 p-4 mt-5 rounded-lg flex justify-center items-center">
 						<a className="hover:text-primary" href={noticeSheet.file}>
@@ -62,23 +84,33 @@ const Home: React.FC<{ data: Query }> = ({
 						</a>
 					</div>
 				</div>
-				<div className="col-span-2 justify-center items-center hidden md:flex">
+				<div className="col-span-3 justify-center items-center hidden md:flex">
 					<PhotoSlideshow />
 				</div>
-			</div>
-			{sections.map((section) => (
-				<Fragment key={section.id}>
-					<Section section={section} sectionRefs={sectionRefs} />
-					{section.image && (
-						<div
-							className="h-64 bg-no-repeat bg-cover md:bg-fixed"
-							style={{
-								backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${section.image})`,
-							}}
-						></div>
-					)}
-				</Fragment>
-			))}
+			</BgImage>
+			{sections.map((section) => {
+				let bgImageProps: IBgImageProps | undefined = undefined;
+
+				if (section.image) {
+					const backgroundFluidImageStack = [
+						getImage(section.image.childImageSharp),
+						`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`,
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any -- BgImage types are wrong.
+					].reverse() as any;
+
+					bgImageProps = {
+						image: backgroundFluidImageStack,
+						className: "h-64 bg-no-repeat bg-cover md:bg-fixed",
+					} as IBgImageProps;
+				}
+
+				return (
+					<Fragment key={section.id}>
+						<Section section={section} sectionRefs={sectionRefs} />
+						{bgImageProps !== undefined && <BgImage {...bgImageProps} />}
+					</Fragment>
+				);
+			})}
 			<Footer />
 		</>
 	);
@@ -93,6 +125,11 @@ export const query = graphql`
 				title
 				description
 				url
+			}
+		}
+		header: file(absolutePath: { regex: "src/assets/front_church_header/" }) {
+			childImageSharp {
+				gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
 			}
 		}
 	}

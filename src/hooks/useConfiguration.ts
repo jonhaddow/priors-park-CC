@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 
 interface Query {
 	noticeSheet: {
@@ -16,7 +17,7 @@ interface Query {
 	};
 	photoGallery: {
 		frontmatter: {
-			photos?: { image: string }[];
+			photos?: { image: { childImageSharp: IGatsbyImageData } }[];
 		};
 	};
 }
@@ -28,7 +29,7 @@ interface Configuration {
 		text?: string;
 	};
 	photoGallery: {
-		photos?: string[];
+		photos?: { childImageSharp: IGatsbyImageData }[];
 	};
 }
 
@@ -57,7 +58,11 @@ export const useConfiguration = (): Configuration => {
 			) {
 				frontmatter {
 					photos {
-						image
+						image {
+							childImageSharp {
+								gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+							}
+						}
 					}
 				}
 			}
