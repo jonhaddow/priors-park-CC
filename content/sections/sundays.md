@@ -1,6 +1,6 @@
 ---
 title: Sundays
-image: /assets/content-photo-2.jpg
+image: ../images/content-photo-2.jpg
 sermon-manager: true
 ---
 

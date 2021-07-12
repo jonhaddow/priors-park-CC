@@ -88,19 +88,29 @@ const Home: React.FC<{ data: Query }> = ({
 					<PhotoSlideshow />
 				</div>
 			</BgImage>
-			{sections.map((section) => (
-				<Fragment key={section.id}>
-					<Section section={section} sectionRefs={sectionRefs} />
-					{section.image && (
-						<div
-							className="h-64 bg-no-repeat bg-cover md:bg-fixed"
-							style={{
-								backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${section.image})`,
-							}}
-						></div>
-					)}
-				</Fragment>
-			))}
+			{sections.map((section) => {
+				let bgImageProps: IBgImageProps | undefined = undefined;
+
+				if (section.image) {
+					const backgroundFluidImageStack = [
+						getImage(section.image.childImageSharp),
+						`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`,
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any -- BgImage types are wrong.
+					].reverse() as any;
+
+					bgImageProps = {
+						image: backgroundFluidImageStack,
+						className: "h-64 bg-no-repeat bg-cover md:bg-fixed",
+					} as IBgImageProps;
+				}
+
+				return (
+					<Fragment key={section.id}>
+						<Section section={section} sectionRefs={sectionRefs} />
+						{bgImageProps !== undefined && <BgImage {...bgImageProps} />}
+					</Fragment>
+				);
+			})}
 			<Footer />
 		</>
 	);

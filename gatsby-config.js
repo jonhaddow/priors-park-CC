@@ -38,44 +38,37 @@ module.exports = {
 			},
 		},
 		{
-			resolve: `gatsby-source-filesystem`,
+			resolve: "gatsby-source-filesystem",
 			options: {
-				path: `${__dirname}/static/assets`,
-				name: "assets",
+				path: `${__dirname}/content/images`,
+				name: "images",
 			},
 		},
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
-				path: `${__dirname}/src/config`,
+				path: `${__dirname}/content/config`,
 				name: "config",
 			},
 		},
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
-				path: `${__dirname}/src/pages`,
-				name: "pages",
-			},
-		},
-		{
-			resolve: "gatsby-source-filesystem",
-			options: {
-				path: `${__dirname}/src/footer-links`,
+				path: `${__dirname}/content/footer-links`,
 				name: "footer-links",
 			},
 		},
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
-				path: `${__dirname}/src/sections`,
+				path: `${__dirname}/content/sections`,
 				name: "sections",
 			},
 		},
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
-				path: `${__dirname}/src/sermons`,
+				path: `${__dirname}/content/sermons`,
 				name: "sermons",
 			},
 		},

@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 import { useConfiguration } from ".";
 
 interface Query {
@@ -8,7 +9,7 @@ interface Query {
 			html: string;
 			frontmatter: {
 				title: string;
-				image: string | null;
+				image: { childImageSharp: IGatsbyImageData };
 				sermon_manager: boolean | null;
 			};
 		}[];
@@ -19,7 +20,7 @@ export interface Section {
 	id: string;
 	title: string;
 	body: string;
-	image: string | null;
+	image: { childImageSharp: IGatsbyImageData };
 	sermonManager: boolean | null;
 }
 
@@ -32,7 +33,11 @@ export const useSections = (): Section[] => {
 					id
 					frontmatter {
 						title
-						image
+						image {
+							childImageSharp {
+								gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+							}
+						}
 						sermon_manager
 					}
 					html

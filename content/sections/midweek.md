@@ -1,6 +1,6 @@
 ---
 title: Midweek
-image: /assets/content-photo-4.jpg
+image: ../images/content-photo-4.jpg
 sermon-manager: false
 ---
 

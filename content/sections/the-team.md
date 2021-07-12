@@ -1,6 +1,6 @@
 ---
 title: The Team
-image: /assets/content-photo-3.jpg
+image: ../images/content-photo-3.jpg
 sermon-manager: false
 ---
 
