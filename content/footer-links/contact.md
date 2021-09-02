@@ -11,7 +11,4 @@ For further information, contact Us:<br>
 
 Nigel Haddow (church leader):
 
-* *Tel: 01684 292610*
-* *Mob: 07926 494365*
-
-Hub@TheChapel No: *07307 079129*
+* *07307 079129*
