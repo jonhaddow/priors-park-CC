@@ -27,6 +27,12 @@ Play some interesting games, enjoy free refreshments and chat together.
 
 Children’s club from Reception to Year 5- Crazy Games, Craft, Songs and Bible stories. 
 
+## Curious 
+
+**7:30pm - Wednesday for limited periods**
+
+Come and learn what we believe, what our church and the bible is about, in an informal setting with a free meal. Please contact us if you would like more details. 
+
 ## Wellness though Craft
 
 **11:00pm - Every Thursday**
@@ -43,4 +49,4 @@ Fellowship evening to study the bible together. If you would like to come please
 
 **7:00pm – Every other Friday**
 
-We aim to learn more of how we can follow Jesus through bible teaching and sharing our life stories together.
+Sharing time together as men, learning how we can support each other through the difficulties of life.
