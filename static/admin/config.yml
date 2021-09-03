@@ -48,6 +48,8 @@ collections:
                 widget: image
       - label: Notice sheet
         name: notice-sheet
+        media_folder: "{{public_folder}}/static/assets"
+        public_folder: "/assets"
         file: content/config/notice-sheet.md
         fields:
           - label: Text

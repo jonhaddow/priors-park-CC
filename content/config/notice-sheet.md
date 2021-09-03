@@ -1,4 +1,4 @@
 ---
 text: Click here to view the monthly diary
-file: /content/images/september-2021.pdf
+file: /assets/september-2021.pdf
 ---
