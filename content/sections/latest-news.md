@@ -1,6 +1,6 @@
 ---
 title: Latest News
-image: ""
+image: ../images/breakfast-club-noticeboard.jpg
 sermon-manager: false
 ---
 In the summer holidays, we are running a free breakfast club between -10 Monday- Friday. Anyone welcome. 
