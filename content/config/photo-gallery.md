@@ -1,9 +1,8 @@
 ---
 photos:
+  - image: ../images/20220627_142138.jpg
+  - image: ../images/food-distribution-29.4-4.jpg
+  - image: ../images/20200110_215343.jpg
   - image: ../images/83297227_561064014483482_1063743067120467968_n.jpg
-  - image: ../images/20210815_161856.jpg
-  - image: ../images/83626138_217475085918133_7310589436545204224_n.jpg
-  - image: ../images/20210815_161418.jpg
-  - image: ../images/20210815_161818.jpg
-  - image: ../images/20210815_154451.jpg
+  - image: ../images/content-photo-2.jpg
 ---
