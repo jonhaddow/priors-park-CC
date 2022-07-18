@@ -15,11 +15,17 @@ Please come along or contact Nigel if you would like to join in with prayer at t
 
 Parent and Toddler Group – An opportunity to chat with other mums over a cup of tea (or Boost) while your toddler plays with the toys and games available. Please contact us for more details. 
 
-## Chill and Chat 
+## Chill and Chat
 
-**10am – Every Tuesday**
+**9am – Every Tuesday**
 
 Play some interesting games, enjoy free refreshments and chat together.
+
+## X-Treme
+
+##### 6pm - Every Tuesday
+
+###### Youth club for year 7-Year 11, 6-8 every Tuesday. Games, crafts, outings. 
 
 ## Lighthouse Club
 
@@ -27,7 +33,7 @@ Play some interesting games, enjoy free refreshments and chat together.
 
 Children’s club from Reception to Year 5- Crazy Games, Craft, Songs and Bible stories. 
 
-## Curious 
+## Curious
 
 **7:30pm - Wednesday for limited periods**
 
