@@ -23,9 +23,9 @@ Play some interesting games, enjoy free refreshments and chat together.
 
 ## X-Treme
 
-##### 6pm - Every Tuesday
+##### **6pm - Every Tuesday**
 
-###### Youth club for year 7-Year 11, 6-8 every Tuesday. Games, crafts, outings. 
+###### Youth club for year 7-Year 11, 6-8 every Tuesday. Games, crafts, outings.
 
 ## Lighthouse Club
 
