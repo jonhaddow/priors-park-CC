@@ -1,10 +1,10 @@
 ---
-title: "@Thechapel- Covid 19 response"
+title: "@Thechapel - The hub"
 image: ../images/content-photo-5.jpg
 sermon-manager: false
 ---
 We set up @Thechapel in response to the Covid 19 pandemic. It is a hub that helps with food distribution, financial and general problems for those struggling through difficult times.
 
-We have been holding services live at the chapel every Sunday Afternoon at 3:30pm, and also provide a zoom link if you would like. 
+If you are struggling with money and food we can help you. Please get in touch on 07307079129.
 
-We run a support cafe every Tuesday for those who have been struggling with feeling alone. During the lockdown, we helped with providing food parcels. This has now stopped, however if you are struggling with money and food we can help you. Please get in touch on 07307079129.
+Through the summer we are running a breakfast club between 8-10 Monday- Friday. Anyone welcome.
