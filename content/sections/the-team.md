@@ -11,4 +11,4 @@ sermon-manager: false
 
 **Stacey -** Hub Leader. Stacey is head of the hub @thechapel, and helps with the running of the chapel
 
-**Paul -** Tech team leader
+**Paul -** Deacon
