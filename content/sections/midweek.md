@@ -9,9 +9,9 @@ sermon-manager: false
 
 Please come along or contact Nigel if you would like to join in with prayer at the chapel.
 
-## Little Treasures and Little Gems
+## Little Treasures 
 
-**9:00am – Every Monday and Wednesday (during term time)** 
+**9:00am – Every Monday (during term time)** 
 
 Parent and Toddler Group – An opportunity to chat with other mums over a cup of tea (or Boost) while your toddler plays with the toys and games available. Please contact us for more details. 
 
@@ -53,6 +53,6 @@ Fellowship evening to study the bible together. If you would like to come please
 
 ## 'Beer and....' Men’s Group
 
-**7:00pm – Every other Friday**
+**7:00pm – Every other Thursday**
 
 Sharing time together as men, learning how we can support each other through the difficulties of life.
