@@ -1,4 +1,4 @@
 ---
 text: Click here to view the monthly diary
-file: /assets/august-2022.pdf
+file: /assets/october-2022.pdf
 ---
