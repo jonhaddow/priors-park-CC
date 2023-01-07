@@ -9,7 +9,7 @@ sermon-manager: false
 
 Please come along or contact Nigel if you would like to join in with prayer at the chapel.
 
-## Little Treasures 
+## Little Treasures
 
 **9:00am – Every Monday (during term time)** 
 
@@ -39,20 +39,14 @@ Children’s club from Reception to Year 5- Crazy Games, Craft, Songs and Bible 
 
 Come and learn what we believe, what our church and the bible is about, in an informal setting with a free meal. Please contact us if you would like more details. 
 
-## Wellness though Craft
-
-**11:00pm - Every Thursday**
-
-Bring a craft along or come and learn a new skill, and meet with others to support each other. 
-
 ## Fellowship
 
 **7.00pm – Every other Thursday**
 
 Fellowship evening to study the bible together. If you would like to come please contact Nigel.
 
-## 'Beer and....' Men’s Group
+## Men’s Group
 
-**7:00pm – Every other Thursday**
+**7:00pm – 1st and 3rd Friday**
 
 Sharing time together as men, learning how we can support each other through the difficulties of life.
