@@ -9,4 +9,6 @@ If you have children, they can join in the Pirate Kids Church.
 
 The church is accessible for people with disabilities, and there is a loop system.
 
-On the 3rd Sunday of each month, we do an interactive service for families, followed by a meal together.
+O﻿n the 2nd Sunday of every month we share Communion together
+
+On the 3rd Sunday of each month, we hold an interactive service for families, followed by a meal together.
