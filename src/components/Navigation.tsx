@@ -19,9 +19,9 @@ export const Navigation: React.FC<NavigationProps> = ({
 	const [expand, setExpand] = useState(false);
 
 	return (
-		<nav ref={navRef} className="bg-primary fixed w-full md:block z-50">
+		<nav ref={navRef} className="fixed z-50 w-full bg-primary-dark md:block">
 			<button
-				className="md:hidden float-right p-4"
+				className="float-right p-4 md:hidden"
 				onClick={() => setExpand(!expand)}
 			>
 				<GiHamburgerMenu color="white" />
@@ -29,13 +29,13 @@ export const Navigation: React.FC<NavigationProps> = ({
 			<ul
 				className={`${
 					expand ? "block" : "hidden"
-				} mt-8 md:mt-0 md:flex justify-start flex-wrap z-50`}
+				} z-50 mt-8 flex-wrap justify-start md:mt-0 md:flex`}
 			>
 				{sections.map((x) => (
-					<li key={x.id} className="md:p-4">
+					<li key={x.id} className="md:p-2">
 						<button
 							onClick={() => onNavigate(x.id)}
-							className="w-full md:w-auto text-gray-50 md:rounded-lg p-2 hover:text-white hover:bg-primary-dark transition-colors focus:outline-none focus:bg-primary-dark focus:text-white"
+							className="w-full p-2 text-gray-50 transition-colors hover:bg-primary-darker hover:text-white focus:bg-primary-darker focus:text-white md:w-auto md:rounded-lg"
 						>
 							{x.title}
 						</button>

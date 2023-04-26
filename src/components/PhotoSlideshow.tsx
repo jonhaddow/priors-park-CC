@@ -12,7 +12,7 @@ export const PhotoSlideshow: React.FC = () => {
 	} = useConfiguration();
 
 	return (
-		<div className="h-80 w-96 p-6">
+		<div className="h-64 min-h-full w-96 overflow-hidden">
 			{photos && (
 				<CarouselProvider
 					naturalSlideHeight={80}
@@ -29,12 +29,12 @@ export const PhotoSlideshow: React.FC = () => {
 								<Slide
 									key={idx}
 									index={idx}
-									className="flex justify-center items-center rounded-lg"
+									className="flex items-center justify-center"
 								>
 									<GatsbyImage
 										image={x as IGatsbyImageData}
 										alt=""
-										className="max-h-full rounded-lg m-auto"
+										className="m-auto h-full max-h-full"
 									/>
 								</Slide>
 							))}
