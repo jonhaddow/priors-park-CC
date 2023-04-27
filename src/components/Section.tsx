@@ -16,13 +16,13 @@ export const Section: React.FC<SectionProps> = ({ section, sectionRefs }) => {
 	return (
 		<section
 			key={section.id}
-			className="m-auto max-w-xl py-8 px-4"
+			className="m-auto max-w-xl px-4 py-8"
 			ref={(r) => sectionRefs.current.push({ id: section.id, elRef: r })}
 		>
-			<h2 className="text-3xl border-b-1 mb-2">{section.title}</h2>
+			<h2 className="mb-2 text-3xl">{section.title}</h2>
 			<hr className="mb-2"></hr>
 			<div
-				className="prose font-light text-base"
+				className="prose text-base font-light"
 				dangerouslySetInnerHTML={{ __html: section.body }}
 			/>
 			{section.sermonManager && <SermonManager />}

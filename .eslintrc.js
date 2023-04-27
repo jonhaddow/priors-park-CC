@@ -1,5 +1,10 @@
 module.exports = {
-	extends: ["jonhaddow", "jonhaddow/react", "jonhaddow/typescript"],
+	extends: [
+		"jonhaddow",
+		"jonhaddow/react",
+		"jonhaddow/typescript",
+		"plugin:tailwindcss/recommended",
+	],
 	parserOptions: {
 		sourceType: "module",
 

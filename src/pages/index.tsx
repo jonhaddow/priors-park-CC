@@ -48,27 +48,29 @@ const Home: React.FC<{ data: Query }> = ({
 
 	const backgroundFluidImageStack = [
 		getImage(header.childImageSharp),
-		`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`,
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any -- BgImage types are wrong.
 	].reverse() as any;
 
 	const bgImageProps = {
 		image: backgroundFluidImageStack,
-		className: "h-screen bg-no-repeat bg-cover grid grid-cols-5",
 	} as IBgImageProps;
 
 	return (
-		<>
+		<div className="">
 			<Metadata {...siteMetadata} />
 			<Navigation navRef={navRef} onNavigate={executeScroll} />
-			<BgImage {...bgImageProps}>
+			<BgImage
+				{...bgImageProps}
+				// @ts-expect-error -- BgImage has the wrong types
+				className="bg-cover bg-no-repeat pt-14"
+			>
 				<div
 					ref={(r: HTMLDivElement) =>
 						sectionRefs.current.push({ id: "home", elRef: r })
 					}
-					className="col-span-5 md:col-span-2 flex flex-col justify-center items-center p-6"
+					className="flex flex-wrap items-center justify-center gap-16 p-16"
 				>
-					<div className="bg-gray-50 p-2 rounded-lg flex justify-center items-center">
+					<div className="flex items-center justify-center rounded-lg bg-gray-50 p-2">
 						<StaticImage
 							src="../assets/FinalLogo.png"
 							alt="Church logo"
@@ -78,41 +80,56 @@ const Home: React.FC<{ data: Query }> = ({
 							height={180}
 						/>
 					</div>
-					<div className="bg-gray-50 p-4 mt-5 rounded-lg flex justify-center items-center">
-						<a className="hover:text-primary" href={noticeSheet.file}>
+					<div className="flex flex-col gap-4">
+						<a
+							href="https://square.link/u/1C92EgRJ"
+							className="flex h-16 w-56 items-center justify-center rounded-md bg-primary p-2 font-bold text-white shadow-sm transition-colors hover:bg-primary-dark hover:underline focus:bg-primary-dark focus:underline"
+						>
+							Donate
+						</a>
+						<a
+							className="mt-5 flex h-16 w-56 items-center justify-center rounded-md bg-white p-2 text-center font-bold text-primary transition-colors hover:bg-gray-200 hover:underline focus:bg-gray-200 focus:underline"
+							href={noticeSheet.file}
+						>
 							{noticeSheet.text}
 						</a>
 					</div>
 				</div>
-				<div className="col-span-3 justify-center items-center hidden md:flex">
+			</BgImage>
+			<div className="hidden h-80 w-full items-center justify-center bg-primary-dark p-8 md:flex">
+				<div className="items-center justify-center overflow-hidden">
 					<PhotoSlideshow />
 				</div>
-			</BgImage>
+			</div>
 			{sections.map((section) => {
 				let bgImageProps: IBgImageProps | undefined = undefined;
 
 				if (section.image) {
 					const backgroundFluidImageStack = [
 						getImage(section.image.childImageSharp),
-						`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`,
 						// eslint-disable-next-line @typescript-eslint/no-explicit-any -- BgImage types are wrong.
 					].reverse() as any;
 
 					bgImageProps = {
 						image: backgroundFluidImageStack,
-						className: "h-64 bg-no-repeat bg-cover md:bg-fixed",
 					} as IBgImageProps;
 				}
 
 				return (
 					<Fragment key={section.id}>
 						<Section section={section} sectionRefs={sectionRefs} />
-						{bgImageProps !== undefined && <BgImage {...bgImageProps} />}
+						{bgImageProps !== undefined && (
+							<BgImage
+								{...bgImageProps}
+								// @ts-expect-error -- BgImage has the wrong types
+								className="h-64 bg-cover bg-no-repeat shadow-lg saturate-200 md:bg-fixed"
+							/>
+						)}
 					</Fragment>
 				);
 			})}
 			<Footer />
-		</>
+		</div>
 	);
 };
 
