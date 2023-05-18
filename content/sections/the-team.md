@@ -9,4 +9,6 @@ sermon-manager: false
 
 **Vanessa and Mike** – our Children’s Leaders with a passion for children's work, Jesus and craziness. Ness leads the Lighthouse Club and they both lead the Pirate Kids church.
 
-**Paul -** Deacon, Responsible for the managenent of the Hub and the mens ministry.
+**Paul -** Deacon, Responsible for the managenent of the Hub and the mens ministry. 
+
+**T﻿ammie** - Kitchen and Cafe manager
