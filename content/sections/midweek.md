@@ -9,23 +9,11 @@ sermon-manager: false
 
 Please come along or contact Nigel if you would like to join in with prayer at the chapel.
 
-## Little Treasures
-
-**9:00am – Every Monday (during term time)** 
-
-Parent and Toddler Group – An opportunity to chat with other mums over a cup of tea (or Boost) while your toddler plays with the toys and games available. Please contact us for more details. 
-
 ## Chill and Chat
 
 **9am – Every Tuesday**
 
 Play some interesting games, enjoy free refreshments and chat together.
-
-## X-Treme
-
-##### **6pm - Every Tuesday**
-
-###### Youth club for year 7-Year 11, 6-8 every Tuesday. Games, crafts, outings.
 
 ## Lighthouse Club
 
@@ -35,7 +23,7 @@ Children’s club from Reception to Year 5- Crazy Games, Craft, Songs and Bible 
 
 ## Curious
 
-**7:30pm - Wednesday for limited periods**
+**7pm - Tuesdays for limited period**
 
 Come and learn what we believe, what our church and the bible is about, in an informal setting with a free meal. Please contact us if you would like more details. 
 
@@ -50,3 +38,11 @@ Fellowship evening to study the bible together. If you would like to come please
 **7:00pm – 1st and 3rd Friday**
 
 Sharing time together as men, learning how we can support each other through the difficulties of life.
+
+## C﻿ompassion Cafe
+
+**9:00am - 2:00pm - Tuesdays and Fridays**
+
+I﻿n support of Compassion Uk. Providing free and low cost food and drinks
+
+F﻿ull breakfast and lunch menus.
