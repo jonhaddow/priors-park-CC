@@ -7,8 +7,6 @@ sermon-manager: false
 
 **Jackie** – our Pastoral Support Worker. Together, Nigel and Jackie have overall responsibility for the ministries in the church.
 
-**Vanessa and Mike**– our Children’s Leaders with a passion for children, Jesus and craziness. Ness leads the Lighthouse Club and and Mike leads Extreme 
+**Vanessa and Mike** – our Children’s Leaders with a passion for children's work, Jesus and craziness. Ness leads the Lighthouse Club and they both lead the Pirate Kids church.
 
-**Stacey -** Hub Leader. Stacey is head of the hub @thechapel, and helps with the running of the chapel
-
-**Paul -** Deacon
+**Paul -** Deacon, Responsible for the managenent of the Hub and the mens ministry.
