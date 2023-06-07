@@ -1,4 +1,4 @@
 ---
 text: Click here to view the Church Calendar
-file: /assets/may-2023.pdf
+file: /assets/june-2023-calendar.pdf
 ---
