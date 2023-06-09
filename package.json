@@ -9,7 +9,7 @@
 		"@types/react-helmet": "^6.1.1",
 		"autoprefixer": "^10.2.5",
 		"chalk": "^4.1.0",
-		"gatsby": "^3.3.0",
+		"gatsby": "^4.25.7",
 		"gatsby-background-image": "^1.6.0",
 		"gatsby-plugin-image": "^1.7.1",
 		"gatsby-plugin-netlify": "^3.3.0",
