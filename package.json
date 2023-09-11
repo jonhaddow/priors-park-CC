@@ -44,7 +44,10 @@
 		"start": "gatsby develop",
 		"build": "gatsby clean && gatsby build",
 		"cms": "npx netlify-cms-proxy-server",
-		"prepare": "husky install"
+		"prepare": "husky install",
+    "type-check": "tsc",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore",
+    "prettier": "prettier . -c"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^4.22.0",
