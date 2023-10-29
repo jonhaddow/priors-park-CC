@@ -17,6 +17,12 @@ B﻿lessings from the team.
 
 <!--StartFragment-->
 
+https://gofund.me/5c27015d
+
+<!--EndFragment-->
+
+<!--StartFragment-->
+
 <div class="gfm-embed" data-url="https://www.gofundme.com/f/g36ev5-childrens-holiday/widget/small"></div><script defer src="https://www.gofundme.com/static/js/embed.js"></script>
 
 <!--EndFragment-->
