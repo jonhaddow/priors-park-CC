@@ -1,6 +1,8 @@
 ---
 title: Fund raising
-image: ""
+image: <div class="gfm-embed"
+  data-url="https://www.gofundme.com/f/g36ev5-childrens-holiday/widget/small"></div><script
+  defer src="https://www.gofundme.com/static/js/embed.js"></script>
 sermon-manager: false
 ---
  2023 sees the launch of the BIG LOCAL NIGHT OUT (BLNO), in collaboration with Roses Theatre, an evening of entertainment and a local variety show for all the family. Come along on 3rd November and join the fun!
