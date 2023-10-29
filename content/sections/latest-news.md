@@ -1,5 +1,5 @@
 ---
-title: Latest News
+title: Fund raising
 image: <div class="gfm-embed"
   data-url="https://www.gofundme.com/f/g36ev5-childrens-holiday/widget/small"></div><script
   defer src="https://www.gofundme.com/static/js/embed.js"></script>
