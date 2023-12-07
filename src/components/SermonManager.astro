@@ -1,0 +1,39 @@
+---
+import { HiDownload } from "@react-icons/all-files/hi/HiDownload";
+import { getCollection } from "astro:content";
+
+const sermons = await getCollection("sermons");
+
+// Order chronologically and show latest 3
+sermons.sort((a, b) => b.data.published.getTime() - a.data.published.getTime());
+sermons.splice(3);
+---
+
+<div class="my-6 bg-gray-50 p-4 shadow-md">
+  <h3 class="mb-2 font-bold">Sermons</h3>
+  <ul>
+    {
+      sermons.map((x) => (
+        <li class="mb-2">
+          <a href={x.data.file} class="group flex items-end">
+            <HiDownload
+              size={36}
+              class="mr-2 text-gray-900 group-hover:text-primary"
+            />
+            <div class="flex flex-col justify-center group-hover:text-primary">
+              <time class="text-xs font-thin">
+                {x.data.published.toLocaleDateString(undefined, {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+              <span>{x.data.title}</span>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

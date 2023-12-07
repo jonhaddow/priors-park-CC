@@ -1,0 +1,35 @@
+---
+import { getEntry } from "astro:content";
+
+const noticeSheet = await getEntry("config", "notice-sheet");
+---
+
+<div
+  id="home"
+  class="bg-cover bg-no-repeat pt-14 bg-center"
+  style={{ backgroundImage: "url(/assets/front_church_header.jpg)" }}
+>
+  <div class="flex flex-wrap items-center justify-center gap-16 p-16">
+    <div class="flex items-center justify-center rounded-lg bg-gray-50 p-2">
+      <img
+        src="/assets/FinalLogo.png"
+        alt="Church logo"
+        style={{ height: "180px", width: "250px" }}
+      />
+    </div>
+    <div class="flex flex-col gap-4">
+      <a
+        href="https://square.link/u/1C92EgRJ"
+        class="flex h-16 w-56 items-center justify-center rounded-md bg-primary p-2 font-bold text-white shadow-sm transition-colors hover:bg-primary-dark hover:underline focus:bg-primary-dark focus:underline"
+      >
+        Donate
+      </a>
+      <a
+        class="mt-5 flex h-16 w-56 items-center justify-center rounded-md bg-white p-2 text-center font-bold text-primary transition-colors hover:bg-gray-200 hover:underline focus:bg-gray-200 focus:underline"
+        href={noticeSheet.data.file}
+      >
+        {noticeSheet.data.text}
+      </a>
+    </div>
+  </div>
+</div>

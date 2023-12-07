@@ -1,0 +1,36 @@
+---
+import { getConfig } from "../helpers/getConfig";
+
+const { photoGallery } = await getConfig();
+---
+
+<script>
+  import "@glidejs/glide/dist/css/glide.core.min.css";
+  import Glide, { Autoplay } from "@glidejs/glide/dist/glide.modular.esm";
+
+  new Glide(".glide", {
+    type: "carousel",
+    autoplay: 4000,
+    perView: 1,
+  }).mount({ Autoplay });
+</script>
+
+<section
+  class="hidden h-80 w-full items-center justify-center bg-primary-dark p-8 md:flex"
+>
+  <div class="items-center justify-center overflow-hidden">
+    <div class="glide">
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides h-64 min-h-full w-fit overflow-hidden">
+          {
+            photoGallery.map((x) => (
+              <li class="glide__slide flex items-center justify-center">
+                <img src={x} alt="" class="m-auto h-full max-h-full" />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

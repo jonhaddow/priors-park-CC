@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import SectionContent from "./SectionContent.astro";
+import { sortSections } from "../helpers/sections";
+import { getConfig } from "../helpers/getConfig";
+import SermonManager from "./SermonManager.astro";
+
+const sections = await getCollection("sections");
+const { sectionOrder } = await getConfig();
+sortSections(sections, sectionOrder);
+---
+
+{
+  sections.map((section) => (
+    <>
+      <section id={section.id} class="m-auto max-w-xl px-4 py-8">
+        <h2 class="mb-2 text-3xl">{section.data.title}</h2>
+        <hr class="mb-2" />
+        <div class="prose text-base font-light">
+          <SectionContent render={section.render} />
+        </div>
+        {section.data["sermon-manager"] && <SermonManager />}
+      </section>
+      {section.data.image && (
+        <div
+          class="h-64 bg-cover bg-no-repeat shadow-lg saturate-200 bg-center"
+          style={{ "background-image": `url(${section.data.image})` }}
+        />
+      )}
+    </>
+  ))
+}
