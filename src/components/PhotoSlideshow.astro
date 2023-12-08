@@ -8,11 +8,15 @@ const { photoGallery } = await getConfig();
   import "@glidejs/glide/dist/css/glide.core.min.css";
   import Glide, { Autoplay } from "@glidejs/glide/dist/glide.modular.esm";
 
-  new Glide(".glide", {
-    type: "carousel",
-    autoplay: 4000,
-    perView: 1,
-  }).mount({ Autoplay });
+  // Ensure that the document is ready
+  // before initializing the carousel
+  document.addEventListener("DOMContentLoaded", function () {
+    new Glide(".glide", {
+      type: "carousel",
+      autoplay: 4000,
+      perView: 1,
+    }).mount({ Autoplay });
+  });
 </script>
 
 <section
