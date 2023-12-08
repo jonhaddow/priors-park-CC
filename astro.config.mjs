@@ -13,7 +13,7 @@ export default defineConfig({
       config: {
         backend: {
           name: "git-gateway",
-          branch: "main",
+          branch: "master",
         },
         media_folder: "src/content/images",
         editor: {
