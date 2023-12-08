@@ -5,36 +5,45 @@ const { photoGallery } = await getConfig();
 ---
 
 <script>
-  import "@glidejs/glide/dist/css/glide.core.min.css";
-  import Glide, { Autoplay } from "@glidejs/glide/dist/glide.modular.esm";
-
-  // Ensure that the document is ready
-  // before initializing the carousel
-  document.addEventListener("DOMContentLoaded", function () {
-    new Glide(".glide", {
-      type: "carousel",
-      autoplay: 4000,
-      perView: 1,
-    }).mount({ Autoplay });
-  });
+  // Every 5 seconds, show the next image in the gallery
+  setInterval(() => {
+    const gallery = document.getElementById("photo-slideshow");
+    if (!gallery) {
+      console.error("Gallery not found");
+      return;
+    }
+    const currentImage = gallery.querySelector("li:not(.opacity-0)");
+    if (!currentImage) {
+      console.error("Current image not found");
+      return;
+    }
+    const nextImage =
+      currentImage.nextElementSibling ||
+      gallery.querySelector("li:first-child");
+    if (!nextImage) {
+      console.error("Next image not found");
+      return;
+    }
+    currentImage.classList.add("opacity-0");
+    nextImage.classList.remove("opacity-0");
+  }, 5000);
 </script>
 
 <section
-  class="hidden h-80 w-full items-center justify-center bg-primary-dark p-8 md:flex"
+  aria-hidden
+  class="hidden md:flex h-80 w-full items-center justify-center bg-primary-dark p-8"
 >
-  <div class="items-center justify-center overflow-hidden">
-    <div class="glide">
-      <div class="glide__track" data-glide-el="track">
-        <ul class="glide__slides h-64 min-h-full w-fit overflow-hidden">
-          {
-            photoGallery.map((x) => (
-              <li class="glide__slide flex items-center justify-center">
-                <img src={x} alt="" class="m-auto h-full max-h-full" />
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </div>
-  </div>
+  <ul id="photo-slideshow" class="relative h-64 max-h-full w-full">
+    {
+      photoGallery.map((x, idx) => (
+        <li
+          class={`${
+            idx === 0 ? "" : "opacity-0"
+          } absolute inset-0 text-center w-fit m-auto h-64 transition-opacity duration-1000`}
+        >
+          <img src={x} alt="" class="w-auto h-full max-h-full" />
+        </li>
+      ))
+    }
+  </ul>
 </section>
