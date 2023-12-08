@@ -1,5 +1,5 @@
 ---
-import { GiHamburgerMenu } from "@react-icons/all-files/gi/GiHamburgerMenu";
+import Menu from "./icons/Menu.astro";
 import { getCollection } from "astro:content";
 import { getConfig } from "../helpers/getConfig";
 import { sortSections } from "../helpers/sections";
@@ -58,7 +58,7 @@ sections = [{ id: "home", data: { title: "Home" } }, ...sections];
     aria-label="Open navigation menu"
     aria-controls="menu"
   >
-    <GiHamburgerMenu color="white" />
+    <Menu />
   </button>
   <ul
     id="menu"
