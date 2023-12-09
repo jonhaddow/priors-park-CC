@@ -6,7 +6,6 @@ const sections = defineCollection({
   schema: z.object({
     title: z.string(),
     image: z.string().optional(),
-    "sermon-manager": z.boolean().optional(),
   }),
 });
 

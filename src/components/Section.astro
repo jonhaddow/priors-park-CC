@@ -1,6 +1,7 @@
 ---
 import { getImage } from "astro:assets";
 import SermonManager from "./SermonManager.astro";
+import { getConfig } from "helpers/getConfig";
 
 // This is a vite feature which dynamically imports all content files in a directory into a map.
 const assets = import.meta.glob("/src/content/images/*");
@@ -11,7 +12,6 @@ interface Props {
     data: {
       title: string;
       image?: string;
-      "sermon-manager"?: boolean;
     };
     render: () => Promise<{
       Content: any;
@@ -23,7 +23,7 @@ const {
   section: {
     id,
     render,
-    data: { title, image, "sermon-manager": sermonManager },
+    data: { title, image },
   },
 } = Astro.props;
 
@@ -32,6 +32,8 @@ const optimisedBackgroundImages =
     ? await getImage({ src: assets[image]() })
     : { src: "" };
 const { Content } = await render();
+
+const { sermonManager } = await getConfig();
 ---
 
 <section id={id} class="m-auto max-w-xl px-4 py-8">
@@ -40,7 +42,7 @@ const { Content } = await render();
   <div class="prose text-base font-light">
     <Content />
   </div>
-  {sermonManager && <SermonManager />}
+  {sermonManager.section === title && <SermonManager />}
 </section>
 {
   image && (

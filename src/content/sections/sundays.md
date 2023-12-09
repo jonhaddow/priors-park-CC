@@ -1,7 +1,6 @@
 ---
 title: Sundays
 image: /src/content/images/content-photo-2.jpg
-sermon-manager: true
 ---
 We meet on Sundays at 3.30 to worship our Lord and Saviour Jesus Christ and to listen to God’s word.
 

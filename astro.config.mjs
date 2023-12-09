@@ -45,12 +45,6 @@ export default defineConfig({
                 name: "body",
                 widget: "markdown",
               },
-              {
-                label: "Add sermon manager",
-                name: "sermon-manager",
-                widget: "boolean",
-                default: false,
-              },
             ],
           },
           {
@@ -98,6 +92,21 @@ export default defineConfig({
                 ],
               },
               {
+                name: "sermonManager",
+                label: "Sermon Manager",
+                file: "src/content/config/sermon-manager.md",
+                fields: [
+                  {
+                    label: "Section",
+                    name: "section",
+                    widget: "relation",
+                    collection: "sections",
+                    value_field: "title",
+                    search_fields: ["title"],
+                  },
+                ],
+              },
+              {
                 name: "sectionOrder",
                 label: "Section order",
                 file: "src/content/config/section-order.md",
@@ -112,8 +121,8 @@ export default defineConfig({
                         name: "section",
                         widget: "relation",
                         collection: "sections",
-                        searchFields: ["title"],
-                        valueField: "title",
+                        value_field: "title",
+                        search_fields: ["title"],
                       },
                     ],
                   },
