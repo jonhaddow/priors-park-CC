@@ -16,6 +16,7 @@ export default defineConfig({
           branch: "master",
         },
         media_folder: "src/content/images",
+        site_url: "https://priorsparkcommunitychurch.co.uk/",
         editor: {
           preview: false,
         },
@@ -79,8 +80,8 @@ export default defineConfig({
               {
                 label: "Notice sheet",
                 name: "notice-sheet",
-                media_folder: "{{public_folder}}/static/assets",
-                public_folder: "/assets",
+                media_folder: "/public/assets/notice-sheets",
+                public_folder: "/assets/notice-sheets",
                 file: "src/content/config/notice-sheet.md",
                 fields: [
                   {
