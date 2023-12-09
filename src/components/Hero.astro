@@ -1,5 +1,10 @@
 ---
 import { getEntry } from "astro:content";
+import { getImage, Image } from "astro:assets";
+import logo from "assets/logo.png";
+import frontChurchHeader from "assets/front_church_header.jpg";
+
+const optimizedChurchHeader = await getImage({ src: frontChurchHeader });
 
 const noticeSheet = await getEntry("config", "notice-sheet");
 ---
@@ -7,12 +12,12 @@ const noticeSheet = await getEntry("config", "notice-sheet");
 <div
   id="home"
   class="bg-cover bg-no-repeat pt-14 bg-center"
-  style={{ backgroundImage: "url(/assets/front_church_header.jpg)" }}
+  style={{ backgroundImage: `url(${optimizedChurchHeader.src})` }}
 >
   <div class="flex flex-wrap items-center justify-center gap-16 p-16">
     <div class="flex items-center justify-center rounded-lg bg-gray-50 p-2">
-      <img
-        src="/assets/FinalLogo.png"
+      <Image
+        src={logo}
         alt="Church logo"
         style={{ height: "180px", width: "250px" }}
       />
