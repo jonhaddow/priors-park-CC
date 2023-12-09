@@ -1,0 +1,80 @@
+---
+import Menu from "./icons/Menu.astro";
+import { getCollection } from "astro:content";
+import { getConfig } from "../helpers/getConfig";
+import { sortSections } from "../helpers/sections";
+
+let sections: { id: string; data: { title: string } }[] =
+  await getCollection("sections");
+
+const { sectionOrder } = await getConfig();
+
+sortSections(sections, sectionOrder);
+
+sections = [{ id: "home", data: { title: "Home" } }, ...sections];
+---
+
+<script>
+  const button = document.getElementById("menu-button");
+  const menu = document.getElementById("menu");
+
+  const onMenuClick = () => {
+    if (!button) return;
+
+    const expanded = button.getAttribute("aria-expanded") === "true" || false;
+
+    button.setAttribute("aria-expanded", `${!expanded}`);
+    menu?.classList.toggle("block");
+    menu?.classList.toggle("hidden");
+  };
+
+  // Add event listener to button
+  button?.addEventListener("click", onMenuClick);
+
+  const executeScroll = (el: HTMLButtonElement): void => {
+    const sectionId = el.getAttribute("data-section-id");
+    const section = document.getElementById(sectionId!);
+    const nav = document.querySelector("nav");
+    if (section && nav) {
+      window.scrollTo({
+        behavior: "smooth",
+        left: 0,
+        top: section.offsetTop - nav.offsetHeight,
+      });
+    }
+  };
+
+  // Add event listener to menu items
+  const menuItems = document.querySelectorAll("ul#menu > li > button");
+  menuItems.forEach((el) => {
+    el.addEventListener("click", () => executeScroll(el as HTMLButtonElement));
+  });
+</script>
+
+<nav class="fixed z-50 w-full bg-primary-dark md:block">
+  <button
+    id="menu-button"
+    class="float-right p-4 md:hidden"
+    aria-label="Open navigation menu"
+    aria-controls="menu"
+  >
+    <Menu />
+  </button>
+  <ul
+    id="menu"
+    class="hidden z-50 mt-8 flex-wrap justify-start md:mt-0 md:flex"
+  >
+    {
+      sections.map((x) => (
+        <li class="md:p-2">
+          <button
+            data-section-id={x.id}
+            class="w-full p-2 text-gray-50 transition-colors hover:bg-primary-darker hover:text-white focus:bg-primary-darker focus:text-white md:w-auto md:rounded-lg"
+          >
+            {x.data.title}
+          </button>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

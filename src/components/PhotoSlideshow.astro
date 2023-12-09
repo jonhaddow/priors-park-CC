@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import { getConfig } from "../helpers/getConfig";
+
+// This is a vite feature which dynamically imports all content files in a directory into a map.
+const assets = import.meta.glob("/src/content/images/*");
+
+const { photoGallery } = await getConfig();
+---
+
+<script>
+  // Every 5 seconds, show the next image in the gallery
+  setInterval(() => {
+    const gallery = document.getElementById("photo-slideshow");
+    if (!gallery) {
+      console.error("Gallery not found");
+      return;
+    }
+    const currentImage = gallery.querySelector("li:not(.opacity-0)");
+    if (!currentImage) {
+      console.error("Current image not found");
+      return;
+    }
+    const nextImage =
+      currentImage.nextElementSibling ||
+      gallery.querySelector("li:first-child");
+    if (!nextImage) {
+      console.error("Next image not found");
+      return;
+    }
+    currentImage.classList.add("opacity-0");
+    nextImage.classList.remove("opacity-0");
+  }, 5000);
+</script>
+
+<section
+  aria-hidden
+  class="hidden md:flex h-80 w-full items-center justify-center bg-primary-dark p-8"
+>
+  <ul id="photo-slideshow" class="relative h-64 max-h-full w-full">
+    {
+      photoGallery.map((x, idx) => (
+        <li
+          class={`${
+            idx === 0 ? "" : "opacity-0"
+          } absolute inset-0 text-center w-fit m-auto h-64 transition-opacity duration-1000`}
+        >
+          <Image src={assets[x]()} alt="" class="w-auto h-full max-h-full" />
+        </li>
+      ))
+    }
+  </ul>
+</section>

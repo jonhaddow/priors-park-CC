@@ -8,15 +8,15 @@ Runs the [Priors Park Community Church](https://priorsparkcommunitychurch.co.uk/
 
 To install dependencies:
 ```
-yarn
+npm i
 ```
 
 To run the site for local development:
 ```
-yarn start
+npm run dev
 ```
 
 To build the production output:
 ```
-yarn build
+npm run build
 ```
