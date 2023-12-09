@@ -1,5 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import { getConfig } from "../helpers/getConfig";
+
+// This is a vite feature which dynamically imports all content files in a directory into a map.
+const assets = import.meta.glob("/src/content/images/*");
 
 const { photoGallery } = await getConfig();
 ---
@@ -41,7 +45,7 @@ const { photoGallery } = await getConfig();
             idx === 0 ? "" : "opacity-0"
           } absolute inset-0 text-center w-fit m-auto h-64 transition-opacity duration-1000`}
         >
-          <img src={x} alt="" class="w-auto h-full max-h-full" />
+          <Image src={assets[x]()} alt="" class="w-auto h-full max-h-full" />
         </li>
       ))
     }

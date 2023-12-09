@@ -24,7 +24,7 @@ export default defineConfig({
             name: "sections",
             label: "Sections",
             folder: "src/content/sections",
-            public_folder: "../images",
+            public_folder: "/src/content/images",
             create: true,
             fields: [
               {
@@ -59,7 +59,7 @@ export default defineConfig({
               {
                 label: "Photo gallery",
                 name: "photo-gallery",
-                public_folder: "../images",
+                public_folder: "/src/content/images",
                 file: "src/content/config/photo-gallery.md",
                 fields: [
                   {

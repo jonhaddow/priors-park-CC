@@ -1,6 +1,6 @@
 ---
 title: About
-image: assets/images/content-photo-1.jpg
+image: /src/content/images/content-photo-1.jpg
 sermon-manager: false
 ---
 *Priors Park Community Church, the heart of the community.*

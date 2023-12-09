@@ -1,6 +1,6 @@
 ---
 title: "@Thechapel - The hub"
-image: assets/images/food-distribution-29.4-4.jpg
+image: /src/content/images/food-distribution-29.4-4.jpg
 sermon-manager: false
 ---
 We set up TheHub@Thechapel in response to the Covid 19 pandemic. It is a community hub to help local residents cope with the cost of living. We are able to provide emergency food, help and guide with gas and electricity costs, care for elderly and isolating residents and assist with general problems for those struggling through difficult times. 
