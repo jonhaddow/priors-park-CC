@@ -124,8 +124,8 @@ export default defineConfig({
           {
             name: "sermons",
             label: "Sermons",
-            folder: "content/sermons",
-            media_folder: "/static/assets/sermons",
+            folder: "src/content/sermons",
+            media_folder: "/public/assets/sermons",
             public_folder: "/assets/sermons",
             create: true,
             fields: [
