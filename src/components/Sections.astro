@@ -1,9 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import SectionContent from "./SectionContent.astro";
 import { sortSections } from "../helpers/sections";
 import { getConfig } from "../helpers/getConfig";
-import SermonManager from "./SermonManager.astro";
 import Section from "./Section.astro";
 
 const sections = await getCollection("sections");
