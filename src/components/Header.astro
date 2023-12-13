@@ -17,15 +17,17 @@ sections = [{ id: "home", data: { title: "Home" } }, ...sections];
 <script>
   const button = document.getElementById("menu-button");
   const menu = document.getElementById("menu");
+  const header = document.getElementById("header");
 
   const onMenuClick = () => {
     if (!button) return;
+    if (!menu) return;
 
     const expanded = button.getAttribute("aria-expanded") === "true" || false;
 
     button.setAttribute("aria-expanded", `${!expanded}`);
-    menu?.classList.toggle("block");
-    menu?.classList.toggle("hidden");
+    menu.classList.toggle("block");
+    menu.classList.toggle("hidden");
   };
 
   // Add event listener to button
@@ -49,9 +51,25 @@ sections = [{ id: "home", data: { title: "Home" } }, ...sections];
   menuItems.forEach((el) => {
     el.addEventListener("click", () => executeScroll(el as HTMLButtonElement));
   });
+
+  // Add scroll listener and change the background color of the header
+  window.addEventListener("scroll", function () {
+    // Only for desktop
+    if (window.innerWidth < 768) return;
+
+    if (!header) return;
+    if (window.scrollY > 100) {
+      header.style.backgroundColor = "#297373";
+    } else {
+      header.style.backgroundColor = "transparent";
+    }
+  });
 </script>
 
-<nav class="fixed z-50 w-full bg-primary-dark md:block">
+<nav
+  id="header"
+  class="fixed z-50 w-full bg-primary md:bg-transparent md:block"
+>
   <button
     id="menu-button"
     class="float-right p-4 md:hidden"
@@ -69,7 +87,7 @@ sections = [{ id: "home", data: { title: "Home" } }, ...sections];
         <li class="md:p-2">
           <button
             data-section-id={x.id}
-            class="w-full p-2 text-gray-50 transition-colors hover:bg-primary-darker hover:text-white focus:bg-primary-darker focus:text-white md:w-auto md:rounded-lg"
+            class="w-full p-2 text-light-text transition-colors hover:bg-primary-darker hover:text-white focus-visible:bg-primary-darker focus-visible:text-white md:w-auto md:rounded-lg"
           >
             {x.data.title}
           </button>
