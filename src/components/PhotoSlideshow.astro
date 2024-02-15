@@ -1,11 +1,14 @@
 ---
-import { Image } from "astro:assets";
-import { getConfig } from "../helpers/getConfig";
-
-// This is a vite feature which dynamically imports all content files in a directory into a map.
-const assets = import.meta.glob("/src/content/images/*");
+import { getConfig } from "../helpers/config";
+import { urlForImage } from "../sanity/urlForImage";
 
 const { photoGallery } = await getConfig();
+
+const images = photoGallery.map((x) => {
+  return {
+    url: urlForImage(x.image).maxWidth(200).url(),
+  };
+});
 ---
 
 <script>
@@ -39,13 +42,13 @@ const { photoGallery } = await getConfig();
 >
   <ul id="photo-slideshow" class="relative h-64 max-h-full w-full">
     {
-      photoGallery.map((x, idx) => (
+      images.map((x, idx) => (
         <li
           class={`${
             idx === 0 ? "" : "opacity-0"
           } absolute inset-0 text-center w-fit m-auto h-64 transition-opacity duration-1000`}
         >
-          <Image src={assets[x]()} alt="" class="w-auto h-full max-h-full" />
+          <img src={x.url} alt="" class="w-auto h-full max-h-full" />
         </li>
       ))
     }

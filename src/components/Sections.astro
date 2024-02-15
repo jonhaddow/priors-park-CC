@@ -1,12 +1,8 @@
 ---
-import { getCollection } from "astro:content";
-import { sortSections } from "../helpers/sections";
-import { getConfig } from "../helpers/getConfig";
 import Section from "./Section.astro";
+import { getSections } from "../helpers/sections";
 
-const sections = await getCollection("sections");
-const { sectionOrder } = await getConfig();
-sortSections(sections, sectionOrder);
+const sections = await getSections();
 ---
 
 {sections.map((section) => <Section section={section} />)}
