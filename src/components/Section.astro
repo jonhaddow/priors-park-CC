@@ -1,54 +1,28 @@
 ---
-import { getImage } from "astro:assets";
+import { PortableText } from "astro-portabletext";
+import { getConfig } from "helpers/config";
 import SermonManager from "./SermonManager.astro";
-import { getConfig } from "helpers/getConfig";
-
-// This is a vite feature which dynamically imports all content files in a directory into a map.
-const assets = import.meta.glob("/src/content/images/*");
-
-interface Props {
-  section: {
-    id: string;
-    data: {
-      title: string;
-      image?: string;
-    };
-    render: () => Promise<{
-      Content: any;
-    }>;
-  };
-}
 
 const {
-  section: {
-    id,
-    render,
-    data: { title, image },
-  },
+  section: { _id, title, content, imageUrl },
 } = Astro.props;
-
-const optimisedBackgroundImages =
-  image && assets[image]
-    ? await getImage({ src: assets[image]() })
-    : { src: "" };
-const { Content } = await render();
 
 const { sermonManager } = await getConfig();
 ---
 
-<section id={id} class="m-auto max-w-xl px-4 py-8">
+<section id={_id} class="m-auto max-w-xl px-4 py-8">
   <h2 class="mb-2 text-3xl">{title}</h2>
   <hr class="mb-2" />
   <div class="prose text-base font-light">
-    <Content />
+    <PortableText value={content} />
   </div>
-  {sermonManager.section === title && <SermonManager />}
+  {sermonManager === title && <SermonManager />}
 </section>
 {
-  image && (
+  imageUrl && (
     <div
       class="h-64 bg-cover bg-no-repeat shadow-lg saturate-200 bg-center"
-      style={{ "background-image": `url(${optimisedBackgroundImages.src})` }}
+      style={{ "background-image": `url(${imageUrl})` }}
     />
   )
 }

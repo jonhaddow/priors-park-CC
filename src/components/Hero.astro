@@ -1,12 +1,12 @@
 ---
-import { getEntry } from "astro:content";
 import { getImage, Image } from "astro:assets";
 import logo from "assets/logo.png";
 import frontChurchHeader from "assets/front_church_header.jpg";
+import { getConfig } from "helpers/config";
 
 const optimizedChurchHeader = await getImage({ src: frontChurchHeader });
 
-const noticeSheet = await getEntry("config", "notice-sheet");
+const { noticeSheet } = await getConfig();
 ---
 
 <div
@@ -27,9 +27,9 @@ const noticeSheet = await getEntry("config", "notice-sheet");
       </a>
       <a
         class="mt-5 flex h-16 w-56 items-center justify-center rounded-md bg-white p-2 text-center font-bold text-primary transition-colors hover:bg-gray-200 hover:underline focus:bg-gray-200 focus:underline"
-        href={noticeSheet.data.file}
+        href={noticeSheet.fileURL}
       >
-        {noticeSheet.data.text}
+        {noticeSheet.text}
       </a>
     </div>
   </div>
