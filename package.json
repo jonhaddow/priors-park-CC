@@ -32,6 +32,6 @@
   },
   "devDependencies": {
     "eslint-config-jonhaddow": "^3.6.0",
-    "eslint-plugin-tailwindcss": "^3.14.3"
+    "eslint-plugin-tailwindcss": "^3.15.1"
   }
 }
