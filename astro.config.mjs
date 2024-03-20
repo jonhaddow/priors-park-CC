@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 
-import { sanityIntegration } from "@sanity/astro";
+import sanityIntegration from "@sanity/astro";
 
 // https://astro.build/config
 export default defineConfig({
