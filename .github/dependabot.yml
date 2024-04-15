@@ -4,14 +4,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    open-pull-requests-limit: 10
     groups:
-      production-dependencies:
-        dependency-type: "production"
-        update-types:
-          - "patch"
-      development-dependencies:
-        dependency-type: "development"
+      all:
         update-types:
           - "patch"
           - "minor"
