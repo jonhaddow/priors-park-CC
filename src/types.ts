@@ -1,9 +1,10 @@
 import type { SanityImageAssetDocument } from "@sanity/client";
+import type { PortableTextBlock } from "sanity";
 
 export interface Config {
   footer: {
     _key: string;
-    body: unknown;
+    body: PortableTextBlock;
     title: string;
   }[];
   noticeSheet: {
