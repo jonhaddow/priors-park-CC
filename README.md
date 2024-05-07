@@ -7,16 +7,19 @@ Runs the [Priors Park Community Church](https://priorsparkcommunitychurch.co.uk/
 ## Development
 
 To install dependencies:
+
 ```
 npm i
 ```
 
 To run the site for local development:
+
 ```
 npm run dev
 ```
 
 To build the production output:
+
 ```
 npm run build
 ```
