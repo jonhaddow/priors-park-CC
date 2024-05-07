@@ -3,7 +3,7 @@ import type { SanityImageAssetDocument } from "@sanity/client";
 export interface Config {
   footer: {
     _key: string;
-    body: any;
+    body: unknown;
     title: string;
   }[];
   noticeSheet: {
