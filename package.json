@@ -7,7 +7,9 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint ./src",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
@@ -20,18 +22,19 @@
     "@sanity/client": "^6.15.20",
     "@sanity/image-url": "^1.0.2",
     "@tailwindcss/typography": "^0.5.13",
-    "@types/react": "^18.3.1",
-    "@types/react-dom": "^18.3.0",
     "astro": "^4.7.0",
     "astro-portabletext": "^0.9.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sanity": "^3.39.1",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5"
+    "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
     "eslint-config-jonhaddow": "^5.0.1",
-    "eslint-plugin-tailwindcss": "^3.15.1"
+    "eslint-plugin-tailwindcss": "^3.15.1",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
   }
 }
