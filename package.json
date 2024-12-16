@@ -22,7 +22,7 @@
     "@sanity/client": "^6.24.1",
     "@sanity/image-url": "^1.1.0",
     "@tailwindcss/typography": "^0.5.15",
-    "astro": "^4.16.14",
+    "astro": "^4.16.17",
     "astro-portabletext": "^0.10.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
