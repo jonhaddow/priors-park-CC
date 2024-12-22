@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^3.1.9",
+    "@astrojs/mdx": "^4.0.3",
     "@astrojs/rss": "^4.0.10",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.4",
@@ -22,7 +22,7 @@
     "@sanity/client": "^6.24.1",
     "@sanity/image-url": "^1.1.0",
     "@tailwindcss/typography": "^0.5.15",
-    "astro": "^4.16.18",
+    "astro": "^5.1.1",
     "astro-portabletext": "^0.11.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
