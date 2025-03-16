@@ -21,7 +21,7 @@ export interface Config {
 export interface Section {
   _id: string;
   title: string;
-  content: unknown[];
+  content: PortableTextBlock[];
   imageUrl?: string;
 }
 
