@@ -20,7 +20,7 @@ const Hero = ({ heroPhoto, noticeSheet }: HeroProps) => {
         <div className="flex flex-col gap-4">
           <a
             href="https://square.link/u/1C92EgRJ"
-            className="flex h-16 w-56 items-center justify-center rounded-md bg-primary p-2 font-bold text-white shadow-sm transition-colors hover:bg-primary-dark hover:underline focus:bg-primary-dark focus:underline"
+            className="flex h-16 w-56 items-center justify-center rounded-md bg-primary p-2 font-bold text-white shadow-xs transition-colors hover:bg-primary-dark hover:underline focus:bg-primary-dark focus:underline"
           >
             Donate
           </a>
