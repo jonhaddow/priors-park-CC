@@ -1,24 +1,39 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Hero from "../components/Hero.astro";
-import PhotoSlideshow from "../components/PhotoSlideshow.astro";
-import Sections from "../components/Sections.astro";
+import BaseHead from "../components/BaseHead.tsx";
+import Header from "../components/Header.tsx";
+import Footer from "../components/Footer.tsx";
+import Hero from "../components/Hero.tsx";
+import PhotoSlideshow from "../components/PhotoSlideshow.tsx";
+import Sections from "../components/Sections.tsx";
+import { getSections } from "../helpers/sections";
+import { getSermons } from "helpers/sermons";
+import { getConfig } from "helpers/config";
+import { getImage } from "astro:assets";
+import frontChurchHeader from "assets/front_church_header.jpg";
+
+const { url, site } = Astro;
+
+const sections = await getSections();
+const sermons = await getSermons();
+const config = await getConfig();
+const optimizedChurchHeader = await getImage({ src: frontChurchHeader });
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead />
+    <BaseHead url={url} site={site} />
   </head>
   <body>
-    <Header />
-    <Hero />
-    <PhotoSlideshow />
+    <Header
+      client:load
+      sections={[{ _id: "home", title: "Home" }, ...sections]}
+    />
+    <Hero heroPhoto={optimizedChurchHeader} noticeSheet={config.noticeSheet} />
+    <PhotoSlideshow client:visible photoGallery={config.photoGallery} />
     <main>
-      <Sections />
+      <Sections sections={sections} sermons={sermons} config={config} />
     </main>
-    <Footer />
+    <Footer footer={config.footer} />
   </body>
 </html>

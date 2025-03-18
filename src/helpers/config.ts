@@ -11,6 +11,6 @@ export const getConfig = async () => {
     footer,
     noticeSheet,
     photoGallery,
-    sermonManager: sermonManagerSection,
+    sermonManagerSection,
   };
 };

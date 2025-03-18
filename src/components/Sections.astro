@@ -1,8 +1,0 @@
----
-import Section from "./Section.astro";
-import { getSections } from "../helpers/sections";
-
-const sections = await getSections();
----
-
-{sections.map((section) => <Section section={section} />)}
