@@ -1,1 +1,7 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@theme {
+  --color-primary: #27586b;
+  --color-primary-dark: #103e50;
+  --color-primary-darker: #0a2936;
+}
