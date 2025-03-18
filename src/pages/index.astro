@@ -3,7 +3,7 @@ import BaseHead from "../components/BaseHead.tsx";
 import Header from "../components/Header.tsx";
 import Footer from "../components/Footer.tsx";
 import Hero from "../components/Hero.tsx";
-import PhotoSlideshow from "../components/PhotoSlideshow.astro";
+import PhotoSlideshow from "../components/PhotoSlideshow.tsx";
 import Sections from "../components/Sections.tsx";
 import { getSections } from "../helpers/sections";
 import { getSermons } from "helpers/sermons";
@@ -30,7 +30,7 @@ const optimizedChurchHeader = await getImage({ src: frontChurchHeader });
       sections={[{ _id: "home", title: "Home" }, ...sections]}
     />
     <Hero heroPhoto={optimizedChurchHeader} noticeSheet={config.noticeSheet} />
-    <PhotoSlideshow />
+    <PhotoSlideshow client:visible photoGallery={config.photoGallery} />
     <main>
       <Sections sections={sections} sermons={sermons} config={config} />
     </main>
