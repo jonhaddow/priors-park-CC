@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.2.5",
-    "@astrojs/preact": "^4.0.10",
+    "@astrojs/mdx": "^4.2.6",
+    "@astrojs/preact": "^4.0.11",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.3.1",
     "@portabletext/to-html": "^2.0.14",
@@ -23,10 +23,10 @@
     "@sanity/client": "^6.29.1",
     "@sanity/image-url": "^1.1.0",
     "@tailwindcss/typography": "^0.5.16",
-    "@tailwindcss/vite": "^4.1.4",
-    "astro": "^5.7.5",
+    "@tailwindcss/vite": "^4.1.5",
+    "astro": "^5.7.10",
     "preact": "^10.26.5",
-    "sanity": "^3.86.1",
+    "sanity": "^3.87.1",
     "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
