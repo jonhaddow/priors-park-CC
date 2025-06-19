@@ -10,6 +10,7 @@ import { getSermons } from "helpers/sermons";
 import { getConfig } from "helpers/config";
 import { getImage } from "astro:assets";
 import frontChurchHeader from "assets/front_church_header.jpg";
+import WhatsOn from "components/WhatsOn";
 
 import "../styles/global.css";
 
@@ -22,20 +23,15 @@ const optimizedChurchHeader = await getImage({ src: frontChurchHeader });
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-light-background">
   <head>
     <BaseHead url={url} site={site} />
   </head>
   <body>
-    <Header
-      client:load
-      sections={[{ _id: "home", title: "Home" }, ...sections]}
-    />
-    <Hero heroPhoto={optimizedChurchHeader} noticeSheet={config.noticeSheet} />
-    <PhotoSlideshow client:visible photoGallery={config.photoGallery} />
-    <main>
-      <Sections sections={sections} sermons={sermons} config={config} />
-    </main>
-    <Footer footer={config.footer} />
+    <div class="flex flex-col gap-20 px-12 md:px-0">
+      <Hero client:load />
+      <WhatsOn client:load />
+      <PhotoSlideshow photoGallery={config.photoGallery} />
+    </div>
   </body>
 </html>

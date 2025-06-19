@@ -1,36 +1,29 @@
-import type { Config } from "types";
 import logo from "assets/logo.png";
-import type { GetImageResult } from "astro";
 
-interface HeroProps {
-  noticeSheet: Config["noticeSheet"];
-  heroPhoto: GetImageResult;
-}
-const Hero = ({ heroPhoto, noticeSheet }: HeroProps) => {
+const Hero = () => {
   return (
-    <div
-      id="home"
-      className="bg-cover bg-center bg-no-repeat pt-14"
-      style={{ backgroundImage: `url(${heroPhoto.src})` }}
-    >
-      <div className="flex flex-wrap items-center justify-center gap-16 p-16">
-        <div className="flex items-center justify-center rounded-lg bg-gray-50 p-2">
-          <img src={logo.src} alt="Church logo" width={250} />
-        </div>
-        <div className="flex flex-col gap-4">
-          <a
-            href="https://square.link/u/1C92EgRJ"
-            className="flex h-16 w-56 items-center justify-center rounded-md bg-primary p-2 font-bold text-white shadow-xs transition-colors hover:bg-primary-dark hover:underline focus:bg-primary-dark focus:underline"
-          >
-            Donate
-          </a>
-          <a
-            className="mt-5 flex h-16 w-56 items-center justify-center rounded-md bg-white p-2 text-center font-bold text-primary transition-colors hover:bg-gray-200 hover:underline focus:bg-gray-200 focus:underline"
-            href={noticeSheet.fileURL}
-          >
-            {noticeSheet.text}
-          </a>
-        </div>
+    <div className="flex flex-col gap-24 px-12 md:px-0 py-12">
+      <div class="fixed top-0 left-0 w-full h-2 z-50 flex backdrop-blur-md rounded-b-md shadow-sm">
+        <div class="flex-1 bg-brand-red/40"></div>
+        <div class="flex-1 bg-yellow-400/40"></div>
+        <div class="flex-1 bg-brand-green/40"></div>
+        <div class="flex-1 bg-brand-light-blue/40"></div>
+      </div>
+      {/* Hero */}
+      <div className="flex items-center justify-center w-full">
+        <img src={logo.src} alt="Church logo" width={250} />
+      </div>
+      <div
+        className="flex flex-col gap-12 items-center justify-center w-full relative"
+        data-reveal
+      >
+        <h1 className="text-6xl font-bold leading-20 font-header text-center text-text-primary max-w-2xl">
+          Church at the heart of Priors Park
+        </h1>
+        <p className="text-2xl max-w-lg text-text-secondary">
+          Worship with us on Sundays at 3.30pm, or come along to one of our
+          community events during the week.
+        </p>
       </div>
     </div>
   );

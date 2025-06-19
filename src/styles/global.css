@@ -1,7 +1,58 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @theme {
+  --color-brand-green: #65B215;
+  --color-brand-red: #EC3237;
+  --color-brand-dark-blue: #384B82;
+  --color-brand-light-blue: #3781B5;
+
+  --color-light-background: #EDF6F9;
+  --color-dark-background: #103E50;
+
+  --color-text-primary: theme(colors.gray.800);
+  --color-text-secondary: theme(colors.gray.600);
+  --color-text-inverse: theme(colors.gray.200);
+
   --color-primary: #27586b;
   --color-primary-dark: #103e50;
   --color-primary-darker: #0a2936;
+
+  --font-header: "Poppins", sans-serif;
+  --font-body: "Nunito", sans-serif;
+}
+
+p {
+  text-wrap: pretty;
+  font-family: var(--font-body);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 1s ease-out forwards;
+}
+
+/* Photo slideshow */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+.animate-scroll:hover {
+  animation-play-state: paused;
 }
