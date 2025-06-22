@@ -23,21 +23,26 @@ const PhotoSlideshow = ({ photoGallery }: PhotoSlideshowProps) => {
   });
 
   return (
-    <div className={"flex"}>
+    <div className="flex">
       <section className="bg-light-background relative mx-auto max-w-4xl overflow-hidden group pointer-events-auto">
         <FadeToTransparent direction="left" />
-        <div className="flex animate-scroll gap-4 w-max">
-          {/* Multiple sets of images infinitely scrolling */}
-          {Array.from({ length: 2 }).map((_, xIdx) =>
-            images.map(({ url }, yIdx) => (
-              <img
-                key={`${xIdx}-${yIdx}`}
-                src={url}
-                alt=""
-                className={`block h-40 rounded-lg w-auto flex-shrink-0 pointer-events-none`}
-              />
-            )),
-          )}
+        <div className="flex w-max group basis-full">
+          {/* 
+            Multiple sets of images infinitely scrolling
+            https://blog.logto.io/css-only-infinite-scroll
+          */}
+          {Array.from({ length: 2 }).map((_, xIdx) => (
+            <div className="photo-group flex gap-4 pr-4 animate-scroll group-hover:animate-scroll-paused">
+              {images.map(({ url }, yIdx) => (
+                <img
+                  key={`${xIdx}-${yIdx}`}
+                  src={url}
+                  alt=""
+                  className={`block h-40 rounded-lg w-auto flex-shrink-0 pointer-events-none`}
+                />
+              ))}
+            </div>
+          ))}
         </div>
         <FadeToTransparent direction="right" />
       </section>
