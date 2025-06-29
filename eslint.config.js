@@ -1,8 +1,9 @@
-import { base } from "eslint-config-jonhaddow";
+import { base, react } from "eslint-config-jonhaddow";
+import { defineConfig } from "eslint/config";
 
-export default [
+export default defineConfig([
   ...base,
-
+  ...react,
   {
     languageOptions: {
       parserOptions: {
@@ -15,4 +16,4 @@ export default [
       "@typescript-eslint/explicit-function-return-type": "off",
     },
   },
-];
+]);
