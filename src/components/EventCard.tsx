@@ -8,9 +8,9 @@ function EventCard({
   description: string;
 }) {
   return (
-    <section className="flex flex-col bg-light-background p-12 rounded-lg self-stretch transition-all duration-500 hover:scale-105">
-      <h2 className="text-2xl font-bold font-header">{title}</h2>
-      <p className="text-lg mt-2 font-bold">{time}</p>
+    <section className="bg-light-background flex flex-col self-stretch rounded-lg p-12 transition-all duration-500 hover:scale-105">
+      <h2 className="font-header text-2xl font-bold">{title}</h2>
+      <p className="mt-2 text-lg font-bold">{time}</p>
       <p className="text-md mt-1">{description}</p>
     </section>
   );

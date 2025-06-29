@@ -7,7 +7,7 @@ function FadeToTransparent({ direction }: { direction: "left" | "right" }) {
   const positionClass = direction === "left" ? "left-0" : "right-0";
   return (
     <div
-      className={`absolute ${positionClass} top-0 h-full z-10 w-40 shrink-0 ${directionClass} from-light-background to-transparent`}
+      className={`absolute ${positionClass} top-0 z-10 h-full w-40 shrink-0 ${directionClass} from-light-background to-transparent`}
     />
   );
 }
@@ -24,21 +24,24 @@ const PhotoSlideshow = ({ photoGallery }: PhotoSlideshowProps) => {
 
   return (
     <div className="flex">
-      <section className="bg-light-background relative mx-auto max-w-4xl overflow-hidden group pointer-events-auto">
+      <section className="bg-light-background group pointer-events-auto relative mx-auto max-w-4xl overflow-hidden">
         <FadeToTransparent direction="left" />
-        <div className="flex w-max group basis-full">
+        <div className="group flex w-max basis-full">
           {/* 
             Multiple sets of images infinitely scrolling
             https://blog.logto.io/css-only-infinite-scroll
           */}
           {Array.from({ length: 2 }).map((_, xIdx) => (
-            <div className="photo-group flex gap-4 pr-4 animate-scroll group-hover:animate-scroll-paused">
+            <div
+              key={xIdx}
+              className="photo-group animate-scroll group-hover:animate-scroll-paused flex gap-4 pr-4"
+            >
               {images.map(({ url }, yIdx) => (
                 <img
                   key={`${xIdx}-${yIdx}`}
                   src={url}
                   alt=""
-                  className={`block h-40 rounded-lg w-auto flex-shrink-0 pointer-events-none`}
+                  className="pointer-events-none block h-40 w-auto flex-shrink-0 rounded-lg"
                 />
               ))}
             </div>

@@ -24,7 +24,7 @@ const FadeReveal = ({ children }: { children: VNode }) => {
   }, []);
 
   return (
-    <div ref={ref} className="opacity-0 translate-y-5 duration-1000">
+    <div ref={ref} className="translate-y-5 opacity-0 duration-1000">
       {children}
     </div>
   );

@@ -1,16 +1,13 @@
 import EventCard from "./EventCard";
 import FadeReveal from "./FadeReveal";
+import calendarIcon from "assets/calendar.svg";
 
 function WhatsOn() {
   return (
     <FadeReveal>
-      <div
-        className={
-          "flex flex-col justify-center items-center px-8 py-20 gap-8 bg-dark-background"
-        }
-      >
-        <h2 className={"text-4xl font-bold text-text-inverse"}>What's on</h2>
-        <div className="grid grid-cols-3 gap-8 items-center justify-center w-full">
+      <div className="bg-dark-background flex flex-col items-center justify-center gap-12 px-8 py-12">
+        <h2 className="text-text-inverse text-4xl font-bold">What&apos;s on</h2>
+        <div className="grid w-full grid-cols-1 items-center justify-center gap-8 md:grid-cols-2 lg:grid-cols-3">
           <EventCard
             title="Sunday Service"
             time="Join us at 3:30pm"
@@ -26,9 +23,16 @@ function WhatsOn() {
           <EventCard
             title="Curious"
             time="Tuesdays at 7:00pm (for a limited time)"
-            description="Explore what we believe, what the Bible says, and what our church is about — all in a relaxed setting over a free meal. If you’re curious, we’d love to hear from you. Get in touch for details."
+            description="Explore what we believe, what the Bible says, and what our church is about — all in a relaxed setting over a free meal. If you're curious, we'd love to hear from you. Get in touch for details."
           />
         </div>
+        <a
+          href="/events"
+          className="text-text-inverse flex cursor-pointer items-center gap-2 text-lg font-bold hover:underline"
+        >
+          <img src={calendarIcon.src} alt="Calendar" className="h-6 w-6" />
+          View full calendar
+        </a>
       </div>
     </FadeReveal>
   );
