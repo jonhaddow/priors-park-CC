@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "preact/hooks";
-import type { VNode } from "preact";
+import type { ComponentChildren } from "preact";
 
-const FadeReveal = ({ children }: { children: VNode }) => {
+const FadeReveal = ({ children }: { children: ComponentChildren }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const FadeReveal = ({ children }: { children: VNode }) => {
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.2 },
     );
 
     if (ref.current) {

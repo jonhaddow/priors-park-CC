@@ -4,6 +4,7 @@ import Hero from "../components/Hero.tsx";
 import PhotoSlideshow from "../components/PhotoSlideshow.tsx";
 import { getConfig } from "helpers/config";
 import WhatsOn from "components/WhatsOn";
+import OurStory from "components/OurStory";
 
 import "../styles/global.css";
 
@@ -22,6 +23,7 @@ const config = await getConfig();
       <Hero client:load />
       <WhatsOn client:load />
       <PhotoSlideshow photoGallery={config.photoGallery} />
+      <OurStory client:load />
     </div>
   </body>
 </html>
