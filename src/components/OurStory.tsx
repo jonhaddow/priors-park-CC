@@ -26,20 +26,35 @@ function Person({ name, title }: { name: string; title: string }) {
 function OurStory() {
   return (
     <FadeReveal>
-      <div className="bg-light-background flex flex-col gap-12 p-8 md:flex-row">
+      <div className="bg-light-background flex flex-col gap-8 px-8 md:flex-row">
         <Section>
           <SectionHeader>Our mission</SectionHeader>
-          <div className="text-text-secondary text-md italic">
-            We are a local church committed to building authentic community,
-            sharing life together, and following Jesus in everyday ways.
+          <div className="text-text-secondary text-md flex flex-col gap-2">
+            <p className="italic">
+              We are a local church committed to building authentic community,
+              sharing life together, and following Jesus in everyday ways.
+            </p>
+            <p>
+              We offer many different types of support to our local community
+              including our compassion cafe.
+            </p>
+            <p>
+              We are part of a network of{" "}
+              <a className="underline" href="https://fiec.org.uk/">
+                FIEC (Fellowship of independent evangelical Churches)
+              </a>
+              .
+            </p>
           </div>
         </Section>
         <Section>
           <SectionHeader>Our team</SectionHeader>
           <div className="text-text-secondary text-md">
-            <ul className="flex flex-col gap-4">
-              <Person name="Nigel Haddow" title="Pastor" />
-              <Person name="Jackie Haddow" title="Pastoral Support Worker" />
+            <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+              <Person name="Nigel" title="Pastor" />
+              <Person name="Jackie" title="Pastoral Support Worker" />
+              <Person name="Vanessa" title="Children's leader" />
+              <Person name="Tammie" title="Kitchen and cafe manager" />
             </ul>
           </div>
         </Section>
