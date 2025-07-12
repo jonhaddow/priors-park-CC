@@ -3,7 +3,7 @@ import FadeReveal from "./FadeReveal";
 import fbLogo from "assets/fb_logo.png";
 
 const Logo = () => {
-  return <img className="h-8 w-8" src={fbLogo.src} alt="" />;
+  return <img className="h-8 w-8" src={fbLogo.src} alt="Facebook logo" />;
 };
 
 function SocialLinks() {
