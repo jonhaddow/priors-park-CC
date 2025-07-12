@@ -2,6 +2,7 @@ import type { ComponentProps } from "preact";
 import EventCard from "./EventCard";
 import FadeReveal from "./FadeReveal";
 import calendarIcon from "assets/calendar.svg";
+import BackgroundShade from "./BackgroundShade";
 
 const allEvents: ComponentProps<typeof EventCard>[] = [
   {
@@ -28,14 +29,32 @@ const allEvents: ComponentProps<typeof EventCard>[] = [
     description:
       "Please come along or contact Nigel if you would like to join in with prayer at the chapel.",
   },
+  {
+    title: "Fellowship",
+    time: "Every other Thursday at 7pm",
+    description:
+      "Fellowship evening to study the bible together. If you would like to come please contact Nigel.",
+  },
+  {
+    title: "Men’s Group",
+    time: "1st and 3rd Friday at 7pm",
+    description:
+      "Sharing time together as men, learning how we can support each other through the difficulties of life.",
+  },
+  {
+    title: "Compassion Cafe",
+    time: "Tuesdays/Friday, 9am–2pm",
+    description:
+      "In support of Compassion Uk. Providing free and low cost food and drinks. Full breakfast and lunch menus.",
+  },
 ];
 
 function WhatsOn() {
   return (
     <FadeReveal>
-      <div className="bg-dark-background flex flex-col items-center justify-center gap-12 px-4 py-12 md:px-8">
+      <BackgroundShade color="#65b215">
         <h2 className="text-text-inverse text-4xl font-bold">What&apos;s on</h2>
-        <div className="relative grid w-full grid-cols-1 items-center justify-center gap-8 px-8 sm:grid-cols-2 md:grid-cols-2 md:px-12 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="relative flex w-full flex-wrap justify-center gap-8">
           {allEvents.map((event) => (
             <EventCard key={event.title} {...event} />
           ))}
@@ -47,7 +66,7 @@ function WhatsOn() {
           <img src={calendarIcon.src} alt="Calendar" className="h-6 w-6" />
           View full calendar
         </a>
-      </div>
+      </BackgroundShade>
     </FadeReveal>
   );
 }
