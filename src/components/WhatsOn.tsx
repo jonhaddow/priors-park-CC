@@ -52,7 +52,7 @@ const allEvents: ComponentProps<typeof EventCard>[] = [
 function WhatsOn() {
   return (
     <FadeReveal>
-      <BackgroundShade color="#65b215">
+      <BackgroundShade color="green">
         <h2 className="text-text-inverse text-4xl font-bold">What&apos;s on</h2>
         <div className="relative flex w-full flex-wrap justify-center gap-8">
           {allEvents.map((event) => (
