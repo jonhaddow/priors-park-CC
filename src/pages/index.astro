@@ -37,5 +37,12 @@ const optimizedChurchHeader = await getImage({ src: frontChurchHeader });
       <Sections sections={sections} sermons={sermons} config={config} />
     </main>
     <Footer footer={config.footer} />
+
+    <!-- Cloudflare Web Analytics -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "0a58e2a18d0a4e70a0228620e3e451cb"}'
+    ></script><!-- End Cloudflare Web Analytics -->
   </body>
 </html>
