@@ -6,7 +6,7 @@ function Sundays() {
     <FadeReveal>
       <div className="grid place-items-center px-8">
         <div className="flex max-w-lg flex-col gap-8">
-          <div className="flex flex-row items-center justify-between">
+          <div className="flex flex-col flex-wrap items-start justify-between gap-4 md:flex-row md:items-center">
             <h2 className="text-text-primary text-4xl font-bold">Sundays</h2>
             <a
               href="/sermons"
