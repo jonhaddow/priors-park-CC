@@ -5,7 +5,7 @@ import PhotoSlideshow from "../components/PhotoSlideshow.tsx";
 import { getConfig } from "helpers/config";
 import WhatsOn from "../components/WhatsOn";
 import OurStory from "../components/OurStory";
-import SocialLinks from "../components/SocialLinks";
+import FooterLinks from "../components/FooterLinks.tsx";
 
 import "../styles/global.css";
 
@@ -25,7 +25,7 @@ const config = await getConfig();
       <WhatsOn client:load />
       <PhotoSlideshow photoGallery={config.photoGallery} />
       <OurStory client:load />
-      <SocialLinks client:load />
+      <FooterLinks client:load />
     </div>
   </body>
 </html>
