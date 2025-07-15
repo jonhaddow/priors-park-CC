@@ -1,42 +1,34 @@
 ---
 import BaseHead from "../components/BaseHead.tsx";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.tsx";
 import Hero from "../components/Hero.tsx";
 import PhotoSlideshow from "../components/PhotoSlideshow.tsx";
-import Sections from "../components/Sections.tsx";
-import { getSections } from "../helpers/sections";
-import { getSermons } from "helpers/sermons";
 import { getConfig } from "helpers/config";
-import { getImage } from "astro:assets";
-import frontChurchHeader from "assets/front_church_header.jpg";
+import WhatsOn from "../components/WhatsOn";
+import OurStory from "../components/OurStory";
+import FooterLinks from "../components/FooterLinks.tsx";
+import Sundays from "../components/Sundays.tsx";
 
 import "../styles/global.css";
 
 const { url, site } = Astro;
 
-const sections = await getSections();
-const sermons = await getSermons();
 const config = await getConfig();
-const optimizedChurchHeader = await getImage({ src: frontChurchHeader });
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-light-background">
   <head>
     <BaseHead url={url} site={site} />
   </head>
   <body>
-    <Header
-      client:load
-      sections={[{ _id: "home", title: "Home" }, ...sections]}
-    />
-    <Hero heroPhoto={optimizedChurchHeader} noticeSheet={config.noticeSheet} />
-    <PhotoSlideshow client:visible photoGallery={config.photoGallery} />
-    <main>
-      <Sections sections={sections} sermons={sermons} config={config} />
-    </main>
-    <Footer footer={config.footer} />
+    <div class="flex flex-col gap-20 md:px-0">
+      <Hero client:load />
+      <WhatsOn client:load />
+      <Sundays client:load />
+      <PhotoSlideshow photoGallery={config.photoGallery} />
+      <OurStory client:load />
+      <FooterLinks client:load />
+    </div>
 
     <!-- Cloudflare Web Analytics -->
     <script
