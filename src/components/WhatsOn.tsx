@@ -6,12 +6,6 @@ import BackgroundShade from "./BackgroundShade";
 
 const allEvents: ComponentProps<typeof EventCard>[] = [
   {
-    title: "Sunday Service",
-    time: "Join us at 3:30pm",
-    description:
-      "Come worship Jesus Christ and hear Bible teaching. Children are welcome with engaging activities provided during the service.",
-  },
-  {
     title: "Lighthouse Club",
     time: "Wednesdays at 5pm (term time)",
     description:
@@ -53,7 +47,11 @@ function WhatsOn() {
   return (
     <FadeReveal>
       <BackgroundShade color="green">
-        <h2 className="text-text-inverse text-4xl font-bold">What&apos;s on</h2>
+        <div className="flex w-full flex-row items-center justify-center">
+          <h2 className="text-text-inverse text-4xl font-bold">
+            What&apos;s on
+          </h2>
+        </div>
         <div className="relative flex w-full flex-wrap justify-center gap-8">
           {allEvents.map((event) => (
             <EventCard key={event.title} {...event} />

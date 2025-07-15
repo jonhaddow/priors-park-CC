@@ -6,6 +6,7 @@ import { getConfig } from "helpers/config";
 import WhatsOn from "../components/WhatsOn";
 import OurStory from "../components/OurStory";
 import FooterLinks from "../components/FooterLinks.tsx";
+import Sundays from "../components/Sundays.tsx";
 
 import "../styles/global.css";
 
@@ -23,6 +24,7 @@ const config = await getConfig();
     <div class="flex flex-col gap-20 md:px-0">
       <Hero client:load />
       <WhatsOn client:load />
+      <Sundays client:load />
       <PhotoSlideshow photoGallery={config.photoGallery} />
       <OurStory client:load />
       <FooterLinks client:load />
