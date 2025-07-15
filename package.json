@@ -24,16 +24,16 @@
     "@sanity/image-url": "^1.1.0",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.10",
-    "astro": "^5.9.3",
+    "astro": "^5.10.0",
     "eslint": "^9.29.0",
     "preact": "^10.26.9",
-    "sanity": "^3.92.0",
+    "sanity": "^3.93.0",
     "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
     "eslint-config-jonhaddow": "^5.5.0",
-    "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.13",
+    "prettier": "^3.6.0",
     "typescript": "^5.8.3"
   }
 }
