@@ -51,7 +51,7 @@ function Sermon({
 function SermonList() {
   return (
     <BackgroundShade color="green" direction="left" className="min-h-screen">
-      <ul className="flex flex-col gap-8 px-16">
+      <ul className="flex flex-col gap-8 px-4 md:px-16">
         <Sermon
           title="Sermon 1"
           date="2021-01-01"

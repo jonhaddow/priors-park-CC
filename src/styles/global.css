@@ -48,5 +48,5 @@ p {
 
 :root {
   /* 3rd party audio player (plyr) */
-  --plyr-audio-controls-background: theme(colors.light-background);
+  --plyr-audio-controls-background: transparent
 }
