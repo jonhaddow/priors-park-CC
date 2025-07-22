@@ -2,11 +2,15 @@ import type { ComponentChildren } from "preact";
 import FadeReveal from "./FadeReveal";
 
 function Section({ children }: { children: ComponentChildren }) {
-  return <div className="flex w-full flex-col gap-4 md:w-1/2">{children}</div>;
+  return (
+    <div className="@container flex w-full flex-col gap-8 md:w-1/2">
+      {children}
+    </div>
+  );
 }
 
 function SectionHeader({ children }: { children: ComponentChildren }) {
-  return <h2 className="text-text-primary text-2xl font-bold">{children}</h2>;
+  return <h2 className="text-text-primary text-3xl font-bold">{children}</h2>;
 }
 
 function Person({ name, title }: { name: string; title: string }) {
@@ -29,7 +33,7 @@ function OurStory() {
       <div className="bg-light-background flex flex-col gap-8 px-8 md:flex-row">
         <Section>
           <SectionHeader>Our mission</SectionHeader>
-          <div className="text-text-secondary text-md flex flex-col gap-2">
+          <div className="text-text-secondary flex flex-col gap-2 text-lg">
             <p className="italic">
               We are a local church committed to building authentic community,
               sharing life together, and following Jesus in everyday ways.
@@ -50,7 +54,7 @@ function OurStory() {
         <Section>
           <SectionHeader>Our team</SectionHeader>
           <div className="text-text-secondary text-md">
-            <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <ul className="grid grid-cols-1 gap-4 @md:grid-cols-2">
               <Person name="Nigel" title="Pastor" />
               <Person name="Jackie" title="Pastoral Support Worker" />
               <Person name="Vanessa" title="Children's leader" />

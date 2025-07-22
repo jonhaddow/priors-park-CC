@@ -59,7 +59,7 @@ function WhatsOn() {
         </div>
         <a
           href="/events"
-          className="text-text-inverse flex cursor-pointer items-center gap-2 text-lg font-bold hover:underline"
+          className="text-text-inverse flex cursor-pointer items-center gap-2 text-lg font-bold underline underline-offset-2 hover:no-underline"
         >
           <img src={calendarIcon.src} alt="Calendar" className="h-6 w-6" />
           View full calendar

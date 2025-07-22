@@ -1,0 +1,29 @@
+---
+import BaseHead from "../components/BaseHead.tsx";
+import { getConfig } from "helpers/config";
+import BackHomeLogo from "../components/BackHomeLogo.tsx";
+import SermonList from "../components/SermonList.tsx";
+import RainbowBanner from "../components/RainbowBanner.tsx";
+
+import "../styles/global.css";
+
+const { url, site } = Astro;
+
+const config = await getConfig();
+---
+
+<!doctype html>
+<html lang="en" class="bg-light-background">
+  <head>
+    <BaseHead url={url} site={site} />
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-row items-stretch">
+      <RainbowBanner className="self-stretch w-2" dir="vertical" />
+      <div class="flex flex-col sm:flex-row flex-1 items-stretch">
+        <BackHomeLogo client:load />
+        <SermonList />
+      </div>
+    </div>
+  </body>
+</html>

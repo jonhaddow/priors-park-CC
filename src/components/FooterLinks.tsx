@@ -39,8 +39,8 @@ function FooterLinks() {
   return (
     <FadeReveal>
       <BackgroundShade color="yellow" direction="right">
-        <div className="flex flex-col gap-16">
-          <div className="flex w-full flex-row flex-wrap items-center justify-around gap-8">
+        <div className="flex w-full flex-col gap-16">
+          <div className="flex w-full flex-row flex-wrap items-center justify-around gap-8 gap-y-16">
             <CTA
               icon={mail.src}
               header="Email Us"

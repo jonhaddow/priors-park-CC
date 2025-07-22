@@ -1,15 +1,13 @@
 import logo from "assets/logo.png";
+import RainbowBanner from "./RainbowBanner";
 
 const Hero = () => {
   return (
     <div className="flex flex-col gap-12 px-12 py-12 md:gap-24 md:px-0">
-      <div className="fixed top-0 left-0 z-50 flex h-2 w-full rounded-b-md shadow-sm backdrop-blur-md">
-        <div className="bg-brand-red/40 flex-1"></div>
-        <div className="flex-1 bg-yellow-400/40"></div>
-        <div className="bg-brand-green/40 flex-1"></div>
-        <div className="bg-brand-light-blue/40 flex-1"></div>
-      </div>
-      {/* Hero */}
+      <RainbowBanner
+        className="fixed top-0 left-0 z-50 h-2 w-full"
+        dir="horizontal"
+      />
       <div className="flex w-full items-center justify-center">
         <img src={logo.src} alt="Church logo" width={250} />
       </div>
