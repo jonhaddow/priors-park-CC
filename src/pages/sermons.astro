@@ -1,7 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.tsx";
 import { getConfig } from "helpers/config";
-import BackHomeLogo from "../components/BackHomeLogo.tsx";
+import SermonNav from "../components/SermonNav.tsx";
 import SermonList from "../components/SermonList.tsx";
 import RainbowBanner from "../components/RainbowBanner.tsx";
 
@@ -16,14 +16,17 @@ const config = await getConfig();
 <html lang="en" class="bg-light-background">
   <head>
     <BaseHead url={url} site={site} />
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
   </head>
   <body>
-    <div class="min-h-screen flex flex-row items-stretch">
-      <RainbowBanner className="self-stretch w-2" dir="vertical" />
-      <div class="flex flex-col sm:flex-row flex-1 items-stretch">
-        <BackHomeLogo client:load />
-        <SermonList />
-      </div>
+    <div class="min-h-screen flex flex-col">
+      <RainbowBanner
+        className="fixed top-0 left-0 z-50 h-2 w-full"
+        dir="horizontal"
+      />
+      <SermonNav client:load />
+      <SermonList client:load />
     </div>
   </body>
 </html>

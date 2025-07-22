@@ -3,7 +3,7 @@ import type { ComponentChildren } from "preact";
 function BackgroundShade({
   color,
   direction = "left",
-  className,
+  className = "",
   children,
 }: {
   color: "green" | "red" | "yellow";
@@ -30,7 +30,7 @@ function BackgroundShade({
 
   return (
     <div
-      className={`${className} bg-dark-background @container relative flex flex-col items-center justify-center gap-12 px-4 py-12 @md:px-8`}
+      className={`${className} bg-dark-background @container relative px-4 py-12 @md:px-8`}
     >
       <div className="pointer-events-none absolute inset-0">
         <div

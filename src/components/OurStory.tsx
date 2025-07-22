@@ -30,7 +30,7 @@ function Person({ name, title }: { name: string; title: string }) {
 function OurStory() {
   return (
     <FadeReveal>
-      <div className="bg-light-background flex flex-col gap-8 px-8 md:flex-row">
+      <div className="bg-light-background flex flex-col gap-16 px-8 md:flex-row lg:px-32">
         <Section>
           <SectionHeader>Our mission</SectionHeader>
           <div className="text-text-secondary flex flex-col gap-2 text-lg">

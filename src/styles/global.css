@@ -19,6 +19,7 @@
 
   --font-header: "Poppins", sans-serif;
   --font-body: "Nunito", sans-serif;
+
 }
 
 p {
@@ -43,4 +44,9 @@ p {
 
 @utility animate-scroll-paused {
   animation-play-state: paused;
+}
+
+:root {
+  /* 3rd party audio player (plyr) */
+  --plyr-audio-controls-background: theme(colors.light-background);
 }
