@@ -4,12 +4,13 @@ import { getConfig } from "helpers/config";
 import SermonNav from "../components/SermonNav.tsx";
 import SermonList from "../components/SermonList.tsx";
 import RainbowBanner from "../components/RainbowBanner.tsx";
+import { getSermons } from "helpers/sermons";
 
 import "../styles/global.css";
 
 const { url, site } = Astro;
 
-const config = await getConfig();
+const sermons = await getSermons();
 ---
 
 <!doctype html>
@@ -26,7 +27,7 @@ const config = await getConfig();
         dir="horizontal"
       />
       <SermonNav client:load />
-      <SermonList client:load />
+      <SermonList client:load sermons={sermons} />
     </div>
   </body>
 </html>
