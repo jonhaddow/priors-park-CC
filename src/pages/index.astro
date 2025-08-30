@@ -1,5 +1,5 @@
 ---
-import BaseHead from "../components/BaseHead.tsx";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.tsx";
 import PhotoSlideshow from "../components/PhotoSlideshow.tsx";
 import { getConfig } from "helpers/config";
@@ -8,33 +8,16 @@ import OurStory from "../components/OurStory";
 import FooterLinks from "../components/FooterLinks.tsx";
 import Sundays from "../components/Sundays.tsx";
 
-import "../styles/global.css";
-
-const { url, site } = Astro;
-
 const config = await getConfig();
 ---
 
-<!doctype html>
-<html lang="en" class="bg-light-background">
-  <head>
-    <BaseHead url={url} site={site} />
-  </head>
-  <body>
-    <div class="flex flex-col gap-20 md:px-0">
-      <Hero client:load />
-      <WhatsOn client:load />
-      <Sundays client:load />
-      <PhotoSlideshow photoGallery={config.photoGallery} />
-      <OurStory client:load />
-      <FooterLinks client:load />
-    </div>
-
-    <!-- Cloudflare Web Analytics -->
-    <script
-      defer
-      src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token": "0a58e2a18d0a4e70a0228620e3e451cb"}'
-    ></script><!-- End Cloudflare Web Analytics -->
-  </body>
-</html>
+<BaseLayout>
+  <div class="flex flex-col gap-20 md:px-0">
+    <Hero client:load />
+    <WhatsOn client:load />
+    <Sundays client:load />
+    <PhotoSlideshow photoGallery={config.photoGallery} />
+    <OurStory client:load />
+    <FooterLinks client:load />
+  </div>
+</BaseLayout>

@@ -26,10 +26,7 @@ function Sundays() {
               3.30pm. Children are welcome with engaging activities provided
               during the service.
             </p>
-            <p>
-              The church is accessible for people with disabilities, and there
-              is a loop system.
-            </p>
+            <p>The church is wheelchair accessible.</p>
             <p>
               On the 3rd Sunday of each month we meet for breakfast at 9:30 then
               an interactive service at 10:15 including crafts, games and

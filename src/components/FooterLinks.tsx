@@ -29,8 +29,8 @@ function CTA({
   return (
     <div className="flex flex-col items-center gap-4">
       <img loading="lazy" src={icon} alt="" className="h-6 w-6" />
-      <h2 className="text-text-inverse text-xl font-bold">{header}</h2>
-      <p className="text-text-inverse">{text}</p>
+      <h2 className="text-xl font-bold">{header}</h2>
+      <p>{text}</p>
     </div>
   );
 }
@@ -40,7 +40,7 @@ function FooterLinks() {
     <FadeReveal>
       <BackgroundShade color="yellow" direction="right">
         <div className="flex w-full flex-col gap-16">
-          <div className="flex w-full flex-row flex-wrap items-center justify-around gap-8 gap-y-16">
+          <div className="text-text-inverse flex w-full flex-row flex-wrap items-center justify-around gap-8 gap-y-16">
             <CTA
               icon={mail.src}
               header="Email Us"
