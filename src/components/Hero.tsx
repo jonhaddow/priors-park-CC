@@ -1,36 +1,34 @@
-import type { Config } from "types";
 import logo from "assets/logo.png";
-import type { GetImageResult } from "astro";
+import RainbowBanner from "./RainbowBanner";
+import PinIcon from "./svgs/PinIcon";
 
-interface HeroProps {
-  noticeSheet: Config["noticeSheet"];
-  heroPhoto: GetImageResult;
-}
-const Hero = ({ heroPhoto, noticeSheet }: HeroProps) => {
+const Hero = () => {
   return (
-    <div
-      id="home"
-      className="bg-cover bg-center bg-no-repeat pt-14"
-      style={{ backgroundImage: `url(${heroPhoto.src})` }}
-    >
-      <div className="flex flex-wrap items-center justify-center gap-16 p-16">
-        <div className="flex items-center justify-center rounded-lg bg-gray-50 p-2">
-          <img src={logo.src} alt="Church logo" width={250} />
-        </div>
-        <div className="flex flex-col gap-4">
-          <a
-            href="https://square.link/u/1C92EgRJ"
-            className="flex h-16 w-56 items-center justify-center rounded-md bg-primary p-2 font-bold text-white shadow-xs transition-colors hover:bg-primary-dark hover:underline focus:bg-primary-dark focus:underline"
-          >
-            Donate
-          </a>
-          <a
-            className="mt-5 flex h-16 w-56 items-center justify-center rounded-md bg-white p-2 text-center font-bold text-primary transition-colors hover:bg-gray-200 hover:underline focus:bg-gray-200 focus:underline"
-            href={noticeSheet.fileURL}
-          >
-            {noticeSheet.text}
-          </a>
-        </div>
+    <div className="flex flex-col gap-12 px-12 py-12 md:px-0">
+      <RainbowBanner
+        className="fixed top-0 left-0 z-50 h-2 w-full"
+        dir="horizontal"
+      />
+      <div className="flex w-full items-center justify-center">
+        <img src={logo.src} alt="Church logo" className="w-48 md:w-64" />
+      </div>
+      <div
+        className="relative flex w-full flex-col items-center justify-center gap-12"
+        data-reveal
+      >
+        <h1 className="font-header text-text-primary max-w-2xl text-center text-4xl leading-12 font-bold md:text-6xl md:leading-20">
+          Church at the heart of Priors Park
+        </h1>
+        <p className="text-text-secondary max-w-lg text-center text-xl md:text-2xl">
+          Worship with us on Sundays at 3.30pm, or come along to one of our
+          community events during the week.
+        </p>
+        <p className="text-text-secondary text-md flex max-w-lg items-center justify-center gap-2 text-center md:text-xl">
+          <PinIcon className="text-text-secondary inline h-5 w-5 md:h-6 md:w-6" />
+          <span className="text-text-secondary inline">
+            Queens Road, Tewkesbury
+          </span>
+        </p>
       </div>
     </div>
   );
