@@ -1,7 +1,9 @@
+import type { PortableTextBlock } from "sanity";
+import { RichText } from "./RichText";
 import FadeReveal from "./FadeReveal";
 import audio from "assets/audio.svg";
 
-function Sundays() {
+function Sundays({ text }: { text: PortableTextBlock[] }) {
   return (
     <FadeReveal>
       <div className="grid place-items-center px-8">
@@ -20,19 +22,10 @@ function Sundays() {
               Listen to sermons
             </a>
           </div>
-          <div className="text-text-secondary flex flex-col gap-4 text-lg">
-            <p>
-              Come worship Jesus Christ and hear Bible teaching. Every Sunday at
-              3.30pm. Children are welcome with engaging activities provided
-              during the service.
-            </p>
-            <p>The church is wheelchair accessible.</p>
-            <p>
-              On the 3rd Sunday of each month we meet for breakfast at 9:30 then
-              an interactive service at 10:15 including crafts, games and
-              activities for all the family.
-            </p>
-          </div>
+          <RichText
+            className="text-text-secondary flex flex-col gap-4 text-lg"
+            value={text}
+          />
         </div>
       </div>
     </FadeReveal>

@@ -4,12 +4,13 @@ import fbLogo from "assets/fb_logo.png";
 import mail from "assets/mail.svg";
 import phone from "assets/phone.svg";
 import pin from "assets/pin.svg";
+import type { Config } from "types";
 
-function SocialLinks() {
+function SocialLinks({ facebook }: { facebook: string }) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex w-full flex-row justify-center gap-2">
-        <a href="https://www.facebook.com/Priors.Park.Chapel">
+        <a href={facebook}>
           <img className="h-8 w-8" src={fbLogo.src} alt="Facebook logo" />
         </a>
       </div>
@@ -35,25 +36,17 @@ function CTA({
   );
 }
 
-function FooterLinks() {
+function FooterLinks({ config }: { config: Config }) {
   return (
     <FadeReveal>
       <BackgroundShade color="yellow" direction="right">
         <div className="flex w-full flex-col gap-16">
           <div className="text-text-inverse flex w-full flex-row flex-wrap items-center justify-around gap-8 gap-y-16">
-            <CTA
-              icon={mail.src}
-              header="Email Us"
-              text="office@priorsparkcommunitychurch.co.uk"
-            />
-            <CTA icon={phone.src} header="Call Us" text="07307 079129" />
-            <CTA
-              icon={pin.src}
-              header="Visit Us"
-              text="Queens Road, Tewkesbury GL20 5EY"
-            />
+            <CTA icon={mail.src} header="Email Us" text={config.email} />
+            <CTA icon={phone.src} header="Call Us" text={config.phone} />
+            <CTA icon={pin.src} header="Visit Us" text={config.address} />
           </div>
-          <SocialLinks />
+          <SocialLinks facebook={config.facebook} />
         </div>
       </BackgroundShade>
     </FadeReveal>

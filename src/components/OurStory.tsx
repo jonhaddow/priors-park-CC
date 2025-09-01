@@ -1,5 +1,7 @@
 import type { ComponentChildren } from "preact";
 import FadeReveal from "./FadeReveal";
+import { RichText } from "./RichText";
+import type { Config, Team } from "types";
 
 function Section({ children }: { children: ComponentChildren }) {
   return (
@@ -43,32 +45,33 @@ function NetworkLink({
   );
 }
 
-function OurStory() {
+function OurStory({
+  mission,
+  network,
+  team,
+}: {
+  mission: Config["mission"];
+  network: Config["network"];
+  team: Team[];
+}) {
   return (
     <FadeReveal>
       <div className="bg-light-background px-8 lg:px-32">
         <div className="flex flex-col gap-16 md:flex-row">
           <Section>
             <SectionHeader>Our mission</SectionHeader>
-            <div className="text-text-secondary flex flex-col gap-2 text-lg">
-              <p className="italic">
-                We are a local church committed to building authentic community,
-                sharing life together, and following Jesus in everyday ways.
-              </p>
-              <p>
-                We offer many different types of support to our local community
-                including our compassion cafe.
-              </p>
-            </div>
+            <RichText
+              className="text-text-secondary flex flex-col gap-2 text-lg"
+              value={mission}
+            />
             <SectionHeader>Network</SectionHeader>
             <div className="text-text-secondary text-md">
               <ul className="ml-4 list-disc">
-                <NetworkLink href="https://fiec.org.uk/">
-                  FIEC (Fellowship of independent evangelical Churches)
-                </NetworkLink>
-                <NetworkLink href="https://tewkesbury.church/">
-                  Tewkesbury Churches Together
-                </NetworkLink>
+                {network.map((item) => (
+                  <NetworkLink key={item.name} href={item.url}>
+                    {item.name}
+                  </NetworkLink>
+                ))}
               </ul>
             </div>
           </Section>
@@ -76,10 +79,13 @@ function OurStory() {
             <SectionHeader>Our team</SectionHeader>
             <div className="text-text-secondary text-md">
               <ul className="grid grid-cols-1 gap-4 @md:grid-cols-2">
-                <Person name="Nigel" title="Pastor" />
-                <Person name="Jackie" title="Pastoral Support Worker" />
-                <Person name="Vanessa" title="Children's leader" />
-                <Person name="Tammie" title="Kitchen and cafe manager" />
+                {team.map((person) => (
+                  <Person
+                    key={person.name}
+                    name={person.name}
+                    title={person.description}
+                  />
+                ))}
               </ul>
             </div>
           </Section>
