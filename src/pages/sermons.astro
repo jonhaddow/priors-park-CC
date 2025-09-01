@@ -20,7 +20,7 @@ const sermons = await getSermons();
       className="fixed top-0 left-0 z-50 h-2 w-full"
       dir="horizontal"
     />
-    <SermonNav client:load />
+    <SermonNav />
     <SermonList client:load sermons={sermons} />
   </div>
 </BaseLayout>
