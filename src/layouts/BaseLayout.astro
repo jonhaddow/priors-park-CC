@@ -1,0 +1,24 @@
+---
+import BaseHead from "./BaseHead.astro";
+
+import "../styles/global.css";
+
+const { title } = Astro.props;
+---
+
+<html lang="en" class="bg-light-background">
+  <head>
+    <BaseHead title={title} />
+    <slot name="head" />
+  </head>
+  <body class="h-full">
+    <slot />
+
+    <!-- Cloudflare Web Analytics -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "0a58e2a18d0a4e70a0228620e3e451cb"}'
+    ></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>
