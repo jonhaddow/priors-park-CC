@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 
 import BackgroundShade from "./BackgroundShade";
-import { default as Plyr } from "plyr";
+import Plyr from "plyr";
 import "plyr/dist/plyr.css";
-import { useLayoutEffect, useRef } from "preact/hooks";
+import { useEffect, useRef } from "preact/hooks";
 import type { Sermon } from "types";
 
 function Sermon({
@@ -20,9 +20,9 @@ function Sermon({
   const ref = useRef<HTMLAudioElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (ref.current) {
-      const player = new Plyr.default(ref.current, {
+      const player = new Plyr(ref.current, {
         controls: ["play", "progress", "current-time", "download"],
       });
       wrapperRef.current?.classList.remove("opacity-0");
