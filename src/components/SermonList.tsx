@@ -3,7 +3,7 @@
 import BackgroundShade from "./BackgroundShade";
 import Plyr from "plyr";
 import "plyr/dist/plyr.css";
-import { useLayoutEffect, useRef } from "preact/hooks";
+import { useEffect, useRef } from "preact/hooks";
 import type { Sermon } from "types";
 
 function Sermon({
@@ -20,7 +20,7 @@ function Sermon({
   const ref = useRef<HTMLAudioElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (ref.current) {
       const player = new Plyr(ref.current, {
         controls: ["play", "progress", "current-time", "download"],
