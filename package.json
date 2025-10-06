@@ -20,22 +20,22 @@
     "@portabletext/to-html": "^3.0.0",
     "@react-icons/all-files": "^4.1.0",
     "@sanity/astro": "^3.2.10",
-    "@sanity/client": "^7.11.2",
+    "@sanity/client": "^7.12.0",
     "@sanity/image-url": "^1.2.0",
     "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.1.13",
+    "@tailwindcss/vite": "^4.1.14",
     "astro": "^5.14.1",
-    "eslint": "^9.36.0",
+    "eslint": "^9.37.0",
     "plyr": "~3.7",
     "preact": "^10.27.2",
     "react-audio-player": "^0.17.0",
-    "sanity": "^4.10.1",
+    "sanity": "^4.10.2",
     "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
     "eslint-config-jonhaddow": "^5.5.0",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   }
 }
