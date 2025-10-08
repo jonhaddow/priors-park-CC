@@ -12,11 +12,7 @@ function Sundays({ text }: { text: PortableTextBlock[] }) {
             href="/sermons"
             className="text-text-inverse text-md flex gap-1 font-bold underline underline-offset-2 hover:no-underline"
           >
-            <img
-              src={audio.src}
-              alt=""
-              className="h-6 w-6 filter-[invert(1)]"
-            />
+            <img src={audio.src} alt="" className="h-6 w-6 invert" />
             Listen to sermons
           </a>
         </div>
