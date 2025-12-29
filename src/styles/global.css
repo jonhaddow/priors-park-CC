@@ -19,7 +19,6 @@
 
   --font-header: "Poppins", sans-serif;
   --font-body: "Nunito", sans-serif;
-
 }
 
 p {
@@ -48,5 +47,5 @@ p {
 
 :root {
   /* 3rd party audio player (plyr) */
-  --plyr-audio-controls-background: transparent
+  --plyr-audio-controls-background: transparent;
 }

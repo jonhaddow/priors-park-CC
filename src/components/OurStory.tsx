@@ -18,7 +18,7 @@ function SectionHeader({ children }: { children: ComponentChildren }) {
 function Person({ name, title }: { name: string; title: string }) {
   return (
     <li className="flex items-center gap-4">
-      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-200 font-semibold text-slate-600">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-200 font-semibold text-slate-600">
         {name.charAt(0)}
       </div>
       <div>
