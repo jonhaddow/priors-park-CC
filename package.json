@@ -27,7 +27,7 @@
     "astro": "^5.16.6",
     "eslint": "^9.39.2",
     "plyr": "~3.7",
-    "preact": "^10.28.1",
+    "preact": "^10.28.2",
     "react-audio-player": "^0.17.0",
     "sanity": "^5.1.0",
     "tailwindcss": "^4.0.14"
