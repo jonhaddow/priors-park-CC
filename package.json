@@ -24,7 +24,7 @@
     "@sanity/image-url": "^2.0.2",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.8",
+    "astro": "^5.16.11",
     "eslint": "^9.39.2",
     "plyr": "~3.7",
     "preact": "^10.28.2",
