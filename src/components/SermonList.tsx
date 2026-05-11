@@ -1,9 +1,6 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 
 import BackgroundShade from "./BackgroundShade";
-// @ts-expect-error — plyr's .d.ts mixes `export =` and `export default` which
-// TypeScript rejects under verbatimModuleSyntax, but plyr.mjs does export a
-// default at runtime.
 import Plyr from "plyr";
 import "plyr/dist/plyr.css";
 import { useEffect, useRef } from "preact/hooks";
