@@ -15,6 +15,6 @@ const sermons = await getSermons();
       dir="horizontal"
     />
     <SermonNav />
-    <SermonList client:load sermons={sermons} />
+    <SermonList client:only="preact" sermons={sermons} />
   </div>
 </BaseLayout>

@@ -58,7 +58,7 @@ function SermonList({ sermons }: { sermons: Sermon[] }) {
     <BackgroundShade
       color="green"
       direction="left"
-      className="grid flex-grow place-items-center"
+      className="grid grow place-items-center"
     >
       <ul className="flex max-w-2xl flex-col gap-8 px-4 md:px-16">
         {sermons.map((sermon) => (
