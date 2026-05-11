@@ -1,6 +1,9 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 
 import BackgroundShade from "./BackgroundShade";
+// @ts-expect-error — plyr's .d.ts mixes `export =` and `export default` which
+// TypeScript rejects under verbatimModuleSyntax, but plyr.mjs does export a
+// default at runtime.
 import Plyr from "plyr";
 import "plyr/dist/plyr.css";
 import { useEffect, useRef } from "preact/hooks";
@@ -58,7 +61,7 @@ function SermonList({ sermons }: { sermons: Sermon[] }) {
     <BackgroundShade
       color="green"
       direction="left"
-      className="grid flex-grow place-items-center"
+      className="grid grow place-items-center"
     >
       <ul className="flex max-w-2xl flex-col gap-8 px-4 md:px-16">
         {sermons.map((sermon) => (
