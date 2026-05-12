@@ -2,27 +2,26 @@ import type { SanityImageAssetDocument } from "@sanity/client";
 import type { PortableTextBlock } from "sanity";
 
 export interface Config {
-  footer: {
-    _key: string;
-    body: PortableTextBlock;
-    title: string;
-  }[];
-  noticeSheet: {
-    fileURL: string;
-    text: string;
-  };
+  title: string;
+  description: string;
+  sunday: PortableTextBlock[];
   photoGallery: {
     _key: string;
     image: SanityImageAssetDocument;
   }[];
-  sermonManagerSection: string;
+  mission: PortableTextBlock[];
+  network: { name: string; url: string }[];
+  email: string;
+  phone: string;
+  address: string;
+  facebook: string;
 }
 
-export interface Section {
+export interface WhatsOnCard {
   _id: string;
   title: string;
-  content: PortableTextBlock[];
-  imageUrl?: string;
+  subtitle: string;
+  description: string;
 }
 
 export interface Sermon {
@@ -30,4 +29,11 @@ export interface Sermon {
   title: string;
   fileURL: string;
   publishedDate: string;
+}
+
+export interface Team {
+  _id: string;
+  name: string;
+  description: string;
+  imageURL: string;
 }
