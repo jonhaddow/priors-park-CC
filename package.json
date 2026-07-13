@@ -24,17 +24,17 @@
     "@sanity/image-url": "^2.1.1",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.2",
-    "astro": "^7.0.5",
+    "astro": "^7.0.7",
     "eslint": "^10.0.0",
     "plyr": "^3.8.4",
-    "preact": "^10.29.3",
+    "preact": "^10.29.7",
     "react-audio-player": "^0.17.0",
-    "sanity": "^6.3.0",
+    "sanity": "^6.4.0",
     "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
     "eslint-config-jonhaddow": "^7.1.0",
-    "prettier": "^3.9.4",
+    "prettier": "^3.9.5",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "typescript": "^6.0.3"
   }
