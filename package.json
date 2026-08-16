@@ -20,7 +20,7 @@
     "@portabletext/to-html": "^6.0.0",
     "@react-icons/all-files": "^4.1.0",
     "@sanity/astro": "^3.5.0",
-    "@sanity/client": "^7.26.2",
+    "@sanity/client": "^8.0.0",
     "@sanity/image-url": "^2.1.1",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
