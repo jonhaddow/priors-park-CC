@@ -17,7 +17,7 @@
     "@astrojs/preact": "^6.0.2",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
-    "@portabletext/to-html": "^5.0.2",
+    "@portabletext/to-html": "^6.0.0",
     "@react-icons/all-files": "^4.1.0",
     "@sanity/astro": "^3.5.0",
     "@sanity/client": "^7.26.2",
