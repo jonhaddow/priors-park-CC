@@ -1,0 +1,149 @@
+---
+import logo from "assets/logo.png";
+import { primaryNav } from "../config/nav";
+import Container from "./ui/Container.astro";
+import Icon from "./ui/Icon.astro";
+import { siteDescription } from "../config/site";
+import type { Config } from "types";
+
+interface Props {
+  config: Config;
+}
+
+const { config } = Astro.props;
+const year = new Date().getFullYear();
+const mapsUrl = config.address
+  ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(config.address)}`
+  : undefined;
+---
+
+<footer class="bg-deep on-deep text-ink-inverse-muted">
+  <Container size="wide" class="py-16">
+    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div class="flex flex-col gap-5 lg:col-span-1">
+        <div class="flex items-center gap-3">
+          <img
+            src={logo.src}
+            alt=""
+            width={250}
+            height={182}
+            class="h-14 w-auto rounded-lg bg-white/95 p-1"
+          />
+          <span class="flex flex-col leading-none">
+            <span class="font-display text-ink-inverse text-lg font-semibold">
+              Priors Park
+            </span>
+            <span
+              class="mt-1 text-[0.68rem] font-semibold tracking-[0.2em] uppercase"
+            >
+              Community Church
+            </span>
+          </span>
+        </div>
+        <p class="text-sm leading-relaxed">{siteDescription}</p>
+        {
+          config.facebook && (
+            <a
+              href={config.facebook}
+              class="text-ink-inverse hover:border-ink-inverse inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/25 transition hover:bg-white/10"
+            >
+              <Icon name="facebook" class="h-5 w-5" title="Facebook" />
+            </a>
+          )
+        }
+      </div>
+
+      <nav aria-labelledby="footer-nav-heading" class="flex flex-col gap-4">
+        <h2
+          id="footer-nav-heading"
+          class="text-ink-inverse text-xs font-semibold tracking-[0.18em] uppercase"
+        >
+          Explore
+        </h2>
+        <ul class="flex flex-col gap-3 text-sm">
+          {
+            primaryNav.map((item) => (
+              <li>
+                <a class="hover:text-ink-inverse transition" href={item.href}>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="flex flex-col gap-4">
+        <h2
+          class="text-ink-inverse text-xs font-semibold tracking-[0.18em] uppercase"
+        >
+          Get in touch
+        </h2>
+        <ul class="flex flex-col gap-3 text-sm">
+          {
+            config.email && (
+              <li>
+                <a
+                  class="hover:text-ink-inverse flex items-start gap-3 transition"
+                  href={`mailto:${config.email}`}
+                >
+                  <Icon name="mail" class="mt-0.5 h-4 w-4 shrink-0" />
+                  <span class="[overflow-wrap:anywhere]">{config.email}</span>
+                </a>
+              </li>
+            )
+          }
+          {
+            config.phone && (
+              <li>
+                <a
+                  class="hover:text-ink-inverse flex items-start gap-3 transition"
+                  href={`tel:${config.phone.replace(/\s+/g, "")}`}
+                >
+                  <Icon name="phone" class="mt-0.5 h-4 w-4 shrink-0" />
+                  <span>{config.phone}</span>
+                </a>
+              </li>
+            )
+          }
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h2
+          class="text-ink-inverse text-xs font-semibold tracking-[0.18em] uppercase"
+        >
+          Find us
+        </h2>
+        <address class="text-sm leading-relaxed not-italic">
+          {config.address}
+        </address>
+        {
+          mapsUrl && (
+            <a
+              href={mapsUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              class="text-ink-inverse hover:border-ink-inverse inline-flex w-fit items-center gap-2 rounded-full border border-white/25 px-4 py-2 text-sm font-semibold transition hover:bg-white/10"
+            >
+              <Icon name="pin" class="h-4 w-4" />
+              Open in maps
+            </a>
+          )
+        }
+      </div>
+    </div>
+
+    <div
+      class="mt-14 flex flex-col gap-4 border-t border-white/15 pt-8 text-xs sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>&copy; {year} Priors Park Community Church. All rights reserved.</p>
+      <p>
+        Built with <a
+          class="hover:text-ink-inverse underline underline-offset-2"
+          href="https://astro.build">Astro</a
+        >.
+      </p>
+    </div>
+  </Container>
+</footer>

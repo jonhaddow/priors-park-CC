@@ -1,13 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/Hero.tsx";
-import PhotoSlideshow from "../components/PhotoSlideshow.tsx";
+import ContactSection from "../components/ContactSection.astro";
+import Hero from "../components/Hero.astro";
+import OurStory from "../components/OurStory.astro";
+import PhotoStrip from "../components/PhotoStrip.astro";
+import Sundays from "../components/Sundays.astro";
+import WhatsOn from "../components/WhatsOn.astro";
 import { getConfig } from "helpers/config";
-import WhatsOn from "../components/WhatsOn";
-import OurStory from "../components/OurStory";
-import FooterLinks from "../components/FooterLinks.tsx";
-import { getWhatsOnCards } from "helpers/whatson";
 import { getTeam } from "helpers/team";
+import { getWhatsOnCards } from "helpers/whatson";
 
 const config = await getConfig();
 const cards = await getWhatsOnCards();
@@ -15,16 +16,14 @@ const team = await getTeam();
 ---
 
 <BaseLayout>
-  <div class="flex flex-col gap-20 md:px-0">
-    <Hero config={config} />
-    <WhatsOn client:load cards={cards} sundayText={config.sunday} />
-    <PhotoSlideshow photoGallery={config.photoGallery} />
-    <OurStory
-      client:load
-      mission={config.mission}
-      network={config.network}
-      team={team}
-    />
-    <FooterLinks client:load config={config} />
-  </div>
+  <Hero config={config} />
+  <WhatsOn cards={cards} />
+  <PhotoStrip photoGallery={config.photoGallery} />
+  <Sundays text={config.sunday} config={config} />
+  <OurStory
+    mission={config.mission}
+    network={config.network}
+    team={team}
+  />
+  <ContactSection config={config} />
 </BaseLayout>

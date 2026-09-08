@@ -1,0 +1,133 @@
+---
+import Container from "./ui/Container.astro";
+import Icon from "./ui/Icon.astro";
+import RichText from "./RichText.astro";
+import SectionHeading from "./ui/SectionHeading.astro";
+import type { PortableTextBlock } from "sanity";
+import type { Config } from "types";
+
+interface Props {
+  text: PortableTextBlock[];
+  config: Config;
+}
+
+const { text, config } = Astro.props;
+const mapsUrl = config.address
+  ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(config.address)}`
+  : undefined;
+---
+
+<section
+  id="sundays"
+  class="bg-deep on-deep relative scroll-mt-24 overflow-hidden py-20 lg:py-28"
+>
+  <div class="absolute inset-0 -z-0" aria-hidden="true">
+    <div
+      class="bg-brand-green/15 absolute -top-32 -left-24 h-[26rem] w-[26rem] rounded-full blur-3xl"
+    >
+    </div>
+    <div
+      class="bg-brand-blue/15 absolute -right-24 -bottom-32 h-[26rem] w-[26rem] rounded-full blur-3xl"
+    >
+    </div>
+  </div>
+
+  <Container size="wide" class="relative">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="flex flex-col gap-8 lg:col-span-7" data-reveal>
+        <SectionHeading
+          eyebrow="Sunday together"
+          title="What to expect when you visit"
+          tone="deep"
+        />
+        <RichText
+          class="prose prose-lg prose-invert prose-p:text-ink-inverse-muted prose-a:text-white max-w-2xl"
+          value={text}
+        />
+      </div>
+
+      <div class="flex flex-col gap-4 lg:col-span-5" id="visit">
+        <div
+          class="rounded-panel border border-white/12 bg-white/6 p-7 backdrop-blur-sm"
+          data-reveal
+        >
+          <h3 class="text-ink-inverse text-xl font-semibold">Plan your visit</h3>
+          <ul class="mt-6 flex flex-col gap-5">
+            <li class="flex items-start gap-4">
+              <span
+                class="text-ink-inverse flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10"
+              >
+                <Icon name="pin" class="h-5 w-5" />
+              </span>
+              <div>
+                <p class="text-ink-inverse text-sm font-semibold">Where</p>
+                <address
+                  class="text-ink-inverse-muted mt-1 text-sm leading-relaxed not-italic"
+                >
+                  {config.address}
+                </address>
+                {
+                  mapsUrl && (
+                    <a
+                      href={mapsUrl}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      class="text-ink-inverse mt-2 inline-flex items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+                    >
+                      Get directions
+                      <Icon name="external" class="h-3.5 w-3.5" />
+                    </a>
+                  )
+                }
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span
+                class="text-ink-inverse flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10"
+              >
+                <Icon name="headphones" class="h-5 w-5" />
+              </span>
+              <div>
+                <p class="text-ink-inverse text-sm font-semibold">
+                  Listen first
+                </p>
+                <p class="text-ink-inverse-muted mt-1 text-sm leading-relaxed">
+                  Recent talks are online, so you can get a feel for us before
+                  you come.
+                </p>
+                <a
+                  href="/sermons"
+                  class="text-ink-inverse mt-2 inline-flex items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+                >
+                  Listen to sermons
+                  <Icon name="arrow-right" class="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span
+                class="text-ink-inverse flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10"
+              >
+                <Icon name="mail" class="h-5 w-5" />
+              </span>
+              <div>
+                <p class="text-ink-inverse text-sm font-semibold">
+                  Questions first?
+                </p>
+                <p class="text-ink-inverse-muted mt-1 text-sm leading-relaxed">
+                  Send us a message and someone will get back to you.
+                </p>
+                <a
+                  href={`mailto:${config.email}`}
+                  class="text-ink-inverse mt-2 inline-flex items-center gap-1.5 text-sm font-semibold [overflow-wrap:anywhere] underline-offset-4 hover:underline"
+                >
+                  {config.email}
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

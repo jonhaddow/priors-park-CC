@@ -1,10 +1,20 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 
-import BackgroundShade from "./BackgroundShade";
 import Plyr from "plyr";
 import "plyr/dist/plyr.css";
-import { useEffect, useRef } from "preact/hooks";
-import type { Sermon } from "types";
+import { useEffect, useRef, useState } from "preact/hooks";
+import type { Sermon as SermonType } from "types";
+
+const dateFormatter = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
+function formatDate(value: string) {
+  const parsed = new Date(value);
+  return Number.isNaN(parsed.valueOf()) ? value : dateFormatter.format(parsed);
+}
 
 function Sermon({
   title,
@@ -18,34 +28,38 @@ function Sermon({
   fileURL: string;
 }) {
   const ref = useRef<HTMLAudioElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    if (ref.current) {
-      const player = new Plyr(ref.current, {
-        controls: ["play", "progress", "current-time", "download"],
-      });
-      wrapperRef.current?.classList.remove("opacity-0");
-      return () => player.destroy();
-    }
+    if (!ref.current) return;
+    const player = new Plyr(ref.current, {
+      controls: ["play", "progress", "current-time", "download"],
+      // Copied into `public` by scripts/sync-plyr-sprite.mjs.
+      iconUrl: "/assets/plyr.svg",
+    });
+    setReady(true);
+    return () => player.destroy();
   }, []);
 
   return (
-    <li className="bg-light-background flex flex-col items-start gap-4 rounded-2xl p-4">
-      <div className="flex w-full flex-row items-center justify-between gap-4">
-        <h3 className="text-text-primary text-2xl font-bold">{title}</h3>
-        <p className="text-text-secondary text-sm">{date}</p>
+    <li className="border-ink/8 hover:shadow-card rounded-card border bg-white p-6 transition duration-300">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+        <h2 className="font-display text-ink text-xl font-semibold sm:text-2xl">
+          {title}
+        </h2>
+        <p className="text-ink-muted bg-surface-muted shrink-0 rounded-full px-3 py-1 text-xs font-semibold">
+          <time dateTime={date}>{formatDate(date)}</time>
+        </p>
       </div>
       {description && (
-        <div className="flex flex-col">
-          <h3 className="text-text-secondary text-md">{description}</h3>
-        </div>
+        <p className="text-ink-muted mt-3 text-sm leading-relaxed">
+          {description}
+        </p>
       )}
       <div
-        ref={wrapperRef}
-        className="flex w-full flex-row items-center gap-4 rounded-2xl opacity-0 transition-opacity duration-300"
+        className={`bg-surface-muted mt-5 rounded-xl px-4 py-2 transition-opacity duration-300 ${ready ? "opacity-100" : "opacity-0"}`}
       >
-        <audio ref={ref} className="">
+        <audio ref={ref}>
           <source src={fileURL} />
         </audio>
       </div>
@@ -53,19 +67,13 @@ function Sermon({
   );
 }
 
-function SermonList({ sermons }: { sermons: Sermon[] }) {
+function SermonList({ sermons }: { sermons: SermonType[] }) {
   return (
-    <BackgroundShade
-      color="green"
-      direction="left"
-      className="grid grow place-items-center"
-    >
-      <ul className="flex max-w-2xl flex-col gap-8 px-4 md:px-16">
-        {sermons.map((sermon) => (
-          <Sermon key={sermon._id} {...sermon} date={sermon.publishedDate} />
-        ))}
-      </ul>
-    </BackgroundShade>
+    <ul className="flex flex-col gap-5">
+      {sermons.map((sermon) => (
+        <Sermon key={sermon._id} {...sermon} date={sermon.publishedDate} />
+      ))}
+    </ul>
   );
 }
 

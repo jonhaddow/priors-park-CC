@@ -1,0 +1,68 @@
+---
+import Button from "./ui/Button.astro";
+import Container from "./ui/Container.astro";
+import Icon from "./ui/Icon.astro";
+import SectionHeading from "./ui/SectionHeading.astro";
+import type { WhatsOnCard } from "types";
+
+interface Props {
+  cards: WhatsOnCard[];
+}
+
+const { cards } = Astro.props;
+
+/** Rotating accent so the grid reads as a set rather than a wall. */
+const accents = [
+  "bg-brand-green",
+  "bg-brand-amber",
+  "bg-brand-blue",
+  "bg-brand-red",
+  "bg-brand-navy",
+];
+---
+
+<section id="whats-on" class="bg-surface scroll-mt-24 py-20 lg:py-28">
+  <Container size="wide" class="flex flex-col gap-12">
+    <div
+      class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+      data-reveal
+    >
+      <SectionHeading
+        eyebrow="Through the week"
+        title="What's on at the church"
+      >
+        The regular groups and gatherings that run at the church. Everyone is
+        welcome.
+      </SectionHeading>
+      <Button href="/events" variant="secondary" class="shrink-0">
+        <Icon name="calendar" class="h-4 w-4" />
+        View full calendar
+      </Button>
+    </div>
+
+    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
+      {
+        cards.map((card, index) => (
+          <li class="group border-ink/8 hover:shadow-lift relative flex flex-col overflow-hidden rounded-card border bg-white p-6 transition duration-300 hover:-translate-y-1">
+            <span
+              class={`absolute inset-x-0 top-0 h-1 ${accents[index % accents.length]}`}
+              aria-hidden="true"
+            />
+            <h3 class="text-ink text-xl font-semibold">{card.title}</h3>
+            {card.subtitle && (
+              <p class="text-accent mt-2 flex items-center gap-2 text-sm font-semibold">
+                <Icon name="clock" class="h-4 w-4" />
+                {card.subtitle}
+              </p>
+            )}
+            {card.description && (
+              <p class="text-ink-muted mt-3 text-sm leading-relaxed">
+                {card.description}
+              </p>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </Container>
+</section>

@@ -1,0 +1,113 @@
+---
+import churchPhoto from "assets/front_church_header.jpg";
+import Button from "./ui/Button.astro";
+import Container from "./ui/Container.astro";
+import Icon from "./ui/Icon.astro";
+import type { Config } from "types";
+
+interface Props {
+  config: Config;
+}
+
+const { config } = Astro.props;
+---
+
+<section class="relative overflow-hidden">
+  {/* Layered background: warm wash, dot texture, soft brand glows. */}
+  <div class="absolute inset-0 -z-10" aria-hidden="true">
+    <div
+      class="from-surface-sunken via-surface-muted to-surface absolute inset-0 bg-gradient-to-b"
+    >
+    </div>
+    <div class="bg-dot-grid text-ink/[0.07] absolute inset-0"></div>
+    <div
+      class="bg-brand-green/15 absolute -top-24 -left-24 h-96 w-96 rounded-full blur-3xl"
+    >
+    </div>
+    <div
+      class="bg-brand-blue/15 absolute top-40 -right-32 h-[28rem] w-[28rem] rounded-full blur-3xl"
+    >
+    </div>
+  </div>
+
+  <Container size="wide" class="pt-14 pb-16 lg:pt-20 lg:pb-14">
+    <div class="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
+      <div class="flex flex-col items-start gap-7 lg:col-span-6">
+        {
+          config.address && (
+            <p class="text-ink-muted ring-ink/10 inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold tracking-[0.14em] uppercase ring-1">
+              <Icon name="pin" class="text-brand-red h-4 w-4" />
+              {config.address}
+            </p>
+          )
+        }
+
+        <h1 class="text-display text-ink font-semibold">
+          {config.title}
+        </h1>
+
+        <p class="text-lead text-ink-muted max-w-xl">
+          {config.description}
+        </p>
+
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Button href="#visit" size="lg">
+            Plan your visit
+            <Icon name="arrow-right" class="h-4 w-4" />
+          </Button>
+          <Button href="#whats-on" variant="secondary" size="lg">
+            <Icon name="calendar" class="h-4 w-4" />
+            See what's on
+          </Button>
+        </div>
+
+        <p class="text-ink-subtle flex items-center gap-2 text-sm">
+          <Icon name="heart" class="text-brand-red h-4 w-4" />
+          New here? You are very welcome — come as you are.
+        </p>
+      </div>
+
+      <div class="relative lg:col-span-6">
+        <div
+          class="shadow-lift relative overflow-hidden rounded-panel ring-1 ring-black/5"
+        >
+          <img
+            src={churchPhoto.src}
+            width={churchPhoto.width}
+            height={churchPhoto.height}
+            alt="The front of Priors Park Community Church on Queens Road, Tewkesbury"
+            class="h-[17rem] w-full object-cover object-[70%_62%] sm:h-[21rem] lg:h-[24rem]"
+            fetchpriority="high"
+          />
+          <div
+            class="from-deep/70 absolute inset-0 bg-gradient-to-t via-transparent to-transparent"
+            aria-hidden="true"
+          >
+          </div>
+        </div>
+
+        <div
+          class="shadow-card ring-ink/5 relative z-10 -mt-10 ml-6 w-fit max-w-[calc(100%-3rem)] rounded-card bg-white p-5 ring-1 sm:ml-8"
+        >
+          <div class="flex items-start gap-4">
+            <span
+              class="bg-brand-green/12 text-brand-green flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
+            >
+              <Icon name="users" class="h-5 w-5" />
+            </span>
+            <div>
+              <p class="text-ink font-semibold">Join us on a Sunday</p>
+              <a
+                href="#sundays"
+                class="text-accent inline-flex items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+              >
+                What to expect when you visit
+                <Icon name="arrow-right" class="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
