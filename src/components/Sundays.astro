@@ -3,6 +3,7 @@ import Container from "./ui/Container.astro";
 import Icon from "./ui/Icon.astro";
 import RichText from "./RichText.astro";
 import SectionHeading from "./ui/SectionHeading.astro";
+import { mapsUrl } from "../config/site";
 import type { PortableTextBlock } from "sanity";
 import type { Config } from "types";
 
@@ -12,9 +13,6 @@ interface Props {
 }
 
 const { text, config } = Astro.props;
-const mapsUrl = config.address
-  ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(config.address)}`
-  : undefined;
 ---
 
 <section
@@ -66,19 +64,15 @@ const mapsUrl = config.address
                 >
                   {config.address}
                 </address>
-                {
-                  mapsUrl && (
-                    <a
-                      href={mapsUrl}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      class="text-ink-inverse mt-2 inline-flex items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
-                    >
-                      Get directions
-                      <Icon name="external" class="h-3.5 w-3.5" />
-                    </a>
-                  )
-                }
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="text-ink-inverse mt-2 inline-flex items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+                >
+                  Get directions
+                  <Icon name="external" class="h-3.5 w-3.5" />
+                </a>
               </div>
             </li>
             <li class="flex items-start gap-4">

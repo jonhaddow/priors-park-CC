@@ -3,7 +3,7 @@ import logo from "assets/logo.png";
 import { primaryNav } from "../config/nav";
 import Container from "./ui/Container.astro";
 import Icon from "./ui/Icon.astro";
-import { siteDescription } from "../config/site";
+import { mapsUrl, siteDescription } from "../config/site";
 import type { Config } from "types";
 
 interface Props {
@@ -12,9 +12,6 @@ interface Props {
 
 const { config } = Astro.props;
 const year = new Date().getFullYear();
-const mapsUrl = config.address
-  ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(config.address)}`
-  : undefined;
 ---
 
 <footer class="bg-deep on-deep text-ink-inverse-muted">
@@ -118,19 +115,15 @@ const mapsUrl = config.address
         <address class="text-sm leading-relaxed not-italic">
           {config.address}
         </address>
-        {
-          mapsUrl && (
-            <a
-              href={mapsUrl}
-              target="_blank"
-              rel="noreferrer noopener"
-              class="text-ink-inverse hover:border-ink-inverse inline-flex w-fit items-center gap-2 rounded-full border border-white/25 px-4 py-2 text-sm font-semibold transition hover:bg-white/10"
-            >
-              <Icon name="pin" class="h-4 w-4" />
-              Open in maps
-            </a>
-          )
-        }
+        <a
+          href={mapsUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          class="text-ink-inverse hover:border-ink-inverse inline-flex w-fit items-center gap-2 rounded-full border border-white/25 px-4 py-2 text-sm font-semibold transition hover:bg-white/10"
+        >
+          <Icon name="pin" class="h-4 w-4" />
+          Open in maps
+        </a>
       </div>
     </div>
 

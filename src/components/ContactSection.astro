@@ -3,6 +3,7 @@ import Button from "./ui/Button.astro";
 import Container from "./ui/Container.astro";
 import Icon from "./ui/Icon.astro";
 import SectionHeading from "./ui/SectionHeading.astro";
+import { mapsUrl } from "../config/site";
 import type { Config } from "types";
 
 interface Props {
@@ -34,7 +35,7 @@ const contactCards = [
     icon: "pin" as const,
     label: "Visit us",
     value: config.address,
-    href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(config.address)}`,
+    href: mapsUrl,
     action: "Get directions",
     external: true,
     accent: "bg-brand-red/10 text-brand-red",
