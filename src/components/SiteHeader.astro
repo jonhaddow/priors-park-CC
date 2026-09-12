@@ -1,0 +1,156 @@
+---
+import { primaryNav, ctaNav } from "../config/nav";
+import Button from "./ui/Button.astro";
+import Container from "./ui/Container.astro";
+import Icon from "./ui/Icon.astro";
+import RainbowBar from "./ui/RainbowBar.astro";
+import Wordmark from "./ui/Wordmark.astro";
+---
+
+<header class="fixed top-0 right-0 left-0 z-50" data-site-header>
+  <RainbowBar class="h-1.5 w-full" />
+  <div
+    class="border-b border-transparent bg-white/85 backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-300 data-[stuck]:border-ink/10 data-[stuck]:bg-white/95 data-[stuck]:shadow-sm"
+    data-header-bar
+  >
+    <Container size="wide" class="flex h-18 items-center justify-between gap-6">
+      <a href="/" aria-label="Priors Park Community Church — home">
+        <Wordmark />
+      </a>
+
+      <nav aria-label="Primary" class="hidden lg:block">
+        <ul class="flex items-center gap-1">
+          {
+            primaryNav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="text-ink-muted hover:text-ink hover:bg-surface-muted rounded-full px-3.5 py-2 text-sm font-medium transition"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <div class="hidden sm:block">
+          <Button href={ctaNav.href}>{ctaNav.label}</Button>
+        </div>
+        <button
+          type="button"
+          class="text-ink ring-ink/10 hover:bg-surface-muted inline-flex h-11 w-11 items-center justify-center rounded-full ring-1 lg:hidden"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open menu"
+          data-menu-toggle
+        >
+          <Icon name="menu" class="h-5 w-5" data-menu-icon-open />
+          <Icon name="close" class="hidden h-5 w-5" data-menu-icon-close />
+        </button>
+      </div>
+    </Container>
+  </div>
+
+  <div
+    id="mobile-nav"
+    hidden
+    class="border-ink/10 border-b bg-white shadow-lg lg:hidden"
+  >
+    <Container size="wide" class="py-4">
+      <nav aria-label="Primary (mobile)">
+        <ul class="flex flex-col">
+          {
+            primaryNav.map((item) => (
+              <li class="border-ink/5 border-b last:border-0">
+                <a
+                  href={item.href}
+                  class="text-ink flex items-center justify-between py-3.5 text-base font-medium"
+                >
+                  {item.label}
+                  <Icon name="arrow-right" class="text-ink-subtle h-4 w-4" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <a
+        href={ctaNav.href}
+        class="bg-accent mt-4 flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white sm:hidden"
+      >
+        {ctaNav.label}
+      </a>
+    </Container>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector("[data-site-header]");
+  const bar = header?.querySelector("[data-header-bar]");
+  const toggle = header?.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const panel = document.getElementById("mobile-nav");
+  const iconOpen = toggle?.querySelector("[data-menu-icon-open]");
+  const iconClose = toggle?.querySelector("[data-menu-icon-close]");
+
+  const setStuck = () => {
+    if (window.scrollY > 8) bar?.setAttribute("data-stuck", "");
+    else bar?.removeAttribute("data-stuck");
+  };
+  setStuck();
+  window.addEventListener("scroll", setStuck, { passive: true });
+
+  const setOpen = (open: boolean) => {
+    if (!toggle || !panel) return;
+    panel.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    iconOpen?.classList.toggle("hidden", open);
+    iconClose?.classList.toggle("hidden", !open);
+    // Stop the page scrolling behind the open panel.
+    document.body.classList.toggle("overflow-hidden", open);
+  };
+
+  toggle?.addEventListener("click", () => {
+    setOpen(Boolean(panel?.hidden));
+  });
+
+  panel?.addEventListener("click", (event) => {
+    if ((event.target as HTMLElement).closest("a")) setOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!panel || panel.hidden || !toggle) return;
+
+    if (event.key === "Escape") {
+      setOpen(false);
+      toggle.focus();
+      return;
+    }
+
+    // Keep focus inside the panel (and its toggle) while it is open.
+    if (event.key !== "Tab") return;
+    const focusable = [
+      toggle,
+      ...panel.querySelectorAll<HTMLElement>("a"),
+    ].filter((el) => el.offsetParent !== null);
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+
+    if (event.shiftKey && active === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
+  // Reset the panel when the layout grows past the mobile breakpoint.
+  window.matchMedia("(min-width: 1024px)").addEventListener("change", (event) => {
+    if (event.matches) setOpen(false);
+  });
+</script>

@@ -1,0 +1,14 @@
+---
+import { toHTML } from "@portabletext/to-html";
+import type { PortableTextBlock } from "sanity";
+
+interface Props {
+  value: PortableTextBlock[];
+  class?: string;
+}
+
+const { value, class: className = "" } = Astro.props;
+const html = toHTML(value ?? []);
+---
+
+<div class={className} set:html={html} />

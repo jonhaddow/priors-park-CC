@@ -1,34 +1,76 @@
 ---
-const description = "A church at the heart of the Priors Park community.";
-const baseURL = Astro.site?.toString();
-const url = Astro.url.toString();
+import { siteDescription, siteName } from "../config/site";
+import type { Config } from "types";
 
-const baseTitle = "Priors Park Community Church";
-const { title: pageTitle } = Astro.props;
-const title = pageTitle ? `${pageTitle} | ${baseTitle}` : baseTitle;
+interface Props {
+  title?: string;
+  description?: string;
+  config: Config;
+}
+
+const { title: pageTitle, description, config } = Astro.props;
+
+const title = pageTitle ? `${pageTitle} | ${siteName}` : siteName;
+const metaDescription = description ?? config.description ?? siteDescription;
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImage = new URL("/assets/og-image.jpg", Astro.site).toString();
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Church",
+  name: siteName,
+  description: metaDescription,
+  url: Astro.site?.toString(),
+  email: config.email,
+  telephone: config.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: config.address,
+    addressLocality: "Tewkesbury",
+    addressCountry: "GB",
+  },
+  sameAs: [config.facebook].filter(Boolean),
+};
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-{/* <!-- Canonical URL --> */}
-<link rel="canonical" href={baseURL} />
-{/* <!-- Primary Meta Tags --> */}
+
+{/* Marks that scripting is available, so the scroll-reveal styles only
+    hide content we can be sure something will reveal again. */}
+<script is:inline>
+  document.documentElement.classList.add("js");
+</script>
+<meta name="theme-color" content="#0e3441" />
+<meta name="generator" content={Astro.generator} />
+
+<link rel="canonical" href={canonical} />
+
 <title>{title}</title>
 <meta name="title" content={title} />
-<meta name="description" content={description} />
-{/* <!-- Open Graph / Facebook --> */}
+<meta name="description" content={metaDescription} />
+
+{/* Open Graph / Facebook */}
 <meta property="og:type" content="website" />
-<meta property="og:url" content={url} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:url" content={canonical} />
 <meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+<meta property="og:description" content={metaDescription} />
+<meta property="og:image" content={ogImage} />
+
+{/* Twitter */}
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={url} />
+<meta property="twitter:url" content={canonical} />
 <meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
+<meta property="twitter:description" content={metaDescription} />
+<meta property="twitter:image" content={ogImage} />
+
 <link rel="icon" href="/assets/icon/logo-32x32.png" sizes="32x32" />
 <link rel="icon" href="/assets/icon/logo-192x192.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="/assets/icon/logo-180x180.png" />
 <meta name="msapplication-TileImage" content="/assets/icon/logo-270x270.png" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link
   rel="preconnect"
@@ -36,6 +78,12 @@ const title = pageTitle ? `${pageTitle} | ${baseTitle}` : baseTitle;
   crossorigin="anonymous"
 />
 <link
-  href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400..700&display=swap"
   rel="stylesheet"
+/>
+
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(structuredData)}
 />

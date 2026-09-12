@@ -1,0 +1,53 @@
+---
+import { urlForImage } from "../sanity/urlForImage";
+import type { Config } from "types";
+
+interface Props {
+  photoGallery: Config["photoGallery"];
+}
+
+const { photoGallery } = Astro.props;
+
+const images = photoGallery.map((item) => ({
+  key: item._key,
+  url: urlForImage(item.image).height(480).fit("max").url(),
+}));
+
+/* Two identical tracks scroll side by side to loop seamlessly. */
+const tracks = [0, 1];
+---
+
+{
+  images.length > 0 && (
+    <section
+      class="bg-surface border-ink/8 border-y py-14"
+      aria-label="Photos from church life"
+    >
+      <div class="group relative overflow-hidden">
+        <div
+          class="from-surface pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r to-transparent sm:w-32"
+          aria-hidden="true"
+        />
+        <div class="flex w-max">
+          {tracks.map((track) => (
+            <div class="animate-marquee group-hover:marquee-paused flex gap-5 pr-5">
+              {images.map((image) => (
+                <img
+                  src={image.url}
+                  alt=""
+                  loading="lazy"
+                  class="ring-ink/5 h-44 w-auto shrink-0 rounded-card object-cover ring-1 sm:h-56"
+                  aria-hidden={track === 1 ? "true" : undefined}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+        <div
+          class="from-surface pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l to-transparent sm:w-32"
+          aria-hidden="true"
+        />
+      </div>
+    </section>
+  )
+}

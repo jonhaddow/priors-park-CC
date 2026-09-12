@@ -1,18 +1,65 @@
 ---
 import BaseHead from "./BaseHead.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { getConfig } from "helpers/config";
 
 import "../styles/global.css";
 
-const { title } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const config = await getConfig();
 ---
 
-<html lang="en" class="bg-light-background">
+<html lang="en-GB">
   <head>
-    <BaseHead title={title} />
+    <BaseHead title={title} description={description} config={config} />
     <slot name="head" />
   </head>
-  <body class="h-full">
-    <slot />
+  <body class="bg-surface text-ink flex min-h-screen flex-col">
+    <a
+      href="#main"
+      class="bg-accent focus:ring-accent sr-only z-100 rounded-full px-5 py-3 text-sm font-semibold text-white focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+    >
+      Skip to content
+    </a>
+
+    <SiteHeader />
+
+    {/* Clears the fixed header: h-18 bar + h-1.5 rainbow rule + 1px border. */}
+    <main id="main" class="flex-1 pt-[calc(--spacing(18)+--spacing(1.5)+1px)]">
+      <slot />
+    </main>
+
+    <SiteFooter config={config} />
+
+    <script>
+      // Reveal-on-scroll for anything marked `data-reveal`.
+      const revealables = document.querySelectorAll("[data-reveal]");
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        revealables.forEach((el) => el.classList.add("is-revealed"));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-revealed");
+              obs.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -5% 0px" },
+        );
+        revealables.forEach((el) => observer.observe(el));
+      }
+    </script>
 
     <!-- Cloudflare Web Analytics -->
     <script

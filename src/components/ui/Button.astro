@@ -1,0 +1,49 @@
+---
+interface Props {
+  href: string;
+  variant?: "primary" | "secondary" | "ghost" | "inverse";
+  size?: "md" | "lg";
+  class?: string;
+  target?: string;
+  rel?: string;
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  class: className = "",
+  target,
+  // New tabs get the safe defaults unless the caller says otherwise.
+  rel = target === "_blank" ? "noreferrer noopener" : undefined,
+  ...rest
+} = Astro.props;
+
+const base =
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition duration-200 whitespace-nowrap";
+
+const sizes = {
+  md: "px-5 py-2.5 text-sm",
+  lg: "px-7 py-3.5 text-base",
+};
+
+const variants = {
+  primary:
+    "bg-accent text-white shadow-card hover:bg-accent-strong hover:-translate-y-0.5",
+  secondary:
+    "bg-white text-ink ring-1 ring-ink/10 hover:ring-ink/25 hover:-translate-y-0.5",
+  ghost: "text-ink hover:bg-surface-sunken",
+  inverse:
+    "bg-white text-deep hover:bg-ink-inverse hover:-translate-y-0.5 shadow-card",
+};
+---
+
+<a
+  href={href}
+  class={`${base} ${sizes[size]} ${variants[variant]} ${className}`}
+  target={target}
+  rel={rel}
+  {...rest}
+>
+  <slot />
+</a>

@@ -1,0 +1,49 @@
+---
+import Container from "./ui/Container.astro";
+import Eyebrow from "./ui/Eyebrow.astro";
+import Icon from "./ui/Icon.astro";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  backHref?: string;
+  backLabel?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  backHref = "/",
+  backLabel = "Back to home",
+} = Astro.props;
+---
+
+<section class="bg-surface-muted border-ink/8 relative overflow-hidden border-b">
+  <div class="absolute inset-0 -z-0" aria-hidden="true">
+    <div class="bg-dot-grid text-ink/[0.06] absolute inset-0"></div>
+    <div
+      class="bg-brand-green/12 absolute -top-24 right-0 h-72 w-72 rounded-full blur-3xl"
+    >
+    </div>
+  </div>
+  <Container size="wide" class="relative flex flex-col gap-6 py-14 lg:py-20">
+    <a
+      href={backHref}
+      class="text-ink-muted hover:text-ink inline-flex w-fit items-center gap-1.5 text-sm font-medium transition"
+    >
+      <Icon name="arrow-left" class="h-4 w-4" />
+      {backLabel}
+    </a>
+    {
+      eyebrow && <Eyebrow>{eyebrow}</Eyebrow>
+    }
+    <h1 class="text-display text-ink font-semibold">{title}</h1>
+    {
+      Astro.slots.has("default") && (
+        <p class="text-lead text-ink-muted max-w-2xl">
+          <slot />
+        </p>
+      )
+    }
+  </Container>
+</section>

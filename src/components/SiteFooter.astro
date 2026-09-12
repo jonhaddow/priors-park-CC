@@ -1,0 +1,115 @@
+---
+import { primaryNav } from "../config/nav";
+import Container from "./ui/Container.astro";
+import Icon from "./ui/Icon.astro";
+import Wordmark from "./ui/Wordmark.astro";
+import { mapsUrl, siteDescription } from "../config/site";
+import type { Config } from "types";
+
+interface Props {
+  config: Config;
+}
+
+const { config } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-deep on-deep text-ink-inverse-muted">
+  <Container size="wide" class="py-16">
+    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div class="flex flex-col gap-5 lg:col-span-1">
+        <Wordmark tone="deep" />
+        <p class="text-sm leading-relaxed">{siteDescription}</p>
+        <a
+          href={config.facebook}
+          class="text-ink-inverse hover:border-ink-inverse inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 transition hover:bg-white/10"
+        >
+          <Icon name="facebook" class="h-5 w-5" title="Facebook" />
+        </a>
+      </div>
+
+      <nav aria-labelledby="footer-nav-heading" class="flex flex-col gap-4">
+        <h2
+          id="footer-nav-heading"
+          class="text-ink-inverse text-xs font-semibold tracking-[0.18em] uppercase"
+        >
+          Explore
+        </h2>
+        <ul class="flex flex-col text-sm">
+          {
+            primaryNav.map((item) => (
+              <li>
+                <a
+                  class="hover:text-ink-inverse inline-flex min-h-11 items-center transition"
+                  href={item.href}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="flex flex-col gap-4">
+        <h2
+          class="text-ink-inverse text-xs font-semibold tracking-[0.18em] uppercase"
+        >
+          Get in touch
+        </h2>
+        <ul class="flex flex-col text-sm">
+          {
+            config.email && (
+              <li>
+                <a
+                  class="hover:text-ink-inverse flex min-h-11 items-center gap-3 py-1 transition"
+                  href={`mailto:${config.email}`}
+                >
+                  <Icon name="mail" class="h-4 w-4 shrink-0" />
+                  <span class="[overflow-wrap:break-word]">{config.email}</span>
+                </a>
+              </li>
+            )
+          }
+          {
+            config.phone && (
+              <li>
+                <a
+                  class="hover:text-ink-inverse flex min-h-11 items-center gap-3 py-1 transition"
+                  href={`tel:${config.phone.replace(/\s+/g, "")}`}
+                >
+                  <Icon name="phone" class="h-4 w-4 shrink-0" />
+                  <span>{config.phone}</span>
+                </a>
+              </li>
+            )
+          }
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h2
+          class="text-ink-inverse text-xs font-semibold tracking-[0.18em] uppercase"
+        >
+          Find us
+        </h2>
+        <address class="text-sm leading-relaxed not-italic">
+          {config.address}
+        </address>
+        <a
+          href={mapsUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          class="text-ink-inverse hover:border-ink-inverse inline-flex w-fit items-center gap-2 rounded-full border border-white/25 px-4 py-2 text-sm font-semibold transition hover:bg-white/10"
+        >
+          <Icon name="pin" class="h-4 w-4" />
+          Open in maps
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-14 border-t border-white/15 pt-8 text-xs">
+      <p>&copy; {year} Priors Park Community Church. All rights reserved.</p>
+    </div>
+  </Container>
+</footer>

@@ -1,0 +1,103 @@
+---
+/**
+ * Small inline icon set. Icons inherit `currentColor` so they can be tinted
+ * by their surrounding text colour, which the old `<img>`-based icons could
+ * not do.
+ */
+export type IconName =
+  | "arrow-left"
+  | "arrow-right"
+  | "calendar"
+  | "clock"
+  | "close"
+  | "external"
+  | "facebook"
+  | "headphones"
+  | "heart"
+  | "mail"
+  | "menu"
+  | "pin"
+  | "phone"
+  | "users";
+
+interface Props {
+  name: IconName;
+  class?: string;
+  /** Set to give the icon an accessible name; otherwise it is hidden. */
+  title?: string;
+  /** Any other attribute is forwarded to the `<svg>` element. */
+  [attribute: string]: unknown;
+}
+
+const { name, class: className = "h-5 w-5", title, ...rest } = Astro.props;
+
+const strokeIcons: Record<string, string[]> = {
+  "arrow-left": ["M19 12H5", "m12 19-7-7 7-7"],
+  "arrow-right": ["M5 12h14", "m12 5 7 7-7 7"],
+  calendar: [
+    "M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z",
+    "M16 2v4",
+    "M8 2v4",
+    "M3 10h18",
+  ],
+  clock: ["M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z", "M12 6v6l4 2"],
+  close: ["M18 6 6 18", "m6 6 12 12"],
+  external: [
+    "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6",
+    "M15 3h6v6",
+    "M10 14 21 3",
+  ],
+  headphones: [
+    "M3 18v-6a9 9 0 0 1 18 0v6",
+    "M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z",
+    "M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z",
+  ],
+  heart: [
+    "M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z",
+  ],
+  mail: [
+    "M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z",
+    "m22 6-10 7L2 6",
+  ],
+  menu: ["M3 12h18", "M3 6h18", "M3 18h18"],
+  phone: [
+    "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z",
+  ],
+  pin: [
+    "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z",
+    "M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z",
+  ],
+  users: [
+    "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2",
+    "M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z",
+    "M23 21v-2a4 4 0 0 0-3-3.87",
+    "M16 3.13a4 4 0 0 1 0 7.75",
+  ],
+};
+
+const filledIcons: Record<string, string> = {
+  facebook:
+    "M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12z",
+};
+
+const filled = filledIcons[name];
+const strokes = strokeIcons[name];
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  class={className}
+  role={title ? "img" : undefined}
+  aria-hidden={title ? undefined : "true"}
+  fill={filled ? "currentColor" : "none"}
+  stroke={filled ? "none" : "currentColor"}
+  stroke-width={filled ? undefined : 1.75}
+  stroke-linecap={filled ? undefined : "round"}
+  stroke-linejoin={filled ? undefined : "round"}
+  {...rest}
+>
+  {title && <title>{title}</title>}
+  {filled && <path d={filled} />}
+  {strokes?.map((d) => <path d={d} />)}
+</svg>

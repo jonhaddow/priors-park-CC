@@ -1,0 +1,103 @@
+---
+import Container from "./ui/Container.astro";
+import Icon from "./ui/Icon.astro";
+import RichText from "./RichText.astro";
+import SectionHeading from "./ui/SectionHeading.astro";
+import type { Config, Team } from "types";
+
+interface Props {
+  mission: Config["mission"];
+  network: Config["network"];
+  team: Team[];
+}
+
+const { mission, network, team } = Astro.props;
+
+/** Rotating avatar tints for team members without a photo. */
+const tints = [
+  "bg-brand-green/12 text-brand-green",
+  "bg-brand-blue/12 text-brand-blue",
+  "bg-brand-red/10 text-brand-red",
+  "bg-brand-navy/12 text-brand-navy",
+  "bg-brand-amber/15 text-brand-amber",
+];
+---
+
+<section
+  id="our-story"
+  class="bg-surface-muted scroll-mt-24 py-20 lg:py-28"
+>
+  <Container size="wide" class="flex flex-col gap-16">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="flex flex-col gap-8 lg:col-span-7" data-reveal>
+        <SectionHeading eyebrow="Our story" title="Why we are here" />
+        <RichText
+          class="prose prose-lg prose-p:text-ink-muted prose-a:text-accent max-w-2xl"
+          value={mission}
+        />
+      </div>
+
+      <aside class="lg:col-span-5" data-reveal>
+        <div
+          class="border-ink/8 shadow-card h-full rounded-panel border bg-white p-7"
+        >
+          <h3 class="text-ink text-lg font-semibold">Part of a wider family</h3>
+          <p class="text-ink-muted mt-2 text-sm">
+            We work alongside these networks and partners.
+          </p>
+          <ul class="mt-6 flex flex-col gap-2">
+            {
+              network.map((item) => (
+                <li>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="text-ink hover:bg-surface-muted group flex items-center justify-between gap-4 rounded-xl px-4 py-3 text-sm font-medium transition"
+                  >
+                    {item.name}
+                    <Icon
+                      name="external"
+                      class="text-ink-subtle group-hover:text-accent h-4 w-4 shrink-0 transition"
+                    />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="flex flex-col gap-10" data-reveal>
+      <SectionHeading eyebrow="Our team" title="The people you will meet" />
+      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          team.map((person, index) => (
+            <li class="border-ink/8 hover:shadow-card flex items-center gap-4 rounded-card border bg-white p-5 transition duration-300">
+              {person.imageURL ? (
+                <img
+                  src={person.imageURL}
+                  alt=""
+                  loading="lazy"
+                  class="h-14 w-14 shrink-0 rounded-full object-cover"
+                />
+              ) : (
+                <span
+                  class={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full font-display text-xl font-semibold ${tints[index % tints.length]}`}
+                  aria-hidden="true"
+                >
+                  {person.name.charAt(0)}
+                </span>
+              )}
+              <div class="min-w-0">
+                <p class="text-ink font-semibold">{person.name}</p>
+                <p class="text-ink-muted text-sm">{person.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Container>
+</section>

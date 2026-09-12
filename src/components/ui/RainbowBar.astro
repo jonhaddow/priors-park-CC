@@ -1,0 +1,15 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+{/* The four logo colours, used as a slim brand rule. */}
+<div class={`flex ${className}`} aria-hidden="true">
+  <div class="bg-brand-red flex-1"></div>
+  <div class="bg-brand-amber flex-1"></div>
+  <div class="bg-brand-green flex-1"></div>
+  <div class="bg-brand-blue flex-1"></div>
+</div>

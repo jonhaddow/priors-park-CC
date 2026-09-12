@@ -1,0 +1,119 @@
+---
+import Button from "./ui/Button.astro";
+import Container from "./ui/Container.astro";
+import Icon from "./ui/Icon.astro";
+import SectionHeading from "./ui/SectionHeading.astro";
+import { mapsUrl } from "../config/site";
+import type { IconName } from "./ui/Icon.astro";
+import type { Config } from "types";
+
+interface Props {
+  config: Config;
+}
+
+interface ContactCard {
+  icon: IconName;
+  label: string;
+  value: string;
+  href: string;
+  action: string;
+  external: boolean;
+  accent: string;
+}
+
+const { config } = Astro.props;
+
+const contactCards = [
+  config.email && {
+    icon: "mail",
+    label: "Email us",
+    value: config.email,
+    href: `mailto:${config.email}`,
+    action: "Send an email",
+    external: false,
+    accent: "bg-brand-green/12 text-brand-green",
+  },
+  config.phone && {
+    icon: "phone",
+    label: "Call us",
+    value: config.phone,
+    href: `tel:${config.phone.replace(/\s+/g, "")}`,
+    action: "Give us a ring",
+    external: false,
+    accent: "bg-brand-blue/12 text-brand-blue",
+  },
+  config.address && {
+    icon: "pin",
+    label: "Visit us",
+    value: config.address,
+    href: mapsUrl,
+    action: "Get directions",
+    external: true,
+    accent: "bg-brand-red/10 text-brand-red",
+  },
+].filter((card): card is ContactCard => Boolean(card));
+---
+
+<section id="contact" class="bg-surface scroll-mt-24 py-20 lg:py-28">
+  <Container size="wide" class="flex flex-col gap-12">
+    <div data-reveal>
+      <SectionHeading
+        eyebrow="Say hello"
+        title="We would love to hear from you"
+        align="center"
+        class="mx-auto"
+      >
+        <span class="block text-center">
+          Whether you want to visit, ask a question, or need a hand with
+          something — get in touch.
+        </span>
+      </SectionHeading>
+    </div>
+
+    <ul class="grid gap-6 md:grid-cols-3" data-reveal>
+      {
+        contactCards.map((card) => (
+          <li>
+            <a
+              href={card.href}
+              target={card.external ? "_blank" : undefined}
+              rel={card.external ? "noreferrer noopener" : undefined}
+              class="group border-ink/8 hover:shadow-lift flex h-full flex-col items-center gap-3 rounded-card border bg-white p-8 text-center transition duration-300 hover:-translate-y-1"
+            >
+              <span
+                class={`flex h-12 w-12 items-center justify-center rounded-full ${card.accent}`}
+              >
+                <Icon name={card.icon} class="h-5 w-5" />
+              </span>
+              <h3 class="text-ink text-lg font-semibold">{card.label}</h3>
+              <p class="text-ink-muted text-sm [overflow-wrap:anywhere]">{card.value}</p>
+              <span class="text-accent mt-auto inline-flex items-center gap-1.5 pt-3 text-sm font-semibold">
+                {card.action}
+                <Icon
+                  name="arrow-right"
+                  class="h-3.5 w-3.5 transition group-hover:translate-x-0.5"
+                />
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div
+      class="on-deep from-deep to-deep-soft rounded-panel flex flex-col items-center gap-6 bg-gradient-to-br p-10 text-center sm:p-14"
+      data-reveal
+    >
+      <h3 class="text-ink-inverse text-title font-semibold">
+        Follow along on Facebook
+      </h3>
+      <p class="text-ink-inverse-muted max-w-xl">
+        Photos, notices and last-minute changes are posted on our page.
+      </p>
+      <Button href={config.facebook} variant="inverse" size="lg" target="_blank">
+        <Icon name="facebook" class="h-5 w-5" />
+        Visit our page
+      </Button>
+    </div>
+  </Container>
+</section>

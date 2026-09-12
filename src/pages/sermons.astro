@@ -1,20 +1,33 @@
 ---
-import SermonNav from "../components/SermonNav.tsx";
-import SermonList from "../components/SermonList.tsx";
-import RainbowBanner from "../components/RainbowBanner.tsx";
-import { getSermons } from "helpers/sermons";
 import BaseLayout from "layouts/BaseLayout.astro";
+import Container from "../components/ui/Container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import SermonList from "../components/SermonList.tsx";
+import { getSermons } from "helpers/sermons";
 
 const sermons = await getSermons();
 ---
 
-<BaseLayout title="Sermons">
-  <div class="min-h-screen flex flex-col">
-    <RainbowBanner
-      className="fixed top-0 left-0 z-50 h-2 w-full"
-      dir="horizontal"
-    />
-    <SermonNav />
-    <SermonList client:only="preact" sermons={sermons} />
+<BaseLayout
+  title="Sermons"
+  description="Listen to recent talks from Priors Park Community Church."
+>
+  <PageHeader eyebrow="Listen again" title="Sermons">
+    Talks from our Sunday gatherings. Play them here or download them to listen
+    on the move.
+  </PageHeader>
+
+  <div class="bg-surface py-16 lg:py-20">
+    <Container size="default">
+      {
+        sermons.length > 0 ? (
+          <SermonList client:only="preact" sermons={sermons} />
+        ) : (
+          <p class="text-ink-muted border-ink/8 rounded-card border border-dashed p-10 text-center">
+            There are no recordings online just yet. Please check back soon.
+          </p>
+        )
+      }
+    </Container>
   </div>
 </BaseLayout>
