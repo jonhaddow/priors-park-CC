@@ -35,6 +35,12 @@ const structuredData = {
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+{/* Marks that scripting is available, so the scroll-reveal styles only
+    hide content we can be sure something will reveal again. */}
+<script is:inline>
+  document.documentElement.classList.add("js");
+</script>
 <meta name="theme-color" content="#0e3441" />
 <meta name="generator" content={Astro.generator} />
 

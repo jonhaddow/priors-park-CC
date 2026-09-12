@@ -30,7 +30,8 @@ const config = await getConfig();
 
     <SiteHeader />
 
-    <main id="main" class="flex-1 pt-19">
+    {/* Clears the fixed header: h-18 bar + h-1.5 rainbow rule + 1px border. */}
+    <main id="main" class="flex-1 pt-[calc(--spacing(18)+--spacing(1.5)+1px)]">
       <slot />
     </main>
 

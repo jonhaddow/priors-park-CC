@@ -19,12 +19,10 @@ function formatDate(value: string) {
 function Sermon({
   title,
   date,
-  description,
   fileURL,
 }: {
   title: string;
   date: string;
-  description?: string;
   fileURL: string;
 }) {
   const ref = useRef<HTMLAudioElement>(null);
@@ -51,11 +49,6 @@ function Sermon({
           <time dateTime={date}>{formatDate(date)}</time>
         </p>
       </div>
-      {description && (
-        <p className="text-ink-muted mt-3 text-sm leading-relaxed">
-          {description}
-        </p>
-      )}
       <div
         className={`bg-surface-muted mt-5 rounded-xl px-4 py-2 transition-opacity duration-300 ${ready ? "opacity-100" : "opacity-0"}`}
       >
@@ -71,7 +64,12 @@ function SermonList({ sermons }: { sermons: SermonType[] }) {
   return (
     <ul className="flex flex-col gap-5">
       {sermons.map((sermon) => (
-        <Sermon key={sermon._id} {...sermon} date={sermon.publishedDate} />
+        <Sermon
+          key={sermon._id}
+          title={sermon.title}
+          fileURL={sermon.fileURL}
+          date={sermon.publishedDate}
+        />
       ))}
     </ul>
   );

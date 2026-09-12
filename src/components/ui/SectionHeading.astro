@@ -1,4 +1,6 @@
 ---
+import Eyebrow from "./Eyebrow.astro";
+
 interface Props {
   eyebrow?: string;
   title: string;
@@ -20,22 +22,13 @@ const {
 const alignment =
   align === "center" ? "items-center text-center" : "items-start text-left";
 const titleColour = tone === "deep" ? "text-ink-inverse" : "text-ink";
-const eyebrowColour =
-  tone === "deep" ? "text-brand-amber" : "text-accent";
 const bodyColour =
   tone === "deep" ? "text-ink-inverse-muted" : "text-ink-muted";
 ---
 
 <div class={`flex flex-col gap-4 ${alignment} ${className}`}>
   {
-    eyebrow && (
-      <span
-        class={`flex items-center gap-2.5 text-xs font-semibold tracking-[0.18em] uppercase ${eyebrowColour}`}
-      >
-        <span class="bg-brand-green h-px w-6" aria-hidden="true" />
-        {eyebrow}
-      </span>
-    )
+    eyebrow && <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
   }
   <h2 id={id} class={`text-title font-semibold ${titleColour}`}>{title}</h2>
   {

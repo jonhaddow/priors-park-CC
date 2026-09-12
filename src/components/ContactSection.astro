@@ -4,17 +4,28 @@ import Container from "./ui/Container.astro";
 import Icon from "./ui/Icon.astro";
 import SectionHeading from "./ui/SectionHeading.astro";
 import { mapsUrl } from "../config/site";
+import type { IconName } from "./ui/Icon.astro";
 import type { Config } from "types";
 
 interface Props {
   config: Config;
 }
 
+interface ContactCard {
+  icon: IconName;
+  label: string;
+  value: string;
+  href: string;
+  action: string;
+  external: boolean;
+  accent: string;
+}
+
 const { config } = Astro.props;
 
 const contactCards = [
   config.email && {
-    icon: "mail" as const,
+    icon: "mail",
     label: "Email us",
     value: config.email,
     href: `mailto:${config.email}`,
@@ -23,7 +34,7 @@ const contactCards = [
     accent: "bg-brand-green/12 text-brand-green",
   },
   config.phone && {
-    icon: "phone" as const,
+    icon: "phone",
     label: "Call us",
     value: config.phone,
     href: `tel:${config.phone.replace(/\s+/g, "")}`,
@@ -32,7 +43,7 @@ const contactCards = [
     accent: "bg-brand-blue/12 text-brand-blue",
   },
   config.address && {
-    icon: "pin" as const,
+    icon: "pin",
     label: "Visit us",
     value: config.address,
     href: mapsUrl,
@@ -40,7 +51,7 @@ const contactCards = [
     external: true,
     accent: "bg-brand-red/10 text-brand-red",
   },
-].filter((card) => card !== "" && card !== undefined && card !== null);
+].filter((card): card is ContactCard => Boolean(card));
 ---
 
 <section id="contact" class="bg-surface scroll-mt-24 py-20 lg:py-28">
@@ -99,13 +110,7 @@ const contactCards = [
       <p class="text-ink-inverse-muted max-w-xl">
         Photos, notices and last-minute changes are posted on our page.
       </p>
-      <Button
-        href={config.facebook}
-        variant="inverse"
-        size="lg"
-        target="_blank"
-        rel="noreferrer noopener"
-      >
+      <Button href={config.facebook} variant="inverse" size="lg" target="_blank">
         <Icon name="facebook" class="h-5 w-5" />
         Visit our page
       </Button>

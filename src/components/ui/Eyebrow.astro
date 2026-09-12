@@ -1,0 +1,17 @@
+---
+interface Props {
+  tone?: "light" | "deep";
+  class?: string;
+}
+
+const { tone = "light", class: className = "" } = Astro.props;
+
+const colour = tone === "deep" ? "text-brand-amber" : "text-accent";
+---
+
+<span
+  class={`flex items-center gap-2.5 text-xs font-semibold tracking-[0.18em] uppercase ${colour} ${className}`}
+>
+  <span class="bg-brand-green h-px w-6" aria-hidden="true"></span>
+  <slot />
+</span>

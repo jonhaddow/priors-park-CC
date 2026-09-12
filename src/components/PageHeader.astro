@@ -1,5 +1,6 @@
 ---
 import Container from "./ui/Container.astro";
+import Eyebrow from "./ui/Eyebrow.astro";
 import Icon from "./ui/Icon.astro";
 
 interface Props {
@@ -34,12 +35,7 @@ const {
       {backLabel}
     </a>
     {
-      eyebrow && (
-        <span class="text-accent flex items-center gap-2.5 text-xs font-semibold tracking-[0.18em] uppercase">
-          <span class="bg-brand-green h-px w-6" aria-hidden="true" />
-          {eyebrow}
-        </span>
-      )
+      eyebrow && <Eyebrow>{eyebrow}</Eyebrow>
     }
     <h1 class="text-display text-ink font-semibold">{title}</h1>
     {

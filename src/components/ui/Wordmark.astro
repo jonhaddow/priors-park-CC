@@ -1,0 +1,38 @@
+---
+import logo from "assets/logo.png";
+
+interface Props {
+  /** `deep` is for the dark footer, where the logo needs a light plate. */
+  tone?: "light" | "deep";
+  class?: string;
+}
+
+const { tone = "light", class: className = "" } = Astro.props;
+
+const logoClass =
+  tone === "deep"
+    ? "h-14 w-auto rounded-lg bg-white/95 p-1"
+    : "h-10 w-auto sm:h-12";
+const nameClass =
+  tone === "deep"
+    ? "font-display text-ink-inverse text-lg font-semibold"
+    : "font-display text-ink text-base font-semibold sm:text-lg";
+const strapClass =
+  tone === "deep"
+    ? "mt-1 text-[0.68rem] font-semibold tracking-[0.2em] uppercase"
+    : "text-ink-muted mt-1 text-[0.6rem] font-semibold tracking-[0.16em] uppercase sm:text-[0.68rem] sm:tracking-[0.2em]";
+---
+
+<span class={`flex items-center gap-3 ${className}`}>
+  <img
+    src={logo.src}
+    alt=""
+    width={250}
+    height={182}
+    class={`shrink-0 ${logoClass}`}
+  />
+  <span class="flex flex-col leading-none whitespace-nowrap">
+    <span class={nameClass}>Priors Park</span>
+    <span class={strapClass}>Community Church</span>
+  </span>
+</span>

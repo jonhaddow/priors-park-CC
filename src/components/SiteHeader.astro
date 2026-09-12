@@ -1,17 +1,10 @@
 ---
-import logo from "assets/logo.png";
 import { primaryNav, ctaNav } from "../config/nav";
 import Button from "./ui/Button.astro";
 import Container from "./ui/Container.astro";
 import Icon from "./ui/Icon.astro";
 import RainbowBar from "./ui/RainbowBar.astro";
-
-const { pathname } = Astro.url;
-
-function isCurrent(href: string) {
-  if (href.startsWith("/#")) return pathname === "/";
-  return pathname === href || pathname === `${href}/`;
-}
+import Wordmark from "./ui/Wordmark.astro";
 ---
 
 <header class="fixed top-0 right-0 left-0 z-50" data-site-header>
@@ -21,28 +14,8 @@ function isCurrent(href: string) {
     data-header-bar
   >
     <Container size="wide" class="flex h-18 items-center justify-between gap-6">
-      <a
-        href="/"
-        class="group flex items-center gap-3"
-        aria-label="Priors Park Community Church — home"
-      >
-        <img
-          src={logo.src}
-          alt=""
-          width={250}
-          height={182}
-          class="h-10 w-auto shrink-0 sm:h-12"
-        />
-        <span class="flex flex-col leading-none whitespace-nowrap">
-          <span class="font-display text-ink text-base font-semibold sm:text-lg">
-            Priors Park
-          </span>
-          <span
-            class="text-ink-muted mt-1 text-[0.6rem] font-semibold tracking-[0.16em] uppercase sm:text-[0.68rem] sm:tracking-[0.2em]"
-          >
-            Community Church
-          </span>
-        </span>
+      <a href="/" aria-label="Priors Park Community Church — home">
+        <Wordmark />
       </a>
 
       <nav aria-label="Primary" class="hidden lg:block">
@@ -52,8 +25,7 @@ function isCurrent(href: string) {
               <li>
                 <a
                   href={item.href}
-                  aria-current={isCurrent(item.href) ? "page" : undefined}
-                  class="text-ink-muted hover:text-ink hover:bg-surface-muted rounded-full px-3.5 py-2 text-sm font-medium transition aria-[current=page]:text-ink"
+                  class="text-ink-muted hover:text-ink hover:bg-surface-muted rounded-full px-3.5 py-2 text-sm font-medium transition"
                 >
                   {item.label}
                 </a>
@@ -137,6 +109,8 @@ function isCurrent(href: string) {
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     iconOpen?.classList.toggle("hidden", open);
     iconClose?.classList.toggle("hidden", !open);
+    // Stop the page scrolling behind the open panel.
+    document.body.classList.toggle("overflow-hidden", open);
   };
 
   toggle?.addEventListener("click", () => {
@@ -148,9 +122,30 @@ function isCurrent(href: string) {
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && panel && !panel.hidden) {
+    if (!panel || panel.hidden || !toggle) return;
+
+    if (event.key === "Escape") {
       setOpen(false);
-      toggle?.focus();
+      toggle.focus();
+      return;
+    }
+
+    // Keep focus inside the panel (and its toggle) while it is open.
+    if (event.key !== "Tab") return;
+    const focusable = [
+      toggle,
+      ...panel.querySelectorAll<HTMLElement>("a"),
+    ].filter((el) => el.offsetParent !== null);
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+
+    if (event.shiftKey && active === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first.focus();
     }
   });
 

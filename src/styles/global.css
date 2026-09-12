@@ -27,7 +27,7 @@
    * ------------------------------------------------------------- */
   --color-ink: #10303c;
   --color-ink-muted: #4c6b78;
-  --color-ink-subtle: #76909c;
+  --color-ink-subtle: #587079;
   --color-ink-inverse: #eef6f9;
   --color-ink-inverse-muted: #a9c6d1;
 
@@ -111,9 +111,13 @@
  * Scroll reveal. Elements marked `data-reveal` start slightly offset
  * and fade in once. Handled by a tiny script in BaseLayout so the
  * home page ships no framework JavaScript.
+ *
+ * The hidden starting state is scoped to `.js`, which an inline script
+ * in the head adds to <html>. Without it the content stays visible, so
+ * a blocked or broken script never leaves the page blank.
  * --------------------------------------------------------------- */
 @layer components {
-  [data-reveal] {
+  .js [data-reveal] {
     opacity: 0;
     transform: translateY(1.25rem);
     transition:
@@ -121,7 +125,7 @@
       transform 0.7s ease-out;
   }
 
-  [data-reveal].is-revealed {
+  .js [data-reveal].is-revealed {
     opacity: 1;
     transform: none;
   }
@@ -157,7 +161,7 @@
     scroll-behavior: auto;
   }
 
-  [data-reveal] {
+  .js [data-reveal] {
     opacity: 1;
     transform: none;
     transition: none;

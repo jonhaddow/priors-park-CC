@@ -13,6 +13,9 @@ const {
   variant = "primary",
   size = "md",
   class: className = "",
+  target,
+  // New tabs get the safe defaults unless the caller says otherwise.
+  rel = target === "_blank" ? "noreferrer noopener" : undefined,
   ...rest
 } = Astro.props;
 
@@ -38,6 +41,8 @@ const variants = {
 <a
   href={href}
   class={`${base} ${sizes[size]} ${variants[variant]} ${className}`}
+  target={target}
+  rel={rel}
   {...rest}
 >
   <slot />

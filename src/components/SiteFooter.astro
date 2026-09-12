@@ -1,8 +1,8 @@
 ---
-import logo from "assets/logo.png";
 import { primaryNav } from "../config/nav";
 import Container from "./ui/Container.astro";
 import Icon from "./ui/Icon.astro";
+import Wordmark from "./ui/Wordmark.astro";
 import { mapsUrl, siteDescription } from "../config/site";
 import type { Config } from "types";
 
@@ -18,36 +18,14 @@ const year = new Date().getFullYear();
   <Container size="wide" class="py-16">
     <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
       <div class="flex flex-col gap-5 lg:col-span-1">
-        <div class="flex items-center gap-3">
-          <img
-            src={logo.src}
-            alt=""
-            width={250}
-            height={182}
-            class="h-14 w-auto rounded-lg bg-white/95 p-1"
-          />
-          <span class="flex flex-col leading-none">
-            <span class="font-display text-ink-inverse text-lg font-semibold">
-              Priors Park
-            </span>
-            <span
-              class="mt-1 text-[0.68rem] font-semibold tracking-[0.2em] uppercase"
-            >
-              Community Church
-            </span>
-          </span>
-        </div>
+        <Wordmark tone="deep" />
         <p class="text-sm leading-relaxed">{siteDescription}</p>
-        {
-          config.facebook && (
-            <a
-              href={config.facebook}
-              class="text-ink-inverse hover:border-ink-inverse inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/25 transition hover:bg-white/10"
-            >
-              <Icon name="facebook" class="h-5 w-5" title="Facebook" />
-            </a>
-          )
-        }
+        <a
+          href={config.facebook}
+          class="text-ink-inverse hover:border-ink-inverse inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 transition hover:bg-white/10"
+        >
+          <Icon name="facebook" class="h-5 w-5" title="Facebook" />
+        </a>
       </div>
 
       <nav aria-labelledby="footer-nav-heading" class="flex flex-col gap-4">
@@ -57,11 +35,14 @@ const year = new Date().getFullYear();
         >
           Explore
         </h2>
-        <ul class="flex flex-col gap-3 text-sm">
+        <ul class="flex flex-col text-sm">
           {
             primaryNav.map((item) => (
               <li>
-                <a class="hover:text-ink-inverse transition" href={item.href}>
+                <a
+                  class="hover:text-ink-inverse inline-flex min-h-11 items-center transition"
+                  href={item.href}
+                >
                   {item.label}
                 </a>
               </li>
@@ -76,16 +57,16 @@ const year = new Date().getFullYear();
         >
           Get in touch
         </h2>
-        <ul class="flex flex-col gap-3 text-sm">
+        <ul class="flex flex-col text-sm">
           {
             config.email && (
               <li>
                 <a
-                  class="hover:text-ink-inverse flex items-start gap-3 transition"
+                  class="hover:text-ink-inverse flex min-h-11 items-center gap-3 py-1 transition"
                   href={`mailto:${config.email}`}
                 >
-                  <Icon name="mail" class="mt-0.5 h-4 w-4 shrink-0" />
-                  <span class="[overflow-wrap:anywhere]">{config.email}</span>
+                  <Icon name="mail" class="h-4 w-4 shrink-0" />
+                  <span class="[overflow-wrap:break-word]">{config.email}</span>
                 </a>
               </li>
             )
@@ -94,10 +75,10 @@ const year = new Date().getFullYear();
             config.phone && (
               <li>
                 <a
-                  class="hover:text-ink-inverse flex items-start gap-3 transition"
+                  class="hover:text-ink-inverse flex min-h-11 items-center gap-3 py-1 transition"
                   href={`tel:${config.phone.replace(/\s+/g, "")}`}
                 >
-                  <Icon name="phone" class="mt-0.5 h-4 w-4 shrink-0" />
+                  <Icon name="phone" class="h-4 w-4 shrink-0" />
                   <span>{config.phone}</span>
                 </a>
               </li>
