@@ -1,5 +1,8 @@
 # build output
 dist/
+studio-dist/
+# sanity studio runtime
+.sanity/
 # generated types
 .astro/
 

@@ -23,3 +23,19 @@ To build the production output:
 ```
 npm run build
 ```
+
+## CMS
+
+Content is managed in [Sanity](https://www.sanity.io/) (project `i6kx6v0q`). The studio config lives in `sanity.config.ts`, with schemas in `src/sanity/schemas/`.
+
+To run the studio locally:
+
+```
+npm run studio
+```
+
+To deploy the studio to Sanity hosting (needs `npx sanity login` first):
+
+```
+npm run studio:deploy
+```
