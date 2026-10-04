@@ -11,7 +11,6 @@
     "preview": "astro preview",
     "studio": "sanity dev",
     "studio:build": "sanity build studio-dist",
-    "studio:deploy": "sanity build studio-dist && sanity deploy studio-dist --no-build",
     "astro": "astro",
     "lint": "eslint ./src",
     "prettier": "prettier --write ."

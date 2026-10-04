@@ -1,0 +1,16 @@
+# Netlify config for the CMS site (cms.priorsparkcommunitychurch.co.uk).
+# That Netlify site has "Package directory" set to `cms`, so it reads this
+# file instead of the root netlify.toml. Paths are relative to the repo root.
+[build]
+  command = "npm run studio:build"
+  publish = "studio-dist"
+  # Only rebuild when the studio or its dependencies change
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- sanity.config.ts sanity.cli.ts src/sanity/schemas package.json package-lock.json cms"
+[build.environment]
+  NODE_VERSION = "24"
+
+# The studio is a single-page app
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

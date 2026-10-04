@@ -34,8 +34,4 @@ To run the studio locally:
 npm run studio
 ```
 
-To deploy the studio to Sanity hosting (needs `npx sanity login` first):
-
-```
-npm run studio:deploy
-```
+The studio is deployed by a separate Netlify site at [cms.priorsparkcommunitychurch.co.uk](https://cms.priorsparkcommunitychurch.co.uk), which builds from this repo using `cms/netlify.toml` (its "Package directory" is set to `cms`). It only rebuilds when the studio config, schemas or dependencies change.
