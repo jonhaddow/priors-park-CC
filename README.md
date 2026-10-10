@@ -23,3 +23,15 @@ To build the production output:
 ```
 npm run build
 ```
+
+## CMS
+
+Content is managed in [Sanity](https://www.sanity.io/) (project `i6kx6v0q`). The studio config lives in `sanity.config.ts`, with schemas in `src/sanity/schemas/`.
+
+To run the studio locally:
+
+```
+npm run studio
+```
+
+The studio is deployed by a separate Netlify site at [cms.priorsparkcommunitychurch.co.uk](https://cms.priorsparkcommunitychurch.co.uk), which builds from this repo using `cms/netlify.toml` (its "Package directory" is set to `cms`). It only rebuilds when the studio config, schemas or dependencies change.
