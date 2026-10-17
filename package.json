@@ -3,10 +3,8 @@
   "type": "module",
   "version": "0.0.0",
   "scripts": {
-    "predev": "node scripts/sync-plyr-sprite.mjs",
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "node scripts/sync-plyr-sprite.mjs",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "studio": "sanity dev",
@@ -31,7 +29,6 @@
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.7",
     "eslint": "^10.12.0",
-    "plyr": "^3.8.5",
     "preact": "^10.29.8",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",

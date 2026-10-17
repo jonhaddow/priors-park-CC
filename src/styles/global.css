@@ -129,6 +129,40 @@
     opacity: 1;
     transform: none;
   }
+
+  /* Sermon player seek bar: accent fill up to --progress, white thumb. */
+  .seek-bar {
+    appearance: none;
+    height: 5px;
+    border-radius: 9999px;
+    background: linear-gradient(
+      to right,
+      var(--color-accent) var(--progress, 0%),
+      color-mix(in srgb, var(--color-ink) 15%, transparent) var(--progress, 0%)
+    );
+  }
+
+  .seek-bar::-webkit-slider-thumb {
+    appearance: none;
+    width: 13px;
+    height: 13px;
+    border-radius: 9999px;
+    background: #fff;
+    box-shadow:
+      0 1px 1px rgb(16 48 60 / 15%),
+      0 0 0 1px rgb(16 48 60 / 20%);
+  }
+
+  .seek-bar::-moz-range-thumb {
+    width: 13px;
+    height: 13px;
+    border: 0;
+    border-radius: 9999px;
+    background: #fff;
+    box-shadow:
+      0 1px 1px rgb(16 48 60 / 15%),
+      0 0 0 1px rgb(16 48 60 / 20%);
+  }
 }
 
 /* Infinite marquee for the photo strip. */
@@ -178,13 +212,4 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-}
-
-:root {
-  /* 3rd party audio player (plyr) */
-  --plyr-audio-controls-background: transparent;
-  --plyr-color-main: var(--color-accent);
-  --plyr-audio-control-color: var(--color-ink-muted);
-  --plyr-audio-control-color-hover: #ffffff;
-  --plyr-audio-control-background-hover: var(--color-accent);
 }
