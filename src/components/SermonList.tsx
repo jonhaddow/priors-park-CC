@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/media-has-caption */
-
 import { useRef, useState } from "preact/hooks";
 import type { Sermon as SermonType } from "types";
 
