@@ -9,7 +9,7 @@ let cached: Promise<Config> | undefined;
  */
 export const getConfig = () => {
   cached ??= sanityClient.fetch<Config>(
-    `*[_type == "siteSettings"]{title, description, photoGallery[]{ ..., "image": asset->}, sunday, mission, network, email, phone, address, facebook}[0]`,
+    `*[_type == "siteSettings"]{title, description, photoGallery[defined(asset->_id)]{ ..., "image": asset->}, sunday, mission, network, email, phone, address, facebook}[0]`,
   );
   return cached;
 };
