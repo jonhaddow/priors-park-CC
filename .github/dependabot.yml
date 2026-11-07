@@ -6,6 +6,10 @@ updates:
       default-days: 3
     schedule:
       interval: "weekly"
+      # Friday, so PRs are ready for the Saturday PR review.
+      day: "friday"
+      time: "06:00"
+      timezone: "Europe/London"
     ignore:
       - dependency-name: "eslint"
         update-types:
@@ -20,3 +24,15 @@ updates:
         update-types:
           - "patch"
           - "minor"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+      time: "06:00"
+      timezone: "Europe/London"
+    groups:
+      actions:
+        patterns:
+          - "*"
