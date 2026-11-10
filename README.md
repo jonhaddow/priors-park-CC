@@ -1,37 +1,20 @@
 # Priors Park Community Church
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b654c94e-08a6-4b79-b443-7837581b1d8d/deploy-status)](https://app.netlify.com/sites/gatsby-starter-netlify-cms-ci/deploys)
+The website for [Priors Park Community Church](https://priorsparkcommunitychurch.co.uk/), with events and sermons, and content edited through a CMS.
 
-Runs the [Priors Park Community Church](https://priorsparkcommunitychurch.co.uk/) site.
+## Tech stack
+
+- [Astro](https://astro.build) with [Preact](https://preactjs.com) and [Tailwind CSS](https://tailwindcss.com)
+- [Sanity](https://www.sanity.io) as the CMS; the studio config is in `sanity.config.ts`, with schemas in `src/sanity/schemas/`
+- Hosted on [Netlify](https://www.netlify.com)
 
 ## Development
 
-To install dependencies:
-
-```
+```sh
 npm i
+npm run dev      # local dev server
+npm run build    # production build
+npm run studio   # Sanity Studio locally
 ```
 
-To run the site for local development:
-
-```
-npm run dev
-```
-
-To build the production output:
-
-```
-npm run build
-```
-
-## CMS
-
-Content is managed in [Sanity](https://www.sanity.io/) (project `i6kx6v0q`). The studio config lives in `sanity.config.ts`, with schemas in `src/sanity/schemas/`.
-
-To run the studio locally:
-
-```
-npm run studio
-```
-
-The studio is deployed by a separate Netlify site at [cms.priorsparkcommunitychurch.co.uk](https://cms.priorsparkcommunitychurch.co.uk), which builds from this repo using `cms/netlify.toml` (its "Package directory" is set to `cms`). It only rebuilds when the studio config, schemas or dependencies change.
+The studio is deployed by a separate Netlify site at [cms.priorsparkcommunitychurch.co.uk](https://cms.priorsparkcommunitychurch.co.uk), built from this repo with `cms/netlify.toml` (its "Package directory" is `cms`). It only rebuilds when the studio config, schemas or dependencies change.
