@@ -8,7 +8,7 @@ The website for [Priors Park Community Church](https://priorsparkcommunitychurch
 - [Sanity](https://www.sanity.io) as the CMS; the studio config is in `sanity.config.ts`, with schemas in `src/sanity/schemas/`
 - Hosted on [Netlify](https://www.netlify.com)
 
-## Development
+## Running locally
 
 ```sh
 npm i
