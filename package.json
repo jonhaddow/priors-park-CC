@@ -27,7 +27,7 @@
     "@sanity/orderable-document-list": "^2.0.28",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.4.2",
+    "astro": "^7.4.12",
     "eslint": "^10.13.0",
     "preact": "^11.0.1",
     "react": "^19.3.1",
