@@ -18,21 +18,21 @@
     "@astrojs/mdx": "^8.1.6",
     "@astrojs/preact": "^6.1.6",
     "@astrojs/rss": "^4.0.19",
-    "@astrojs/sitemap": "^3.7.5",
+    "@astrojs/sitemap": "^3.7.6",
     "@portabletext/to-html": "^6.0.0",
-    "@sanity/astro": "^3.6.2",
-    "@sanity/client": "^8.16.0",
-    "@sanity/icons": "^5.3.0",
-    "@sanity/image-url": "^2.1.1",
+    "@sanity/astro": "^4.1.0",
+    "@sanity/client": "^8.17.0",
+    "@sanity/icons": "^5.4.0",
+    "@sanity/image-url": "^2.2.0",
     "@sanity/orderable-document-list": "^2.0.29",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.5",
-    "astro": "^7.4.12",
+    "astro": "^7.4.13",
     "eslint": "^10.15.0",
     "preact": "^11.2.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
-    "sanity": "^6.23.0",
+    "sanity": "^6.24.0",
     "styled-components": "^6.6.0",
     "tailwindcss": "^4.3.5"
   },
@@ -42,6 +42,6 @@
     "prettier": "^3.10.1",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.72.2"
+    "typescript-eslint": "^8.73.0"
   }
 }
